@@ -12,8 +12,8 @@ Dự án này thuộc **Nhóm B6 - Core Business (Xử lý nghiệp vụ trung t
 
 **Tác giả - Nhóm 13 (Lớp CNTT 17-07 - Khoa Công nghệ thông tin):**
 - 👨‍💻 **Hoàng Văn Thi** (Trưởng nhóm)
-- 👨‍💻 **Mạnh**
-- 👨‍💻 **Thuyết**
+- 👨‍💻 **Đoàn Duy Mạnh**
+- 👨‍💻 **Lương Quang Huy**
 
 ## 🚀 Tính năng cốt lõi (Features)
 - 🗄️ **Quản lý dữ liệu tập trung**: Quản lý thông tin Sinh viên/Giảng viên (Users), Thiết bị IoT (Devices) và Thời khóa biểu (Schedules).
