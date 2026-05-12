@@ -1,0 +1,15 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Môi trường ảo 
+venv/
+env/
+
+# Thư mục dữ liệu của Docker 
+mysql_data/
+
+# Các file hệ điều hành
+.DS_Store
+Thumbs.db
