@@ -12,7 +12,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "smart-campus-b6-secret-key-lab04")
 ALGORITHM = "HS256"
 
 # Cấu hình URL endpoint để lấy token (Login)
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="access/login")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/access/login")
 
 def get_session():
     """Dependency cung cấp Database session cho mỗi request"""

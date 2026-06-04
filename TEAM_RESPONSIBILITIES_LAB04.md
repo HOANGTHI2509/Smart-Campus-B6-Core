@@ -56,4 +56,16 @@
 2. **Bước 2 (Thành viên 2):** Lấy file OpenAPI chuẩn từ TV1 ➔ Tạo Postman Collection ➔ Deploy Mock Server ➔ Chia sẻ URL cho đối tác B3, B4 ➔ Bổ sung Test Scripts.
 3. **Bước 3 (Thành viên 3):** Export Collection & Env từ TV2 ➔ Viết lệnh chạy Newman ➔ Tích hợp GitHub Actions ➔ Lấy Report ➔ Khớp vào Checklist nghiệm thu.
 
+---
+
+## 4. QUY ĐỊNH VỀ GIT BRANCHING (CHIẾN LƯỢC CHIA NHÁNH)
+Để tránh xung đột (conflict) và đảm bảo code luôn chạy được, team thống nhất tuân thủ chiến lược Git như sau:
+
+- 👑 **Nhánh `main`:** Nhánh CHỐT CODE. Chứa code hoàn chỉnh, ổn định 100% để nộp bài hoặc đem đi Demo. **Tuyệt đối không push thẳng lên `main`**.
+- 🛠️ **Nhánh `dev`:** Nhánh TÍCH HỢP. Đây là nơi các thành viên gộp code lại với nhau để test độ tương thích. Khi mọi thứ trên `dev` chạy ngon lành thì Leader mới thực hiện Merge `dev` ➔ `main`.
+- 🧑‍💻 **Nhánh Cá nhân (Feature Branch):** Mỗi khi làm một task mới, thành viên phải tự tạo nhánh riêng từ nhánh `dev`.
+  - **Cú pháp đặt tên:** `[Tên]-feature-[chức-năng]`
+  - **Ví dụ:** `hoang-feature-auth-api`, `thi-feature-postman-test`.
+  - Khi code xong, mở Pull Request (PR) gộp nhánh cá nhân vào nhánh `dev`. Nhờ các thành viên khác hoặc Leader review code trước khi gộp.
+
 > 📌 *Tài liệu này là cơ sở để minh bạch công việc và đánh giá chéo giữa các thành viên. Yêu cầu mọi người nghiêm túc tuân thủ.*

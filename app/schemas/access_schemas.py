@@ -12,3 +12,8 @@ class AccessCheckResponse(BaseModel):
     is_granted: bool
     message: str
     user_name: Optional[str] = None
+
+# Schema trả về cho API Login
+class Token(BaseModel):
+    access_token: str
+    token_type: str

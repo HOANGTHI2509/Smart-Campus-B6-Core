@@ -1,9 +1,12 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordRequestForm
 from sqlmodel import Session, select
-from app.models.core_models import User
-from app.schemas.access_schemas import AccessCheckRequest, AccessCheckResponse
-from app.core.dependencies import get_session
+from datetime import datetime, timedelta
+from jose import jwt
 
+from app.models.core_models import User
+from app.schemas.access_schemas import AccessCheckRequest, AccessCheckResponse, Token
+from app.core.dependencies import get_session, SECRET_KEY, ALGORITHM
 # Tạo router riêng cho nhóm giao tiếp với Cổng B3
 router = APIRouter(prefix="/api/v1/access", tags=["Access Control (Nhóm B3)"])
 
@@ -39,3 +42,29 @@ def check_access(request: AccessCheckRequest, session: Session = Depends(get_ses
         message="Xác thực thành công. Xin mời qua cổng!",
         user_name=user.full_name
     )
+
+# API: Đăng nhập sinh viên để lấy JWT Token
+@router.post("/login", response_model=Token, tags=["Authentication"])
+def login_for_access_token(
+    form_data: OAuth2PasswordRequestForm = Depends(),
+    session: Session = Depends(get_session)
+):
+    # Sử dụng student_id làm username trong OAuth2
+    statement = select(User).where(User.student_id == form_data.username)
+    user = session.exec(statement).first()
+    
+    # Ở phiên bản Lab 04 này tạm thời chưa băm mật khẩu, có thể dùng card_uid làm password hoặc bỏ qua
+    # Thực tế nên dùng passlib để verify password
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Tài khoản hoặc mật khẩu không đúng",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    
+    # Tạo token payload
+    expire = datetime.utcnow() + timedelta(minutes=60) # Token sống 60 phút
+    to_encode = {"sub": user.student_id, "exp": expire}
+    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    
+    return {"access_token": encoded_jwt, "token_type": "bearer"}
