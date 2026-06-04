@@ -3,7 +3,6 @@
 **Người phụ trách:** Mạnh
 **Vai trò:** Postman Testing Lead (Lab 04)
 
-> ⚠️ **LƯU Ý QUAN TRỌNG:** Trước khi thực hiện bất kỳ task nào và sử dụng AI (như Antigravity/Gemini), bạn **BẮT BUỘC** phải đọc và tuân thủ file `AI_PROMPT_CONTRACT.md`.
 
 ## 🎯 MỤC TIÊU CÔNG VIỆC (DÀNH CHO LAB 04)
 Xây dựng bộ test hoàn chỉnh trên Postman dựa theo OpenAPI, cấu hình môi trường test và duy trì Mock Server để 2 nhóm đối tác (B3, B4) gọi test.
@@ -25,8 +24,3 @@ Xây dựng bộ test hoàn chỉnh trên Postman dựa theo OpenAPI, cấu hìn
 - [ ] **Negative Test:** Bắn dữ liệu sai (Thiếu field, sai UUID) xem API có báo lỗi chuẩn không.
 - [ ] **Auth Test:** Kiểm tra các API yêu cầu Token có chặn truy cập trái phép không.
 
----
-
-## 🤖 HƯỚNG DẪN PROMPT AI DÀNH RIÊNG CHO ROLE NÀY
-Khi nhờ AI viết test script, hãy dán câu này lên đầu:
-> *"Tôi là thành viên của dự án. Hãy đọc kỹ và tuân thủ tuyệt đối các quy tắc trong file `AI_PROMPT_CONTRACT.md`. Đóng vai trò là QA/Postman Expert, hãy giúp tôi viết test script (pm.test) cho API [Tên API] để bắt lỗi validation và check response schema. Lưu ý script phải chạy được trên Postman."*
