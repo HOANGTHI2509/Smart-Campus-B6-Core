@@ -1,6 +1,6 @@
 # 📋 TÀI LIỆU GIAO VIỆC - THÀNH VIÊN 1 (OPENAPI & CONTRACT DESIGN)
 
-**Người phụ trách:** [Điền tên thành viên 1]
+**Người phụ trách:** Thi
 **Vai trò:** OpenAPI & Contract Lead (Lab 04)
 
 > ⚠️ **LƯU Ý QUAN TRỌNG:** Trước khi thực hiện bất kỳ task nào và sử dụng AI (như Antigravity/Gemini), bạn **BẮT BUỘC** phải đọc và tuân thủ file `AI_PROMPT_CONTRACT.md`.

@@ -1,6 +1,6 @@
 # 📋 TÀI LIỆU GIAO VIỆC - THÀNH VIÊN 3 (CI/CD, NEWMAN & REPORTING)
 
-**Người phụ trách:** [Điền tên thành viên 3]
+**Người phụ trách:** Huy
 **Vai trò:** Automation & Reporting Lead (Lab 04)
 
 > ⚠️ **LƯU Ý QUAN TRỌNG:** Trước khi thực hiện bất kỳ task nào và sử dụng AI (như Antigravity/Gemini), bạn **BẮT BUỘC** phải đọc và tuân thủ file `AI_PROMPT_CONTRACT.md`.

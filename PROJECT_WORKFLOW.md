@@ -17,7 +17,7 @@
 ## 2. CHI TIẾT PHÂN CÔNG THEO VAI TRÒ
 
 ### 👤 VAI TRÒ 1: OPENAPI & CONTRACT LEAD
-**Nhân sự phụ trách:** `[Điền tên thành viên 1]`
+**Nhân sự phụ trách:** `Thi`
 **Mô tả công việc:** Quản trị đặc tả kỹ thuật API, định hình cấu trúc dữ liệu và đàm phán hợp đồng với các hệ thống bên ngoài.
 
 **Nhiệm vụ cụ thể:**
@@ -28,7 +28,7 @@
 ---
 
 ### 👤 VAI TRÒ 2: POSTMAN TESTING & MOCK SERVER LEAD
-**Nhân sự phụ trách:** `[Điền tên thành viên 2]`
+**Nhân sự phụ trách:** `Mạnh`
 **Mô tả công việc:** Chịu trách nhiệm xây dựng hệ thống kiểm thử thủ công trên Postman và vận hành môi trường giả lập (Mock Server).
 
 **Nhiệm vụ cụ thể:**
@@ -39,7 +39,7 @@
 ---
 
 ### 👤 VAI TRÒ 3: AUTOMATION, CI/CD & REPORTING LEAD
-**Nhân sự phụ trách:** `[Điền tên thành viên 3]`
+**Nhân sự phụ trách:** `Huy`
 **Mô tả công việc:** Tự động hóa toàn bộ quá trình kiểm thử, vận hành CI/CD pipeline và chuẩn bị hồ sơ minh chứng nghiệm thu.
 
 **Nhiệm vụ cụ thể:**
