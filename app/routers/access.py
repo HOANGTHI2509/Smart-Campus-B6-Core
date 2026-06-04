@@ -2,14 +2,10 @@ from fastapi import APIRouter, Depends
 from sqlmodel import Session, select
 from app.models.core_models import User
 from app.schemas.access_schemas import AccessCheckRequest, AccessCheckResponse
-from app.core.database import engine
+from app.core.dependencies import get_session
 
 # Tạo router riêng cho nhóm giao tiếp với Cổng B3
 router = APIRouter(prefix="/api/v1/access", tags=["Access Control (Nhóm B3)"])
-
-def get_session():
-    with Session(engine) as session:
-        yield session
 
 # API: Kiểm tra thẻ từ để mở cổng
 @router.post("/check", response_model=AccessCheckResponse)

@@ -13,3 +13,9 @@ mysql_data/
 # Các file hệ điều hành
 .DS_Store
 Thumbs.db
+
+# Biến môi trường
+.env
+
+# Tài liệu hướng dẫn Prompt AI
+AI_PROMPT_CONTRACT.md

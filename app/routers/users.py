@@ -2,15 +2,10 @@ from fastapi import APIRouter, HTTPException, Depends
 from sqlmodel import Session, select
 from app.models.core_models import User
 from app.schemas.user_schemas import UserCreate, UserResponse
-from app.core.database import engine
+from app.core.dependencies import get_session
 
 # Tạo router quản lý User
 router = APIRouter(prefix="/api/v1/users", tags=["Users"])
-
-# Dependency để mở phiên làm việc (Session) với Database
-def get_session():
-    with Session(engine) as session:
-        yield session
 
 # API 1: Thêm sinh viên mới
 @router.post("/", response_model=UserResponse)
