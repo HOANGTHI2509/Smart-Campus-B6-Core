@@ -12,8 +12,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Chuỗi kết nối tới MySQL lấy từ biến môi trường
-DATABASE_URL = os.getenv("DATABASE_URL", "mysql+pymysql://campus_user:campus_password@localhost:3306/smart_campus_db")
+# Chuỗi kết nối tới MySQL lấy hoàn toàn từ biến môi trường
+DATABASE_URL = os.getenv("DATABASE_URL")
+if not DATABASE_URL:
+    raise ValueError("🚨 Chưa cấu hình DATABASE_URL trong file .env!")
 
 engine = create_engine(DATABASE_URL, echo=True)
 

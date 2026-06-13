@@ -1,0 +1,79 @@
+asyncapi: 2.6.0
+info:
+  title: Smart Campus - Giao tiếp B6 (Core Business) và B7 (Notification)
+  version: 1.0.0
+  description: Bản mô tả API bất đồng bộ (AsyncAPI) cho quá trình gửi tín hiệu cảnh báo từ phân hệ B6 sang hệ thống thông báo B7.
+servers:
+  production:
+    url: kafka.smartcampus.local:9092
+    protocol: kafka
+    description: Kafka broker nội bộ của Smart Campus
+channels:
+  campus.alerts:
+    description: Hàng đợi chứa các sự kiện cảnh báo an ninh từ Core Business
+    publish:
+      operationId: sendAlertToB7
+      summary: B6 gửi cảnh báo an ninh
+      message:
+        $ref: '#/components/messages/AlertCreated'
+    subscribe:
+      operationId: receiveAlertFromB6
+      summary: B7 nhận cảnh báo an ninh để gửi SMS/Email
+      message:
+        $ref: '#/components/messages/AlertCreated'
+components:
+  messages:
+    AlertCreated:
+      name: core.alert.created
+      title: Sự kiện cảnh báo an ninh
+      summary: Bắn ra khi phát hiện xâm nhập trái phép hoặc cảnh báo từ cổng
+      payload:
+        $ref: '#/components/schemas/AlertPayload'
+  schemas:
+    AlertPayload:
+      type: object
+      required:
+        - eventId
+        - eventType
+        - occurredAt
+        - correlationId
+        - source
+        - data
+      properties:
+        eventId:
+          type: string
+          format: uuid
+          description: ID duy nhất của sự kiện để B7 chống gửi SMS 2 lần
+        eventType:
+          type: string
+          enum: [core.alert.created]
+        occurredAt:
+          type: string
+          format: date-time
+        correlationId:
+          type: string
+          format: uuid
+          description: Dùng để trace log toàn hệ thống
+        source:
+          type: string
+          example: core-business
+        data:
+          type: object
+          required:
+            - alertId
+            - severity
+            - message
+            - targetUserId
+          properties:
+            alertId:
+              type: string
+              format: uuid
+            severity:
+              type: string
+              enum: [LOW, MEDIUM, HIGH, CRITICAL]
+            message:
+              type: string
+              example: Phát hiện sinh viên quẹt thẻ khóa
+            targetUserId:
+              type: string
+              example: SV-12345

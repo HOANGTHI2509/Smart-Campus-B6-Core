@@ -1,0 +1,353 @@
+# ==========================================
+# 1. B6 & B3 (ACCESS GATE) - OPENAPI 3.1.0
+# ==========================================
+openapi: 3.1.0
+info:
+  title: API Contract - Core Business (B6) & Access Gate (B3)
+  description: Hợp đồng giao tiếp giữa hệ thống điều khiển trung tâm và thiết bị cổng kiểm soát.
+  version: 1.0.0
+paths:
+  /api/v1/access/check:
+    post:
+      summary: [B3 -> B6] Kiểm tra quyền qua cổng thời gian thực
+      description: B3 gọi B6 mỗi khi có sinh viên quẹt thẻ. Tích hợp Idempotency chống spam.
+      parameters:
+        - name: Idempotency-Key
+          in: header
+          required: true
+          description: Công thức SHA256(StudentID + DeviceID + RoundToMinute(Timestamp))
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [card_uid, gate_id]
+              properties:
+                card_uid:
+                  type: string
+                gate_id:
+                  type: string
+      responses:
+        '200':
+          description: Thành công hoặc Idempotency Cache Hit (trả về data cũ)
+        '409':
+          description: Conflict - B6 phát hiện spam quá nhanh
+  /api/v1/events:
+    post:
+      summary: [B3 -> B6] Đồng bộ sự kiện (Offline Mode & Physical Timeout)
+      description: B3 đẩy log lên B6 theo batch (mảng) hoặc báo cáo timeout vật lý (ACCESS_CANCELLED).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              description: Batch 100-200 records
+              items:
+                type: object
+                required: [status]
+                properties:
+                  status:
+                    type: string
+                    example: ACCESS_CANCELLED
+                  reason:
+                    type: string
+                    example: PHYSICAL_TIMEOUT_NO_PASSAGE
+      responses:
+        '200':
+          description: Đồng bộ thành công
+  /api/b3/access/logs/recent:
+    get:
+      summary: [B6 -> B3] Kéo dữ liệu log từ cổng
+      description: B6 chủ động gọi B3 bằng Cursor-based Pagination. Chịu tải 50 RPS.
+      parameters:
+        - name: next_cursor
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+        '429':
+          description: Quá tải (Too Many Requests), B6 cần giảm Crawler rate
+---
+# ==========================================
+# 2. B6 & B4 (AI VISION) - OPENAPI 3.1.0
+# ==========================================
+openapi: 3.1.0
+info:
+  title: API Contract - Core Business (B6) & AI Vision (B4)
+  description: Hợp đồng giao tiếp giữa hệ thống trung tâm và hệ thống AI nhận diện khuôn mặt.
+  version: 1.0.0
+paths:
+  /api/b4/vision/recognize:
+    post:
+      summary: [B6 -> B4] Yêu cầu nhận diện khuôn mặt
+      description: B6 gửi URL ảnh, B4 trả kết quả nhận diện, liveness, trạng thái khuôn mặt. Time-out 1s.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [imageRef]
+              properties:
+                imageRef:
+                  type: string
+                  description: URL hoặc đường dẫn S3
+      responses:
+        '200':
+          description: Phản hồi nhận diện hợp lệ (bao gồm cả lỗi logic AI)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  faceMatched:
+                    type: boolean
+                    description: TRUE nếu độ chính xác >= 90%
+                  matchedPersonId:
+                    type: string
+                    nullable: true
+                  status:
+                    type: string
+                    enum: [success, low_confidence, no_face_detected]
+                  isLive:
+                    type: boolean
+                    description: Kết quả check chống giả mạo Liveness
+        '422':
+          description: Unprocessable Entity (URL lỗi, format sai)
+        '429':
+          description: Too Many Requests (B4 quá tải 50 RPS), B6 chuyển sang chế độ dự phòng thẻ từ
+  /api/v1/webhooks/tailgating:
+    post:
+      summary: [B4 -> B6] Webhook cảnh báo bám đuôi
+      description: B4 bắn cảnh báo async về cho B6 khi phát hiện >= 2 khuôn mặt.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                gate_id:
+                  type: string
+                detected_faces_count:
+                  type: integer
+                alert_type:
+                  type: string
+                  example: tailgating
+      responses:
+        '200':
+          description: Đã ghi nhận cảnh báo
+---
+# ==========================================
+# 3. B6 & B1 (IoT INGESTION) - ASYNCAPI 2.6.0
+# ==========================================
+asyncapi: 2.6.0
+info:
+  title: Event Contract - IoT Ingestion (B1) & Core Business (B6)
+  version: 1.0.0
+  description: Hợp đồng giao tiếp bất đồng bộ qua Queue giữa hệ thống IoT và hệ thống trung tâm B6.
+servers:
+  production:
+    url: kafka.smartcampus.local:9092
+    protocol: kafka
+channels:
+  campus.telemetry:
+    publish:
+      operationId: sendSensorEventToB6
+      summary: [B1 -> B6] B1 đẩy dữ liệu cảm biến
+      message:
+        $ref: '#/components/messages/SensorEvent'
+    subscribe:
+      operationId: receiveSensorEventFromB1
+      summary: [B6 nhận] B6 nghe dữ liệu để xử lý nghiệp vụ
+      message:
+        $ref: '#/components/messages/SensorEvent'
+components:
+  messages:
+    SensorEvent:
+      name: sensor.event
+      payload:
+        type: object
+        required: [eventType, eventId, correlationId, deviceId]
+        properties:
+          eventType:
+            type: string
+            enum: [sensor.reading.created, sensor.threshold.exceeded, device.status.changed]
+          eventId:
+            type: string
+            format: uuid
+          correlationId:
+            type: string
+            format: uuid
+          deviceId:
+            type: string
+          locationId:
+            type: string
+          sensorType:
+            type: string
+          value:
+            type: number
+          unit:
+            type: string
+          threshold:
+            type: number
+          severity:
+            type: string
+            enum: [LOW, MEDIUM, HIGH, CRITICAL]
+          timestamp:
+            type: string
+            format: date-time
+---
+# ==========================================
+# 4. B6 & B5 (ANALYTICS) - ASYNCAPI 2.6.0
+# ==========================================
+asyncapi: 2.6.0
+info:
+  title: Event Contract - Core Business (B6) & Analytics (B5)
+  version: 1.0.0
+  description: Hợp đồng đẩy log dữ liệu phục vụ phân tích.
+servers:
+  production:
+    url: kafka.smartcampus.local:9092
+    protocol: kafka
+channels:
+  campus.audit.logs:
+    publish:
+      operationId: sendAuditLogToB5
+      summary: [B6 -> B5] B6 đẩy sự kiện hoạt động
+      message:
+        $ref: '#/components/messages/AuditEvent'
+    subscribe:
+      operationId: receiveAuditLogFromB6
+      summary: [B5 nhận] B5 nghe dữ liệu phân tích KPI
+      message:
+        $ref: '#/components/messages/AuditEvent'
+components:
+  messages:
+    AuditEvent:
+      name: core.audit.event
+      payload:
+        type: object
+        required: [eventId, eventType, occurredAt, correlationId, source, data]
+        properties:
+          eventId:
+            type: string
+            format: uuid
+          eventType:
+            type: string
+            enum: [core.audit.event]
+          occurredAt:
+            type: string
+            format: date-time
+          correlationId:
+            type: string
+            format: uuid
+          source:
+            type: string
+            example: core-business
+          data:
+            type: object
+            required: [actionType, actorId, resourceId, status]
+            properties:
+              actionType:
+                type: string
+                example: ACCESS_GRANTED
+              actorId:
+                type: string
+              resourceId:
+                type: string
+              status:
+                type: string
+                example: SUCCESS
+              metadata:
+                type: object
+---
+# ==========================================
+# 5. B6 & B7 (NOTIFICATION) - ASYNCAPI 2.6.0
+# ==========================================
+asyncapi: 2.6.0
+info:
+  title: Smart Campus - Giao tiếp B6 (Core Business) và B7 (Notification)
+  version: 1.0.0
+  description: Bản mô tả API bất đồng bộ (AsyncAPI) cho quá trình gửi tín hiệu cảnh báo từ phân hệ B6 sang hệ thống thông báo B7.
+servers:
+  production:
+    url: kafka.smartcampus.local:9092
+    protocol: kafka
+    description: Kafka broker nội bộ của Smart Campus
+channels:
+  campus.alerts:
+    description: Hàng đợi chứa các sự kiện cảnh báo an ninh từ Core Business
+    publish:
+      operationId: sendAlertToB7
+      summary: B6 gửi cảnh báo an ninh
+      message:
+        $ref: '#/components/messages/AlertCreated'
+    subscribe:
+      operationId: receiveAlertFromB6
+      summary: B7 nhận cảnh báo an ninh để gửi SMS/Email
+      message:
+        $ref: '#/components/messages/AlertCreated'
+components:
+  messages:
+    AlertCreated:
+      name: core.alert.created
+      title: Sự kiện cảnh báo an ninh
+      summary: Bắn ra khi phát hiện xâm nhập trái phép hoặc cảnh báo từ cổng
+      payload:
+        $ref: '#/components/schemas/AlertPayload'
+  schemas:
+    AlertPayload:
+      type: object
+      required:
+        - eventId
+        - eventType
+        - occurredAt
+        - correlationId
+        - source
+        - data
+      properties:
+        eventId:
+          type: string
+          format: uuid
+          description: ID duy nhất của sự kiện để B7 chống gửi SMS 2 lần
+        eventType:
+          type: string
+          enum: [core.alert.created]
+        occurredAt:
+          type: string
+          format: date-time
+        correlationId:
+          type: string
+          format: uuid
+          description: Dùng để trace log toàn hệ thống
+        source:
+          type: string
+          example: core-business
+        data:
+          type: object
+          required:
+            - alertId
+            - severity
+            - message
+            - targetUserId
+          properties:
+            alertId:
+              type: string
+              format: uuid
+            severity:
+              type: string
+              enum: [LOW, MEDIUM, HIGH, CRITICAL]
+            message:
+              type: string
+              example: Phát hiện sinh viên quẹt thẻ khóa
+            targetUserId:
+              type: string
+              example: SV-12345

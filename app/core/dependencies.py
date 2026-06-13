@@ -7,8 +7,14 @@ import os
 from app.core.database import engine
 from app.models.core_models import User
 
-# Cấu hình JWT (Trong thực tế nên để trong file .env)
-SECRET_KEY = os.getenv("SECRET_KEY", "smart-campus-b6-secret-key-lab04")
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Cấu hình JWT (Lấy từ file .env, tuyệt đối không hardcode)
+SECRET_KEY = os.getenv("SECRET_KEY")
+if not SECRET_KEY:
+    raise ValueError("🚨 Chưa cấu hình SECRET_KEY trong file .env!")
 ALGORITHM = "HS256"
 
 # Cấu hình URL endpoint để lấy token (Login)

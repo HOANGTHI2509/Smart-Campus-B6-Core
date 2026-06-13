@@ -18,7 +18,20 @@ class Device(SQLModel, table=True):
     access_logs: List["AccessLog"] = Relationship(back_populates="device")
 
 # -----------------
-# 2. Bảng Users (Sinh viên/Giảng viên)
+# 2. Bảng Roles (Quyền hạn)
+# -----------------
+class Role(SQLModel, table=True):
+    __tablename__ = "roles"
+    
+    id: Optional[int] = Field(default=None, primary_key=True)
+    role_name: str = Field(unique=True, index=True) # admin, student, lecturer, guest
+    description: Optional[str] = None
+    
+    # Quan hệ 1-N
+    users: List["User"] = Relationship(back_populates="role")
+
+# -----------------
+# 3. Bảng Users (Sinh viên/Giảng viên)
 # -----------------
 class User(SQLModel, table=True):
     __tablename__ = "users"
@@ -27,12 +40,15 @@ class User(SQLModel, table=True):
     full_name: str
     student_id: str = Field(unique=True, index=True)
     card_uid: str = Field(unique=True, index=True)
-    role: str = Field(default="student")
+    role_id: Optional[int] = Field(default=None, foreign_key="roles.id")
     is_active: bool = Field(default=True)
     
     # Quan hệ 1-N
     schedules: List["Schedule"] = Relationship(back_populates="user")
     access_logs: List["AccessLog"] = Relationship(back_populates="user")
+    
+    # Quan hệ N-1
+    role: Optional[Role] = Relationship(back_populates="users")
 
 # -----------------
 # 3. Bảng Schedule (Thời khóa biểu)

@@ -1,26 +1,22 @@
-# 📋 TÀI LIỆU GIAO VIỆC - THÀNH VIÊN 2 (POSTMAN & MOCK SERVER)
+# 📋 TÀI LIỆU GIAO VIỆC - THÀNH VIÊN 2
 
 **Người phụ trách:** Mạnh
-**Vai trò:** Postman Testing Lead (Lab 04)
+**Vai trò:** API Developer & Data Management (Đồ án hoàn chỉnh)
 
-
-## 🎯 MỤC TIÊU CÔNG VIỆC (DÀNH CHO LAB 04)
-Xây dựng bộ test hoàn chỉnh trên Postman dựa theo OpenAPI, cấu hình môi trường test và duy trì Mock Server để 2 nhóm đối tác (B3, B4) gọi test.
+## 🎯 MỤC TIÊU CÔNG VIỆC
+Xây dựng các API quản trị dữ liệu (CRUD) cho hệ thống, cung cấp data đầu ra cho nhóm B5 (Analytics) và thực hiện kiểm thử tự động/thủ công cho toàn bộ hệ thống bằng Postman.
 
 ## 📝 DANH SÁCH TASK CHI TIẾT
 
-### 1. Xây dựng Postman Collection
-- [ ] Import file OpenAPI vào Postman để tạo Collection gốc.
-- [ ] Cấu hình Postman Environments (`local`, `mock`) để loại bỏ hoàn toàn các giá trị hardcode trong URL.
-- [ ] Bổ sung các test script (chạy bằng Javascript trong tab Tests của Postman) để verify HTTP Status và JSON schema.
+### 1. Xây dựng các API Quản trị (CRUD Endpoints)
+- [ ] Viết API Thêm/Sửa/Xóa/Lấy danh sách `Users` (Sinh viên, Giảng viên).
+- [ ] Viết API Quản lý `Schedules` (Cho phép import thời khóa biểu hoặc tạo thủ công).
+- [ ] Viết API Quản lý `Devices` (Đăng ký camera B4 hoặc cổng B3 mới vào hệ thống).
 
-### 2. Cấu hình Mock Server cho B3 & B4
-- [ ] Thiết lập Mock Server trên Postman để trả về mock data dựa trên các ví dụ (examples) đã định nghĩa.
-- [ ] Chia sẻ link Mock Server cho nhóm B3 và B4 để họ test chéo trước khi Backend thật hoàn thiện.
-- [ ] Xử lý các lỗi 404 (Not Found) nếu Mock Server mapping không đúng đường dẫn.
+### 2. Xây dựng API cho B5 (Analytics)
+- [ ] Viết các API dạng `GET` cho phép nhóm B5 gọi để lấy dữ liệu lịch sử ra vào.
+- [ ] Bổ sung chức năng filter theo ngày, giờ, tòa nhà, loại người dùng cho B5.
 
-### 3. Viết kịch bản Test chi tiết
-- [ ] **Functional Test:** Kiểm tra luồng chạy đúng (Happy path).
-- [ ] **Negative Test:** Bắn dữ liệu sai (Thiếu field, sai UUID) xem API có báo lỗi chuẩn không.
-- [ ] **Auth Test:** Kiểm tra các API yêu cầu Token có chặn truy cập trái phép không.
-
+### 3. Kiểm thử hệ thống (QA/Testing)
+- [ ] Cập nhật Postman Collection cho các API mới của đồ án.
+- [ ] Viết kịch bản test (Functional Test, Negative Test, Auth Test) cho các API.

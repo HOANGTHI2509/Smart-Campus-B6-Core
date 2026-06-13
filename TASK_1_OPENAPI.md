@@ -1,21 +1,28 @@
-# 📋 TÀI LIỆU GIAO VIỆC - THÀNH VIÊN 1 (OPENAPI & CONTRACT DESIGN)
+# 📋 TÀI LIỆU GIAO VIỆC - THÀNH VIÊN 1 (TRƯỞNG NHÓM)
 
 **Người phụ trách:** Thi
-**Vai trò:** OpenAPI & Contract Lead (Lab 04)
+**Vai trò:** System Architect & Core Logic Developer (Đồ án hoàn chỉnh)
 
-
-## 🎯 MỤC TIÊU CÔNG VIỆC (DÀNH CHO LAB 04)
-Đảm bảo bản hợp đồng API (OpenAPI 3.1) của hệ thống B6 (Core Business) hoàn hảo, không có lỗi linting và được thống nhất chặt chẽ với 2 nhóm đối tác (B3 - Access Gate và B4 - AI Vision).
+## 🎯 MỤC TIÊU CÔNG VIỆC
+Chịu trách nhiệm thiết kế kiến trúc Database cốt lõi, viết logic thuật toán cấp phép ra/vào và tích hợp giao tiếp trực tiếp với phân hệ B3 (Access Gate) và B7 (Notification). Đồng thời quản lý code và review tiến độ toàn đội.
 
 ## 📝 DANH SÁCH TASK CHI TIẾT
 
-### 1. Chuẩn hóa OpenAPI Specification
-- [ ] Rà soát file `openapi.yaml` / `openapi.json` đảm bảo tuân thủ chuẩn OpenAPI 3.1.
-- [ ] Chạy công cụ linting (Spectral) để phát hiện và sửa các lỗi về cấu trúc, naming convention.
-- [ ] Đảm bảo các kiểu dữ liệu (UUID, URI, Data format) được định nghĩa chặt chẽ để vượt qua tool check.
+### 1. Thiết kế & Khởi tạo Database (Database Architecture)
+- [x] Rà soát file OpenAPI đảm bảo tuân thủ chuẩn OpenAPI 3.1. (Đã hoàn thành ở Lab trước)
+- [x] Thiết kế ERD (Sơ đồ thực thể) cho MySQL: Bảng `Users`, `Roles`, `Schedules`, `Devices`, `AccessLogs`.
+- [x] Viết file migration để tạo database tự động.
 
-### 2. Giao tiếp & Chốt Contract với Đối tác (B3 & B4)
-- [ ] Cung cấp API Contract cho nhóm B3 (Thiết bị cổng kiểm soát) để họ tích hợp tính năng check-in.
-- [ ] Cung cấp API Contract cho nhóm B4 (AI Camera) để họ gửi dữ liệu nhận diện khuôn mặt về.
-- [ ] Ký biên bản chốt các trường dữ liệu (Request/Response) với 2 nhóm này để tránh đổi logic phút chót.
+### 2. Xây dựng thuật toán Cấp phép ra/vào (Linh hồn của hệ thống)
+- [x] Viết Service kiểm tra tính hợp lệ: Nhận ID nhân sự/sinh viên ➔ Đối chiếu `Schedules` ➔ Đối chiếu thẻ có bị khóa không.
+- [x] Xử lý logic luồng ngoại lệ (đi trễ, quyền đặc biệt của giảng viên/admin).
+
+### 3. Tích hợp Outbound API (Gọi sang B3 và B7)
+- [ ] Viết module HTTP Client gửi lệnh `POST` gọi API của B3 ra lệnh mở cổng khi hợp lệ.
+- [ ] Viết module gọi API của B7 để gửi tín hiệu cảnh báo khi phát hiện đột nhập.
+
+### 4. Triển khai & Quản lý dự án
+- [ ] Cấu hình server/VPS để deploy dự án lên môi trường live cho các nhóm khác gọi vào.
+- [ ] Duyệt Pull Request của Mạnh và Huy trên Git.
+- [ ] Merge code nhánh `dev` sang `main`, chốt bản Release.
 
