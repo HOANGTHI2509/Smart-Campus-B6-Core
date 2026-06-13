@@ -18,8 +18,8 @@ Chịu trách nhiệm thiết kế kiến trúc Database cốt lõi, viết logi
 - [x] Xử lý logic luồng ngoại lệ (đi trễ, quyền đặc biệt của giảng viên/admin).
 
 ### 3. Tích hợp Outbound API (Gọi sang B3 và B7)
-- [ ] Viết module HTTP Client gửi lệnh `POST` gọi API của B3 ra lệnh mở cổng khi hợp lệ.
-- [ ] Viết module gọi API của B7 để gửi tín hiệu cảnh báo khi phát hiện đột nhập.
+- [x] Viết module HTTP Client gửi lệnh `POST` gọi API của B3 ra lệnh mở cổng khi hợp lệ.
+- [x] Viết module gọi API của B7 để gửi tín hiệu cảnh báo khi phát hiện đột nhập.
 
 ### 4. Triển khai & Quản lý dự án
 - [ ] Cấu hình server/VPS để deploy dự án lên môi trường live cho các nhóm khác gọi vào.
