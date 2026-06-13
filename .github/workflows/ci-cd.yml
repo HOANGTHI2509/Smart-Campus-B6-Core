@@ -1,0 +1,176 @@
+# =============================================================
+# GitHub Actions - CI/CD Pipeline
+# Smart Campus B6 - Core Business API
+# =============================================================
+#
+# WORKFLOW NÀY GỒM 2 JOB:
+#
+# [JOB 1] ci-test:
+#   - Chạy trên MỌI push và pull_request vào nhánh main/develop
+#   - Cài đặt Python dependencies
+#   - Chạy unit tests bằng pytest
+#   - Báo cáo kết quả test
+#
+# [JOB 2] cd-build-push:
+#   - Chỉ chạy khi push lên nhánh MAIN và CI tests ĐÃ PASS
+#   - Build Docker image
+#   - Đẩy image lên GitHub Container Registry (ghcr.io)
+#   - Tag image với SHA commit và 'latest'
+# =============================================================
+
+name: "🚀 CI/CD Pipeline - Smart Campus B6"
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+
+# Permissions cần thiết cho GHCR
+permissions:
+  contents: read
+  packages: write
+
+# Biến môi trường dùng chung
+env:
+  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/smart-campus-b6-core
+  PYTHON_VERSION: "3.11"
+
+jobs:
+  # ============================================================
+  # JOB 1: CI - Kiểm thử tự động
+  # ============================================================
+  ci-test:
+    name: "🧪 CI - Run Tests"
+    runs-on: ubuntu-latest
+
+    # Dịch vụ MySQL để chạy integration test (nếu cần)
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: testpassword
+          MYSQL_DATABASE: test_smart_campus_db
+          MYSQL_USER: test_user
+          MYSQL_PASSWORD: test_password
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h localhost -u root -ptestpassword"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      # Bước 1: Lấy code từ repository
+      - name: "📥 Checkout source code"
+        uses: actions/checkout@v4
+
+      # Bước 2: Cài đặt Python
+      - name: "🐍 Setup Python ${{ env.PYTHON_VERSION }}"
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: "pip"  # Cache pip để build nhanh hơn
+
+      # Bước 3: Cài đặt dependencies
+      - name: "📦 Install dependencies"
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-asyncio httpx
+
+      # Bước 4: Tạo file .env cho môi trường test
+      - name: "⚙️ Create .env for testing"
+        run: |
+          cat > .env << EOF
+          SECRET_KEY=test-secret-key-for-ci-pipeline-only-not-production
+          DATABASE_URL=mysql+pymysql://test_user:test_password@localhost:3306/test_smart_campus_db
+          B3_API_URL=http://localhost:8003/api/v1/gate/open
+          B7_API_URL=http://localhost:8007/api/v1/alerts
+          APP_ENV=testing
+          EOF
+
+      # Bước 5: Chạy unit tests
+      - name: "✅ Run unit tests with pytest"
+        run: |
+          pytest tests/ -v --tb=short
+        env:
+          PYTHONPATH: .
+
+      # Bước 6: (Tuỳ chọn) Báo cáo test coverage
+      - name: "📊 Generate test coverage report"
+        if: always()
+        run: |
+          pip install pytest-cov
+          pytest tests/ --cov=app --cov-report=term-missing --cov-report=xml -v || true
+
+      # Bước 7: Upload coverage report lên Codecov (nếu có CODECOV_TOKEN)
+      - name: "📈 Upload coverage to Codecov"
+        if: always() && env.CODECOV_TOKEN != ''
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./coverage.xml
+          fail_ci_if_error: false
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+  # ============================================================
+  # JOB 2: CD - Build & Push Docker Image
+  # Chỉ chạy khi push lên main VÀ CI đã pass
+  # ============================================================
+  cd-build-push:
+    name: "🐳 CD - Build & Push Docker Image"
+    runs-on: ubuntu-latest
+    needs: ci-test  # Phụ thuộc vào job ci-test
+
+    # Chỉ chạy khi push lên nhánh main (không chạy khi PR)
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      # Bước 1: Lấy code
+      - name: "📥 Checkout source code"
+        uses: actions/checkout@v4
+
+      # Bước 2: Đăng nhập vào GitHub Container Registry
+      - name: "🔑 Login to GitHub Container Registry (GHCR)"
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Bước 3: Thiết lập Docker Buildx (hỗ trợ multi-platform build)
+      - name: "🔧 Set up Docker Buildx"
+        uses: docker/setup-buildx-action@v3
+
+      # Bước 4: Trích xuất metadata (tags và labels) cho Docker image
+      - name: "🏷️ Extract Docker metadata (tags & labels)"
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE_NAME }}
+          tags: |
+            type=sha,prefix=sha-,format=short
+            type=ref,event=branch
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      # Bước 5: Build và Push Docker image
+      - name: "🏗️ Build and Push Docker image to GHCR"
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          # Cache layer từ GHCR để build nhanh hơn
+          cache-from: type=registry,ref=${{ env.IMAGE_NAME }}:latest
+          cache-to: type=inline
+
+      # Bước 6: In ra thông tin image vừa push
+      - name: "📋 Print image digest"
+        run: echo "Image pushed with digest ${{ steps.build.outputs.digest }}"

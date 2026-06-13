@@ -7,15 +7,24 @@ services:
     container_name: b6_mysql_db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: smart_campus_db
-      MYSQL_USER: campus_user
-      MYSQL_PASSWORD: campus_password
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-smart_campus_db}
+      MYSQL_USER: ${MYSQL_USER:-campus_user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-campus_password}
     ports:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     command: --default-authentication-plugin=mysql_native_password
+    # Health check: Chỉ cho service khác start khi MySQL đã thực sự sẵn sàng
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-rootpassword}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - b6_network
 
   # 2. Giao diện Web quản lý Database (phpMyAdmin)
   phpmyadmin:
@@ -25,12 +34,51 @@ services:
     environment:
       PMA_HOST: db
       PMA_USER: root
-      PMA_PASSWORD: rootpassword
+      PMA_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpassword}
     ports:
       - "8080:80"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+    networks:
+      - b6_network
+
+  # 3. Dịch vụ FastAPI - Core Business (B6)
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: b6_fastapi_app
+    restart: always
+    # Truyền biến môi trường từ file .env vào container
+    env_file:
+      - .env
+    environment:
+      # Override DATABASE_URL để dùng hostname 'db' thay vì localhost
+      DATABASE_URL: mysql+pymysql://${MYSQL_USER:-campus_user}:${MYSQL_PASSWORD:-campus_password}@db:3306/${MYSQL_DATABASE:-smart_campus_db}
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    # Mount source code để hot-reload khi phát triển (tuỳ chọn)
+    volumes:
+      - .:/app
+    networks:
+      - b6_network
+    # Health check cho FastAPI
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/')"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
 
 # Khai báo volume để dữ liệu không bị mất khi tắt Docker
 volumes:
   mysql_data:
+
+# Mạng nội bộ để các service giao tiếp an toàn
+networks:
+  b6_network:
+    driver: bridge

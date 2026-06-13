@@ -40,6 +40,7 @@ class User(SQLModel, table=True):
     full_name: str
     student_id: str = Field(unique=True, index=True)
     card_uid: str = Field(unique=True, index=True)
+    hashed_password: Optional[str] = Field(default=None, description="Mật khẩu đã được mã hóa bcrypt")
     role_id: Optional[int] = Field(default=None, foreign_key="roles.id")
     is_active: bool = Field(default=True)
     
@@ -49,6 +50,7 @@ class User(SQLModel, table=True):
     
     # Quan hệ N-1
     role: Optional[Role] = Relationship(back_populates="users")
+
 
 # -----------------
 # 3. Bảng Schedule (Thời khóa biểu)

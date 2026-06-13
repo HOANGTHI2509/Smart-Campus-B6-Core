@@ -3,10 +3,15 @@ from fastapi.security import OAuth2PasswordRequestForm
 from sqlmodel import Session, select
 from datetime import datetime, timedelta
 from jose import jwt
+from passlib.context import CryptContext
 
 from app.models.core_models import User
 from app.schemas.access_schemas import AccessCheckRequest, AccessCheckResponse, Token
 from app.core.dependencies import get_session, SECRET_KEY, ALGORITHM
+
+# Cấu hình bcrypt context để verify mật khẩu
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
 # Tạo router riêng cho nhóm giao tiếp với Cổng B3
 router = APIRouter(prefix="/api/v1/access", tags=["Access Control (Nhóm B3)"])
 
@@ -53,8 +58,7 @@ def login_for_access_token(
     statement = select(User).where(User.student_id == form_data.username)
     user = session.exec(statement).first()
     
-    # Ở phiên bản Lab 04 này tạm thời chưa băm mật khẩu, có thể dùng card_uid làm password hoặc bỏ qua
-    # Thực tế nên dùng passlib để verify password
+    # Kiểm tra user tồn tại
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -62,9 +66,25 @@ def login_for_access_token(
             headers={"WWW-Authenticate": "Bearer"},
         )
     
+    # Xác thực mật khẩu bằng bcrypt
+    # Nếu user chưa có mật khẩu (tạo cũ), từ chối đăng nhập
+    if not user.hashed_password:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Tài khoản chưa được thiết lập mật khẩu. Vui lòng liên hệ quản trị viên.",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    
+    if not pwd_context.verify(form_data.password, user.hashed_password):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Tài khoản hoặc mật khẩu không đúng",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    
     # Tạo token payload
-    expire = datetime.utcnow() + timedelta(minutes=60) # Token sống 60 phút
+    expire = datetime.utcnow() + timedelta(minutes=60)  # Token sống 60 phút
     to_encode = {"sub": user.student_id, "exp": expire}
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     
-    return {"access_token": encoded_jwt, "token_type": "bearer"}
+    return {"access_token": encoded_jwt, "token_type": "bearer"}
