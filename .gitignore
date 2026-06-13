@@ -18,4 +18,12 @@ Thumbs.db
 .env
 
 # TÃ i liá»‡u hÆ°á»›ng dáº«n Prompt AI
-AI_PROMPT_CONTRACT.md
+AI_PROMPT_CONTRACT.md
+# Thu m?c ch?a các h?p d?ng (Theo yêu c?u)
+hopdong/
+
+# Môi tru?ng ?o (B? sung)
+.venv/
+
+# File JSON t? generate
+openapi.json
