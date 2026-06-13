@@ -4,67 +4,76 @@ from sqlmodel import Session, select
 from datetime import datetime, timedelta
 from jose import jwt
 
-from app.models.core_models import User
+from app.models.core_models import Device, User
 from app.schemas.access_schemas import AccessCheckRequest, AccessCheckResponse, Token
 from app.core.dependencies import get_session, SECRET_KEY, ALGORITHM
-# Tạo router riêng cho nhóm giao tiếp với Cổng B3
-router = APIRouter(prefix="/api/v1/access", tags=["Access Control (Nhóm B3)"])
+from app.services.access_service import AccessService
 
-# API: Kiểm tra thẻ từ để mở cổng
+# Tao router rieng cho nhom giao tiep voi Cong B3
+router = APIRouter(prefix="/api/v1/access", tags=["Access Control (Nhom B3)"])
+
+# API: Kiem tra the tu de mo cong
 @router.post("/check", response_model=AccessCheckResponse)
 def check_access(request: AccessCheckRequest, session: Session = Depends(get_session)):
-    # 1. Truy vấn Database tìm sinh viên sở hữu mã thẻ này
-    statement = select(User).where(User.card_uid == request.card_uid)
-    user = session.exec(statement).first()
-
-    # 2. Logic kiểm tra
-    if not user:
-        # Không tìm thấy thẻ
+    device = _find_device(session, request.gate_id)
+    if not device:
         return AccessCheckResponse(
             status="error",
-            is_granted=False, # Không cho mở cổng
-            message="Thẻ chưa được đăng ký trong hệ thống!"
-        )
-    
-    if not user.is_active:
-        # Thẻ bị khóa
-        return AccessCheckResponse(
-            status="error",
-            is_granted=False, # Không cho mở cổng
-            message="Tài khoản sinh viên đã bị khóa!",
-            user_name=user.full_name
+            is_granted=False,
+            message="Gate device not found in system!"
         )
 
-    # 3. Hợp lệ -> Ra lệnh mở cổng
+    access_service = AccessService(session)
+    is_granted, reason, user = access_service.verify_access(request.card_uid, device.id)
+
+    if not is_granted:
+        return AccessCheckResponse(
+            status="error",
+            is_granted=False,
+            message=reason,
+            user_name=user.full_name if user else None
+        )
+
     return AccessCheckResponse(
         status="success",
-        is_granted=True, # Lệnh MỞ CỔNG
-        message="Xác thực thành công. Xin mời qua cổng!",
-        user_name=user.full_name
+        is_granted=True,
+        message="Xac thuc thanh cong. Xin moi qua cong!",
+        user_name=user.full_name if user else None
     )
 
-# API: Đăng nhập sinh viên để lấy JWT Token
+
+def _find_device(session: Session, gate_id: str) -> Device | None:
+    if gate_id.isdigit():
+        device = session.get(Device, int(gate_id))
+        if device:
+            return device
+
+    statement = select(Device).where(Device.device_name == gate_id)
+    return session.exec(statement).first()
+
+
+# API: Dang nhap sinh vien de lay JWT Token
 @router.post("/login", response_model=Token, tags=["Authentication"])
 def login_for_access_token(
     form_data: OAuth2PasswordRequestForm = Depends(),
     session: Session = Depends(get_session)
 ):
-    # Sử dụng student_id làm username trong OAuth2
+    # Su dung student_id lam username trong OAuth2
     statement = select(User).where(User.student_id == form_data.username)
     user = session.exec(statement).first()
-    
-    # Ở phiên bản Lab 04 này tạm thời chưa băm mật khẩu, có thể dùng card_uid làm password hoặc bỏ qua
-    # Thực tế nên dùng passlib để verify password
+
+    # O phien ban Lab 04 nay tam thoi chua bam mat khau, co the dung card_uid lam password hoac bo qua
+    # Thuc te nen dung passlib de verify password
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Tài khoản hoặc mật khẩu không đúng",
+            detail="Tai khoan hoac mat khau khong dung",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    
-    # Tạo token payload
-    expire = datetime.utcnow() + timedelta(minutes=60) # Token sống 60 phút
+
+    # Tao token payload
+    expire = datetime.utcnow() + timedelta(minutes=60)
     to_encode = {"sub": user.student_id, "exp": expire}
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
-    
+
     return {"access_token": encoded_jwt, "token_type": "bearer"}

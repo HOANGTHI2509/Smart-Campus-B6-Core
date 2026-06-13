@@ -1,19 +1,19 @@
 from fastapi import FastAPI
-from app.routers import users
-from app.routers import users, access
+from app.routers import users, access, analytics
 
-# Khởi tạo ứng dụng FastAPI
+# Khoi tao ung dung FastAPI
 app = FastAPI(
-    title="Smart Campus API - Phân hệ B6",
-    description="Core Business API xử lý nghiệp vụ trung tâm",
+    title="Smart Campus API - Phan he B6",
+    description="Core Business API xu ly nghiep vu trung tam",
     version="1.0.0"
 )
 
-# Gắn các API Router vào hệ thống chính
+# Gan cac API Router vao he thong chinh
 app.include_router(users.router)
 app.include_router(access.router)
+app.include_router(analytics.router)
 
-# Nút test hệ thống
+# Nut test he thong
 @app.get("/")
 def read_root():
-    return {"message": "Server B6 đang hoạt động bình thường!"}
+    return {"message": "Server B6 dang hoat dong binh thuong!"}
