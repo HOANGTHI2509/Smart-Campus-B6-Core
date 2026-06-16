@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: b6-core-api
+    ports:
+      # Expose port 8000 của container ra port 8000 của máy host (laptop)
+      # Đây là điều kiện bắt buộc để nhóm khác gọi được vào B6
+      - "8000:8000"
+    env_file:
+      - .env
+    networks:
+      - b6-network
+    restart: unless-stopped
+
+networks:
+  b6-network:
+    driver: bridge
