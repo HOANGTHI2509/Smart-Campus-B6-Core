@@ -4,17 +4,38 @@ class Settings(BaseSettings):
     # App Settings
     API_PORT: int = 8000
     
-    # Partner URLs (Mạng LAN)
-    B4_AI_VISION_URL: str = "http://172.20.10.5:4010"
-    B3_ACCESS_GATE_URL: str = "http://172.20.10.6:8080"
-    B7_NOTIFICATION_URL: str = "http://172.20.10.7:5000"
-    B5_ANALYTICS_URL: str = "http://172.20.10.8:9000"
+    # ----------------------------------------------------
+    # KIẾN TRÚC IP TẬP TRUNG (Dành cho Demo)
+    # ----------------------------------------------------
+    LAN_HOST_IP: str = "127.0.0.1"  # Sẽ bị ghi đè bởi file .env
+    B4_NGROK_URL: str = ""          # Sẽ bị ghi đè bởi file .env
+    B7_NGROK_URL: str = ""          # Sẽ bị ghi đè bởi file .env
+    B3_NGROK_URL: str = ""          # Sẽ bị ghi đè bởi file .env
+
+    @property
+    def B4_AI_VISION_URL(self) -> str:
+        return self.B4_NGROK_URL if self.B4_NGROK_URL else f"http://{self.LAN_HOST_IP}:4010"
+
+    @property
+    def B3_ACCESS_GATE_URL(self) -> str:
+        return self.B3_NGROK_URL if self.B3_NGROK_URL else f"http://{self.LAN_HOST_IP}:8080"
+        
+    @property
+    def B7_NOTIFICATION_URL(self) -> str:
+        return self.B7_NGROK_URL if self.B7_NGROK_URL else f"http://{self.LAN_HOST_IP}:5000"
+        
+    @property
+    def B5_ANALYTICS_URL(self) -> str:
+        return f"http://{self.LAN_HOST_IP}:9000"
     
-    # MQTT Config
-    MQTT_BROKER_URL: str = "f6f78e87db4a4c189dd3d706745a5e93.s1.eu.hivemq.cloud"
-    MQTT_PORT: int = 8883
-    MQTT_USERNAME: str = "DVKN_IOT_2026"
-    MQTT_PASSWORD: str = "ThaiBao12A@"
+    # ----------------------------------------------------
+    # THÔNG TIN BẢO MẬT (Các giá trị này rỗng, bắt buộc đọc từ .env)
+    # ----------------------------------------------------
+    MQTT_BROKER_URL: str = ""
+    MQTT_PORT: int = 1883
+    MQTT_USERNAME: str = ""
+    MQTT_PASSWORD: str = ""
+    DATABASE_URL: str = ""
 
     class Config:
         env_file = ".env"

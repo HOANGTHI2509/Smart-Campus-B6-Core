@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Campus - Trung tâm B6</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f111a;
+            --panel-bg: rgba(25, 28, 41, 0.6);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --accent-blue: #00f0ff;
+            --accent-purple: #7000ff;
+            --success: #00ff88;
+            --warning: #ffb800;
+            --critical: #ff0055;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(112, 0, 255, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 240, 255, 0.08), transparent 25%);
+        }
+
+        /* Glassmorphism utilities */
+        .glass {
+            background: var(--panel-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+        }
+
+        /* Layout */
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            height: 100vh;
+            padding: 24px;
+            gap: 24px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sidebar::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+        }
+
+        .brand {
+            font-weight: 800;
+            font-size: 24px;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            border-radius: 12px;
+            background: rgba(0, 255, 136, 0.05);
+            border: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--success);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--success);
+            animation: pulse 2s infinite;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .stat-card {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: 800;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .stat-card.blue .stat-value { color: var(--accent-blue); }
+        .stat-card.purple .stat-value { color: var(--accent-purple); }
+        .stat-card.pink .stat-value { color: #ff00a0; }
+
+        /* Terminal Window */
+        .terminal {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .terminal-header {
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .terminal-title {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .live-badge {
+            background: rgba(255, 0, 85, 0.1);
+            color: var(--critical);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 800;
+            animation: pulse-red 2s infinite;
+        }
+
+        .log-container {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .log-container::-webkit-scrollbar {
+            width: 8px;
+        }
+        .log-container::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .log-entry {
+            display: grid;
+            grid-template-columns: 80px 100px 140px 1fr;
+            gap: 16px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            background: rgba(0,0,0,0.2);
+            border-left: 3px solid transparent;
+            animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.2s ease;
+        }
+
+        .log-entry:hover {
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateX(4px);
+        }
+
+        .log-time { color: var(--text-muted); }
+        .log-source { color: var(--accent-blue); font-weight: 600; }
+        
+        .badge {
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        /* Log Levels */
+        .level-INFO .badge { background: rgba(0, 240, 255, 0.1); color: var(--accent-blue); }
+        .level-INFO { border-left-color: var(--accent-blue); }
+
+        .level-SUCCESS .badge { background: rgba(0, 255, 136, 0.1); color: var(--success); }
+        .level-SUCCESS { border-left-color: var(--success); }
+
+        .level-WARNING .badge { background: rgba(255, 184, 0, 0.1); color: var(--warning); }
+        .level-WARNING { border-left-color: var(--warning); }
+
+        .level-CRITICAL .badge { background: rgba(255, 0, 85, 0.1); color: var(--critical); box-shadow: 0 0 10px rgba(255,0,85,0.2); }
+        .level-CRITICAL { border-left-color: var(--critical); background: rgba(255,0,85,0.05); }
+
+        .log-message {
+            color: #fff;
+            line-height: 1.5;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .view-json-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--text-muted);
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Outfit', sans-serif;
+            margin-left: 12px;
+            flex-shrink: 0;
+        }
+        .view-json-btn:hover {
+            background: rgba(255,255,255,0.2);
+            color: #fff;
+        }
+
+        .json-payload {
+            grid-column: 1 / -1;
+            background: rgba(0,0,0,0.4);
+            padding: 16px;
+            border-radius: 6px;
+            margin-top: 8px;
+            display: none;
+            overflow-x: auto;
+            border: 1px solid rgba(255,255,255,0.05);
+            font-size: 12px;
+            color: var(--accent-blue);
+        }
+        .json-payload.active {
+            display: block;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 255, 136, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+        }
+
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 85, 0.4); }
+            70% { box-shadow: 0 0 0 8px rgba(255, 0, 85, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 0, 85, 0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .connection-lines {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .conn-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--text-muted);
+            padding: 12px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+        }
+
+        .conn-status {
+            color: var(--success);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <!-- Sidebar -->
+        <aside class="glass sidebar">
+            <div class="brand">
+                SMART CAMPUS<br>
+                <span style="color: var(--accent-blue); font-size: 16px;">TRUNG TÂM B6</span>
+            </div>
+
+            <div class="status-indicator">
+                <div class="pulse-dot"></div>
+                <div>
+                    <div style="font-weight: 600; color: var(--success);">HỆ THỐNG HOẠT ĐỘNG</div>
+                    <div style="font-size: 12px; color: var(--text-muted);">Lõi Nghiệp Vụ Sẵn Sàng</div>
+                </div>
+            </div>
+
+            <div class="connection-lines">
+                <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">TRẠNG THÁI DỊCH VỤ</div>
+                
+                <div class="conn-item">
+                    <span>B1 Cảm Biến IoT</span>
+                    <span class="conn-status">MQTT OK</span>
+                </div>
+                <div class="conn-item">
+                    <span>B2 Camera</span>
+                    <span class="conn-status">MQTT OK</span>
+                </div>
+                <div class="conn-item">
+                    <span>B3 Cổng An Ninh</span>
+                    <span class="conn-status" id="status-b3">Đang kiểm tra...</span>
+                </div>
+                <div class="conn-item">
+                    <span>B4 AI Vision</span>
+                    <span class="conn-status" id="status-b4">Đang kiểm tra...</span>
+                </div>
+                <div class="conn-item">
+                    <span>B5 Analytics</span>
+                    <span class="conn-status" id="status-b5">Đang kiểm tra...</span>
+                </div>
+                <div class="conn-item">
+                    <span>B7 Báo Động</span>
+                    <span class="conn-status" id="status-b7">Đang kiểm tra...</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="glass stat-card blue">
+                    <div class="stat-label">TỔNG SỐ LƯỢT XỬ LÝ</div>
+                    <div class="stat-value" id="stat-events">0</div>
+                </div>
+                <div class="glass stat-card purple">
+                    <div class="stat-label">SỐ DỊCH VỤ ĐANG CHẠY</div>
+                    <div class="stat-value">6/6</div>
+                </div>
+                <div class="glass stat-card pink">
+                    <div class="stat-label">CẢNH BÁO KHẨN CẤP</div>
+                    <div class="stat-value" id="stat-alerts">0</div>
+                </div>
+            </div>
+
+            <!-- Terminal -->
+            <div class="glass terminal">
+                <div class="terminal-header">
+                    <div class="terminal-title">
+                        LUỒNG SỰ KIỆN TRỰC TIẾP
+                        <span class="live-badge">TRỰC TIẾP</span>
+                    </div>
+                </div>
+                <div class="log-container" id="log-container">
+                    <!-- Logs will be injected here via JS -->
+                </div>
+            </div>
+
+        </main>
+
+    </div>
+
+    <script>
+        const logContainer = document.getElementById('log-container');
+        const statEvents = document.getElementById('stat-events');
+        const statAlerts = document.getElementById('stat-alerts');
+
+        function togglePayload(btn) {
+            // Nút bấm nằm trong <div class="log-message">
+            // json-payload nằm ngay sau thẻ <div class="log-message">
+            const payloadDiv = btn.parentElement.nextElementSibling;
+            if (payloadDiv && payloadDiv.classList.contains('json-payload')) {
+                if (payloadDiv.classList.contains('active')) {
+                    payloadDiv.classList.remove('active');
+                    btn.innerText = 'Xem JSON';
+                } else {
+                    payloadDiv.classList.add('active');
+                    btn.innerText = 'Đóng JSON';
+                }
+            }
+        }
+
+        function createLogElement(log) {
+            const el = document.createElement('div');
+            el.className = `log-entry level-${log.level}`;
+            
+            let btnHtml = '';
+            let payloadHtml = '';
+            
+            if (log.payload) {
+                btnHtml = `<button class="view-json-btn" onclick="togglePayload(this)">Xem JSON</button>`;
+                payloadHtml = `<div class="json-payload"><pre>${JSON.stringify(log.payload, null, 2)}</pre></div>`;
+            }
+
+            el.innerHTML = `
+                <div class="log-time">${log.timestamp}</div>
+                <div class="log-level"><span class="badge">${log.level}</span></div>
+                <div class="log-source">[${log.source}]</div>
+                <div class="log-message">
+                    <span>${log.message}</span>
+                    ${btnHtml}
+                </div>
+                ${payloadHtml}
+            `;
+            return el;
+        }
+
+        const evtSource = new EventSource("/api/dashboard-stream");
+        
+        evtSource.onmessage = function(event) {
+            try {
+                const data = JSON.parse(event.data);
+                
+                // Lưu lại trạng thái các nút JSON đang mở
+                const openPayloads = new Set();
+                document.querySelectorAll('.json-payload.active').forEach(div => {
+                    const timeStr = div.parentElement.querySelector('.log-time').innerText;
+                    openPayloads.add(timeStr);
+                });
+
+                logContainer.innerHTML = ''; 
+                
+                data.logs.forEach(log => {
+                    const el = createLogElement(log);
+                    // Phục hồi trạng thái mở của payload
+                    if (log.payload && openPayloads.has(log.timestamp)) {
+                        el.querySelector('.json-payload').classList.add('active');
+                        el.querySelector('.view-json-btn').innerText = 'Đóng JSON';
+                    }
+                    logContainer.appendChild(el);
+                });
+
+                statEvents.innerText = data.metrics.total_events;
+                statAlerts.innerText = data.metrics.critical_alerts;
+
+                // Cập nhật trạng thái các service LAN
+                const formatStatus = (st) => {
+                    if (st.includes('Mất kết nối')) return `<span style="color: var(--critical)">${st}</span>`;
+                    return st; // Mặc định xanh
+                };
+                document.getElementById('status-b3').innerHTML = formatStatus(data.services.b3);
+                document.getElementById('status-b4').innerHTML = formatStatus(data.services.b4);
+                document.getElementById('status-b5').innerHTML = formatStatus(data.services.b5);
+                document.getElementById('status-b7').innerHTML = formatStatus(data.services.b7);
+
+            } catch (e) {
+                console.error("Lỗi khi parse dữ liệu SSE:", e);
+            }
+        };
+
+        evtSource.onerror = function() {
+            console.error("Mất kết nối với SSE Stream, đang thử kết nối lại...");
+        };
+    </script>
+</body>
+</html>
