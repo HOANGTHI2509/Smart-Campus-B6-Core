@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from app.core.config import settings
 from app.schemas.integration import DetectionResult, AccessCheckRequest
 from app.services.outbound import outbound_client
+from app.services.mqtt_client import start_mqtt, stop_mqtt
 import uvicorn
 
 app = FastAPI(
@@ -9,6 +10,14 @@ app = FastAPI(
     description="API Gateway (FastAPI) cho nhóm B6",
     version="1.0.0"
 )
+
+@app.on_event("startup")
+def on_startup():
+    start_mqtt()
+
+@app.on_event("shutdown")
+def on_shutdown():
+    stop_mqtt()
 
 @app.get("/")
 def read_root():
