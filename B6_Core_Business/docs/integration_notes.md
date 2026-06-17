@@ -1,8 +1,8 @@
 # Ghi Chú Tích Hợp (Integration Notes)
 
 ## 1. Môi trường kiểm thử
-- Sử dụng **Ngrok** để public cổng `8000` ra ngoài Internet, cho phép B4 và B3 bắn Webhook test chéo một cách an toàn mà không cần config Firewall mạng LAN.
-- Khi triển khai thật vào mạng trường (LAN), sử dụng biến `LAN_HOST_IP` trong `.env` thay thế cho Ngrok URL.
+- Sử dụng **Radmin VPN** để tạo mạng LAN ảo, public cổng `8000`. Điều này cho phép B4 và B3 bắn Webhook test chéo một cách an toàn mà không cần config Firewall mạng LAN vật lý hay phụ thuộc Ngrok.
+- Các nhóm đối tác phải join chung Network (ví dụ: `FIT4110-DEMO-A`). IP của các dịch vụ được lưu thẳng trong `.env` theo dạng `http://26.x.x.x:8000`.
 
 ## 2. Thông số tích hợp
 - **MQTT Broker:** `HiveMQ Cloud` (Sử dụng TLS/SSL Port 8883).

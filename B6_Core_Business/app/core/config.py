@@ -5,28 +5,12 @@ class Settings(BaseSettings):
     API_PORT: int = 8000
     
     # ----------------------------------------------------
-    # KIẾN TRÚC IP TẬP TRUNG (Dành cho Demo)
+    # KIẾN TRÚC IP TẬP TRUNG (Theo chuẩn Radmin VPN của lớp)
     # ----------------------------------------------------
-    LAN_HOST_IP: str = "127.0.0.1"  # Sẽ bị ghi đè bởi file .env
-    B4_NGROK_URL: str = ""          # Sẽ bị ghi đè bởi file .env
-    B7_NGROK_URL: str = ""          # Sẽ bị ghi đè bởi file .env
-    B3_NGROK_URL: str = ""          # Sẽ bị ghi đè bởi file .env
-
-    @property
-    def B4_AI_VISION_URL(self) -> str:
-        return self.B4_NGROK_URL if self.B4_NGROK_URL else f"http://{self.LAN_HOST_IP}:4010"
-
-    @property
-    def B3_ACCESS_GATE_URL(self) -> str:
-        return self.B3_NGROK_URL if self.B3_NGROK_URL else f"http://{self.LAN_HOST_IP}:8080"
-        
-    @property
-    def B7_NOTIFICATION_URL(self) -> str:
-        return self.B7_NGROK_URL if self.B7_NGROK_URL else f"http://{self.LAN_HOST_IP}:5000"
-        
-    @property
-    def B5_ANALYTICS_URL(self) -> str:
-        return f"http://{self.LAN_HOST_IP}:9000"
+    B4_AI_VISION_URL: str = "http://26.x.x.x:4010"
+    B3_ACCESS_GATE_URL: str = "http://26.x.x.x:8000"
+    B7_NOTIFICATION_URL: str = "http://26.x.x.x:8000"
+    B5_ANALYTICS_URL: str = "http://26.x.x.x:8000"
     
     # ----------------------------------------------------
     # THÔNG TIN BẢO MẬT (Các giá trị này rỗng, bắt buộc đọc từ .env)
