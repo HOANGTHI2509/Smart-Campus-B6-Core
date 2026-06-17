@@ -4,7 +4,7 @@ import os
 import uvicorn
 
 from app.core.config import settings
-from app.schemas.integration import DetectionResult, AccessCheckRequest
+from app.schemas.integration import DetectionResult, AccessCheckRequest, CameraEvent
 from app.services.outbound import outbound_client
 from app.services.mqtt_client import start_mqtt, stop_mqtt
 from app.services.logger_store import add_log, get_dashboard_payload
@@ -58,43 +58,73 @@ async def dashboard_stream():
     async def event_generator():
         while True:
             data = get_dashboard_payload()
-            yield f"data: {json.dumps(data)}\n\n"
+            yield f"data: {json.dumps(data, default=str)}\n\n"
             await asyncio.sleep(1)
             
     return StreamingResponse(event_generator(), media_type="text/event-stream")
 
-@app.post("/ai/events", tags=["webhooks"])
+@app.post("/api/v1/webhook/vision", tags=["webhooks"])
 async def receive_vision_alert(payload: DetectionResult):
-    print(f"\n[BÁO ĐỘNG] Nhận cảnh báo từ B4 AI Vision! Mức độ rủi ro: {payload.riskLevel}")
+    print(f"\n[BÁO ĐỘNG B4] Nhận cảnh báo từ B4 AI Vision! Mức độ rủi ro: {payload.riskLevel}")
     
     # Xử lý logic nghiệp vụ: Nếu CRITICAL thì gọi sang B7
     if payload.riskLevel in ["HIGH", "CRITICAL"]:
         print(">> Đang kích hoạt module Outbound gọi nhóm B7 để bật chuông báo cháy...")
         message = f"Hệ thống phát hiện rủi ro {payload.riskLevel} tại Camera {payload.cameraId}!"
-        add_log("CRITICAL", f"AI VISION BÁO ĐỘNG: {message}", "API_WEBHOOK", payload.dict())
-        
-        # GỌI API SANG NHÓM B7 (Outbound Task 1.6)
-        await outbound_client.call_b7_notify(title="Cảnh báo an ninh", level=payload.riskLevel, message=message)
+        add_log("CRITICAL", f"AI VISION BÁO ĐỘNG: {message}", "B4_AI_VISION", payload.dict())
+        # Thực hiện gọi API ra ngoài (Outbound) tới nhóm B7 Notification
+        await outbound_client.call_b7_notify(title="Cảnh báo AI Vision", level=payload.riskLevel, message=message)
+    else:
+        add_log("INFO", f"Nhận dạng AI bình thường tại {payload.cameraId}", "B4_AI_VISION", payload.dict())
 
     return {"message": "Alert received and processed successfully by Core B6"}
 
-@app.post("/access/check", tags=["access-gate"])
-async def handle_gate_scan(request: AccessCheckRequest):
+@app.post("/camera-events", tags=["webhooks"])
+async def receive_camera_event(payload: CameraEvent):
+    print(f"\n[CAMERA B2] Nhận event trực tiếp từ B2 Camera Stream! Độ nguy hiểm: {payload.severity}")
+    
+    log_level = payload.severity if payload.severity in ["WARNING", "CRITICAL"] else "INFO"
+    if payload.abnormal:
+        log_level = "CRITICAL"
+        add_log(log_level, f"CAMERA CẢNH BÁO: Phát hiện vật thể bất thường tại {payload.cameraId}", "B2_CAMERA", payload.dict())
+        await outbound_client.call_b7_notify(title="Cảnh báo B2 Camera", level="CRITICAL", message=f"B2 Cảnh báo: Camera {payload.cameraId} có vật thể bất thường!")
+    else:
+        add_log(log_level, f"Nhận event Camera tại {payload.cameraId}", "B2_CAMERA", payload.dict())
+
+    return {"message": "Camera event processed"}
+
+from typing import Union, List
+
+@app.post("/api/v1/events/access", tags=["access-gate"])
+async def handle_gate_scan(request: Union[AccessCheckRequest, List[AccessCheckRequest]]):
+    # Nếu B3 gửi Bulk Sync (Một mảng nhiều event)
+    if isinstance(request, list):
+        print(f"\n[CỔNG B3] Nhận được BULK SYNC gồm {len(request)} events!")
+        for req in request:
+            add_log("INFO", f"Bulk Sync: Lưu lịch sử quẹt thẻ (UID: {req.uid})", "B3_ACCESS_GATE", req.dict())
+        return {"message": f"Successfully processed {len(request)} bulk events"}
+    
+    # Nếu B3 gửi 1 event đơn lẻ
     print(f"\n[CỔNG {request.gateId}] Có người quẹt thẻ mã UID: {request.uid}")
     
     # Task 3.3 (Của Thành viên 3): Kiểm tra DB xem thẻ có hợp lệ không
-    # Giả lập logic (Mock) tạm thời:
     is_valid_card = True if request.uid.startswith("04:A1") else False
     
     if is_valid_card:
-        print(">> Thẻ Hợp Lệ! Ra lệnh MỞ CỬA.")
-        add_log("SUCCESS", f"Mở cổng cho Sinh viên quẹt thẻ (UID: {request.uid})", "API_GATE", request.dict())
-        # GỌI API SANG NHÓM B3 BẢO HỌ MỞ CỬA (Outbound Task 1.6)
-        await outbound_client.call_b3_gate_command(command="OPEN", uid=request.uid)
+        print(">> Thẻ Hợp Lệ! Đã xác thực thành công (Tính năng gọi API mở cửa vật lý tạm đóng theo yêu cầu B3).")
+        add_log("SUCCESS", f"Mở cổng cho Sinh viên quẹt thẻ (UID: {request.uid})", "B3_ACCESS_GATE", request.dict())
+        # Tạm thời ĐÓNG lệnh gọi API mở cửa theo yêu cầu của B3 (Out of Scope)
+        # await outbound_client.call_b3_gate_command(command="OPEN", uid=request.uid)
         return {"allowed": True, "reason": "Access granted", "studentId": "SV001"}
     else:
-        print(">> Thẻ LẠ! Ra lệnh KHÔNG MỞ.")
-        add_log("WARNING", f"Từ chối mở cổng cho thẻ lạ UID: {request.uid}", "API_GATE", request.dict())
+        print(">> Thẻ LẠ! Ra lệnh KHÔNG MỞ và gọi còi báo động B7.")
+        add_log("WARNING", f"Từ chối mở cổng cho thẻ lạ UID: {request.uid}", "B3_ACCESS_GATE", request.dict())
+        # Gọi sang B7 hú còi báo động vì phát hiện thẻ lạ xâm nhập
+        await outbound_client.call_b7_notify(
+            title="CẢNH BÁO XÂM NHẬP", 
+            level="WARNING", 
+            message=f"Phát hiện có người dùng thẻ lạ chưa đăng ký (UID: {request.uid}) cố tình mở cổng!"
+        )
         return {"allowed": False, "reason": "Invalid UID"}
 
 if __name__ == "__main__":

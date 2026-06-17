@@ -32,3 +32,27 @@ class AccessCheckRequest(BaseModel):
     gateId: str
     uid: str
     timestamp: datetime
+
+# ==========================================
+# DTO MODELS DÀNH CHO NHÓM B2 (CAMERA STREAM)
+# ==========================================
+class CameraDetection(BaseModel):
+    label: str
+    confidence: float
+
+class CameraEvent(BaseModel):
+    sourceService: str
+    eventType: str
+    cameraId: str
+    frameId: str
+    snapshotUrl: Optional[str] = None
+    timestamp: datetime
+    processedAt: datetime
+    motionScore: float
+    quality: Optional[str] = None
+    detections: List[CameraDetection]
+    objectCount: int
+    labels: List[str]
+    maxConfidence: float
+    abnormal: bool
+    severity: str

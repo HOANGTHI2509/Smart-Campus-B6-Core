@@ -74,29 +74,34 @@ def handle_sensor_data(topic: str, payload: dict):
     elif status == "invalid_device":
         is_security_alert = True
     elif status in ["normal", "sensor_error"]:
-        add_log("INFO", f"[{device_id}] Nhận dữ liệu Sensor ({status})", "MQTT_SENSOR", payload)
+        add_log("INFO", f"[{device_id}] Nhận dữ liệu Sensor ({status})", "B1_IOT_SENSOR", payload)
 
     # ĐIỀU PHỐI (ORCHESTRATION) - NGUYÊN TẮC CỐT LÕI CỦA B6
+    import httpx
     if is_emergency:
         reason = payload.get("reason", "không rõ nguyên nhân")
         logger.critical(f"🔥 KHẨN CẤP! B1 báo cháy tại {device_id}! (Lý do: {reason})")
-        add_log("CRITICAL", f"B1 kích hoạt HỎA HOẠN tại {device_id} (Lý do của B1: {reason})", "MQTT_SENSOR", payload)
+        add_log("CRITICAL", f"B1 kích hoạt HỎA HOẠN tại {device_id} (Lý do của B1: {reason})", "B1_IOT_SENSOR", payload)
         
-        # Hành động 1: Gọi nhóm B7 (Notification) rú còi
+        # Hành động 1: Gọi nhóm B7 (Notification) rú còi (Chạy Sync vì MQTT thread là Sync)
         url_b7 = f"{settings.B7_NOTIFICATION_URL}/notify/send"
         logger.info(f"Đang gửi API kích hoạt còi báo động tới B7: {url_b7}")
-        
-        # Hành động 2: Mở toàn bộ cổng B3 (Access Gate) để thoát hiểm
-        url_b3 = f"{settings.B3_ACCESS_GATE_URL}/gate/control"
-        logger.info(f"Đang gửi API mở tất cả cổng thoát hiểm tới B3: {url_b3}")
+        try:
+            httpx.post(url_b7, json={"title": "CẢNH BÁO HỎA HOẠN", "level": "CRITICAL", "message": f"B1 báo cháy tại {device_id}"}, timeout=5.0)
+        except Exception as e:
+            logger.error(f"Lỗi gọi B7: {e}")
             
     elif is_security_alert:
         logger.warning(f"🚨 CẢNH BÁO AN NINH! Thiết bị lạ không xác định ({device_id}) đang gửi dữ liệu.")
-        add_log("WARNING", f"Thiết bị lạ '{device_id}' xâm nhập mạng IoT", "MQTT_SENSOR", payload)
+        add_log("WARNING", f"Thiết bị lạ '{device_id}' xâm nhập mạng IoT", "B1_IOT_SENSOR", payload)
         
         # Hành động: Chỉ gọi nhóm B7 để thông báo cho Bảo vệ, tuyệt đối KHÔNG MỞ CỬA B3
         url_b7 = f"{settings.B7_NOTIFICATION_URL}/notify/send"
         logger.info(f"Đang gửi API báo cáo an ninh tới B7: {url_b7}")
+        try:
+            httpx.post(url_b7, json={"title": "CẢNH BÁO IOT XÂM NHẬP", "level": "WARNING", "message": f"Thiết bị lạ '{device_id}' xâm nhập mạng IoT!"}, timeout=5.0)
+        except Exception as e:
+            logger.error(f"Lỗi gọi B7: {e}")
 
 def handle_camera_event(payload: dict):
     """
@@ -107,7 +112,7 @@ def handle_camera_event(payload: dict):
     
     if motion:
         logger.warning(f"🚶 CAMERA ALERT: Phát hiện có người chuyển động tại {camera_id}")
-        add_log("WARNING", f"Phát hiện chuyển động lạ tại {camera_id}", "MQTT_CAMERA", payload)
+        add_log("WARNING", f"Phát hiện chuyển động lạ tại {camera_id}", "B2_CAMERA", payload)
 
 # Khởi tạo Client MQTT
 mqtt_client = mqtt.Client()
