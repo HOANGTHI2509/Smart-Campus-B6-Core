@@ -15,8 +15,11 @@ app = FastAPI(
     version="1.0.0"
 )
 
+from app.core.database import init_db
+
 @app.on_event("startup")
 def on_startup():
+    init_db()
     start_mqtt()
 
 @app.on_event("shutdown")
@@ -67,6 +70,20 @@ async def dashboard_stream():
 async def receive_vision_alert(payload: DetectionResult):
     print(f"\n[BÁO ĐỘNG B4] Nhận cảnh báo từ B4 AI Vision! Mức độ rủi ro: {payload.riskLevel}")
     
+    # Task 4: Kiểm tra và đăng ký tin báo cháy từ B4 AI Vision vào Sensor Fusion
+    has_fire = False
+    if payload.detectedObjects:
+        for obj in payload.detectedObjects:
+            if obj.label.upper() == "FIRE":
+                has_fire = True
+                break
+    if payload.riskLevel in ["HIGH", "CRITICAL"] and payload.detectionType == "OBJECT":
+        has_fire = True
+
+    if has_fire:
+        from app.services.mqtt_client import register_b4_fire_alert
+        register_b4_fire_alert(payload.cameraId, payload.dict())
+        
     # Xử lý logic nghiệp vụ: Nếu CRITICAL thì gọi sang B7
     if payload.riskLevel in ["HIGH", "CRITICAL"]:
         print(">> Đang kích hoạt module Outbound gọi nhóm B7 để bật chuông báo cháy...")
