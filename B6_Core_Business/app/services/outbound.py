@@ -3,7 +3,8 @@ from app.core.config import settings
 
 class OutboundClient:
     def __init__(self):
-        # Đặt timeout = 5 giây để nếu máy nhóm khác bị sập/tắt ngang, máy B6 của mình không bị treo theo.
+        # Đặt timeout = 5 giây để nếu máy nhóm khác bị sập/tắt ngang, 
+        # máy B6 của mình không bị treo theo.
         self.timeout = 5.0
 
     async def call_b4_face_match(self, camera_id: str, image_ref: str, timestamp: str) -> dict:
