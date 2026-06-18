@@ -1,0 +1,153 @@
+openapi: 3.0.3
+info:
+  title: Smart Campus — Core Business API Contract (B6)
+  version: 1.0.0
+  description: |
+    Hợp đồng API chính thức của Core Business Service (B6).
+    Service này đóng vai trò Policy Engine (Consumer), nhận các luồng sự kiện từ
+    AI Vision, IoT, Camera và Access Gate để ra quyết định xử lý nghiệp vụ.
+  contact:
+    name: FIT4110 Core Business Team B6
+servers:
+  - url: http://localhost:8000
+    description: Môi trường Local Development
+  - url: http://172.20.10.x:8000
+    description: Mạng LAN Hotspot (Địa chỉ IP thay đổi tùy lúc demo)
+tags:
+  - name: health
+    description: Kiểm tra trạng thái hoạt động của máy tính nhóm B6
+  - name: webhooks
+    description: Các endpoint mở ra để nhóm khác (AI Vision) chủ động gọi vào
+  - name: access-gate
+    description: API dành riêng cho thiết bị/service Cổng quẹt thẻ (Access Gate)
+
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      summary: Kiểm tra trạng thái service B6 (Bắt buộc cho mọi nhóm)
+      description: Các nhóm khác gọi API này bằng lệnh curl hoặc postman để xác nhận máy của nhóm B6 đang mở port, tắt tường lửa và sẵn sàng nhận request.
+      tags: [health]
+      responses:
+        '200':
+          description: Service B6 đang hoạt động ổn định
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "ok"
+                  service:
+                    type: string
+                    example: "b6-core-business"
+                  version:
+                    type: string
+                    example: "1.0.0"
+
+  /api/webhooks/vision-alerts:
+    post:
+      operationId: receiveVisionAlert
+      summary: (Dành cho B4) Bắn cảnh báo khẩn cấp sang B6
+      description: |
+        NHÓM B4 LƯU Ý: Nhóm AI Vision sẽ gọi endpoint này khi hệ thống phát hiện các sự cố nguy hiểm (Cháy, Khói, Đột nhập). 
+        B6 sẽ nhận payload (chính là object DetectionResult theo chuẩn hợp đồng của B4) và kích hoạt báo động.
+      tags: [webhooks]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: "Sử dụng nguyên schema DetectionResult của nhóm B4"
+              properties:
+                detectionId:
+                  type: string
+                  format: uuid
+                detectionType:
+                  type: string
+                riskLevel:
+                  type: string
+            examples:
+              alertExample:
+                value:
+                  detectionId: "0196fb3d-4ad7-7d1e-9f49-5d5148d2babc"
+                  cameraId: "CAM-001"
+                  detectionType: "OBJECT"
+                  detectedObjects:
+                    - label: "FIRE"
+                      confidence: 0.98
+                  riskLevel: "CRITICAL"
+                  timestamp: "2026-05-26T08:00:01Z"
+      responses:
+        '200':
+          description: B6 xác nhận đã nhận và xử lý cảnh báo
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Alert received and processed successfully by Core B6"
+
+  /api/access-gates/scan:
+    post:
+      operationId: handleGateScan
+      summary: (Dành cho Access Gate) Gửi mã thẻ từ (UID) để xin phép mở cửa
+      description: |
+        NHÓM ACCESS GATE LƯU Ý: Thiết bị Cổng (hoặc service giả lập cổng) sẽ gọi API này ngay khi có sinh viên quẹt thẻ.
+        B6 sẽ đối chiếu UID trong cơ sở dữ liệu (từ file whitelist) để đưa ra quyết định mở cửa.
+      tags: [access-gate]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [gateId, uid, timestamp]
+              properties:
+                gateId:
+                  type: string
+                  description: "Mã định danh của cổng kiểm soát"
+                  example: "GATE-A"
+                uid:
+                  type: string
+                  description: "Mã thẻ từ/MAC address khớp với file Acessgate_uid_whitelist.csv"
+                  example: "04:A1:B2:C3:D4:01"
+                timestamp:
+                  type: string
+                  format: date-time
+                  example: "2026-06-16T08:00:00Z"
+      responses:
+        '200':
+          description: Core B6 đưa ra quyết định duyệt cho qua
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  allowed:
+                    type: boolean
+                    description: "Bằng true thì cổng mở"
+                    example: true
+                  reason:
+                    type: string
+                    example: "Access granted"
+                  studentId:
+                    type: string
+                    example: "SV001"
+        '403':
+          description: B6 từ chối mở cửa (Do thẻ không hợp lệ hoặc không có quyền)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  allowed:
+                    type: boolean
+                    example: false
+                  reason:
+                    type: string
+                    example: "Invalid card UID"
