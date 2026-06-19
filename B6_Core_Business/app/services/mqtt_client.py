@@ -9,14 +9,14 @@ import os
 # Tạo thư mục logs nếu chưa tồn tại
 os.makedirs("logs", exist_ok=True)
 
-# Cấu hình logging để in ra Terminal đẹp như cũ VÀ ghi ra file
+# Cấu hình logging để in ra Terminal đẹp như cũ (Tạm tắt ghi ra file theo yêu cầu)
 logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s | %(levelname)-7s | %(name)s:%(funcName)s:%(lineno)d - %(message)s",
     datefmt="%d-%m-%Y %H:%M:%S",
     handlers=[
-        logging.StreamHandler(),
-        logging.FileHandler("logs/mqtt_events.log", encoding="utf-8")
+        logging.StreamHandler()
+        # logging.FileHandler("logs/mqtt_events.log", encoding="utf-8") # <-- TẠM TẮT GHI LOG RA FILE
     ]
 )
 # Tắt log rác của thư viện gọi API
