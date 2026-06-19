@@ -70,15 +70,23 @@ def handle_sensor_data(topic: str, payload: dict):
     temperature = payload.get("temperature_c", 0.0)
     alert_level = payload.get("alert_level", "none")
     smoke = payload.get("smoke_ppm", 0.0)
+    co2 = payload.get("co2_ppm", 0.0)
 
     # LOGIC NGHIỆP VỤ B6 (CORE BUSINESS POLICY ENGINE)
     is_emergency = False
     is_security_alert = False
     
-    # B6 Phân tích & Quyết định dựa trên tổ hợp 3 yếu tố:
+    # CHỐNG BÁO CHÁY GIẢ (Anti-False-Alarm: Người dùng quẹt bật lửa)
+    # Một chiếc bật lửa có thể làm nhiệt độ tăng > 40 độ, nhưng không thể sinh ra đủ lượng khói và CO2 như một đám cháy thực sự (đốt cháy nhựa/vật liệu).
+    # Do đó, B6 Phân tích & Quyết định dựa trên tổ hợp 3 yếu tố:
     # 1. status phải là "danger"
-    # 2. alert_level phải là "high" HOẶC nhiệt độ vượt quá 40 độ
-    if status == "danger" and (alert_level == "high" or temperature > 40.0):
+    # 2. Có DẤU HIỆU NHIỆT (alert_level == "high" hoặc Nhiệt độ > 40 độ)
+    # 3. Phải có DẤU HIỆU KHÓI/CO2 (smoke > 0.05 hoặc CO2 > 800)
+    
+    has_heat = (alert_level == "high" or temperature > 40.0)
+    has_smoke_or_co2 = (smoke > 0.05 or co2 > 800.0)
+    
+    if status == "danger" and has_heat and has_smoke_or_co2:
         is_emergency = True
     elif status == "invalid_device":
         is_security_alert = True
