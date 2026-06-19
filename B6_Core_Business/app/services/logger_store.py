@@ -49,13 +49,14 @@ def ping_services():
 # Khởi chạy luồng chạy ngầm để ping liên tục
 threading.Thread(target=ping_services, daemon=True).start()
 
-def add_log(level: str, message: str, source: str = "SYSTEM", payload: dict = None):
+def add_log(level: str, message: str, source: str = "SYSTEM", payload: dict = None, status_code: int = 200):
     log_entry = {
         "timestamp": datetime.datetime.now().strftime("%H:%M:%S"),
         "level": level,
         "source": source,
         "message": message,
-        "payload": payload
+        "payload": payload,
+        "status_code": status_code
     }
     system_logs.insert(0, log_entry)
     

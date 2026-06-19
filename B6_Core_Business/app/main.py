@@ -76,11 +76,11 @@ async def receive_vision_alert(payload: DetectionResult):
     if payload.riskLevel in ["HIGH", "CRITICAL"]:
         print(">> Đang kích hoạt module Outbound gọi nhóm B7 để bật chuông báo cháy...")
         message = f"Hệ thống phát hiện rủi ro {payload.riskLevel} tại Camera {payload.cameraId}!"
-        add_log("CRITICAL", f"AI VISION BÁO ĐỘNG: {message}", "B4_AI_VISION", payload.dict())
+        add_log("CRITICAL", f"AI VISION BÁO ĐỘNG: {message}", "B4_AI_VISION", payload.dict(), status_code=201)
         # Thực hiện gọi API ra ngoài (Outbound) tới nhóm B7 Notification
         await outbound_client.call_b7_notify(type="ai_vision_alert", severity=payload.riskLevel.lower(), message=message)
     else:
-        add_log("INFO", f"Nhận dạng AI bình thường tại {payload.cameraId}", "B4_AI_VISION", payload.dict())
+        add_log("INFO", f"Nhận dạng AI bình thường tại {payload.cameraId}", "B4_AI_VISION", payload.dict(), status_code=200)
 
     return {"message": "Alert received and processed successfully by Core B6"}
 
@@ -91,10 +91,10 @@ async def receive_camera_event(payload: CameraEvent):
     log_level = payload.severity if payload.severity in ["WARNING", "CRITICAL"] else "INFO"
     if payload.abnormal:
         log_level = "CRITICAL"
-        add_log(log_level, f"CAMERA CẢNH BÁO: Phát hiện vật thể bất thường tại {payload.cameraId}", "B2_CAMERA", payload.dict())
+        add_log(log_level, f"CAMERA CẢNH BÁO: Phát hiện vật thể bất thường tại {payload.cameraId}", "B2_CAMERA", payload.dict(), status_code=201)
         await outbound_client.call_b7_notify(type="camera_anomaly", severity="critical", message=f"B2 Cảnh báo: Camera {payload.cameraId} có vật thể bất thường!")
     else:
-        add_log(log_level, f"Nhận event Camera tại {payload.cameraId}", "B2_CAMERA", payload.dict())
+        add_log(log_level, f"Nhận event Camera tại {payload.cameraId}", "B2_CAMERA", payload.dict(), status_code=200)
 
     return {"message": "Camera event processed"}
 
@@ -119,7 +119,7 @@ async def handle_gate_scan(request: Union[AccessCheckRequest, List[AccessCheckRe
     # Rule 1: Một thẻ quẹt quá nhiều lần trong 5 giây (Anti-passback / Rate Limiting)
     if current_time - last_swipe < 5:
         print(">> Thẻ bị quẹt liên tục! Đánh dấu bất thường.")
-        add_log("WARNING", f"Quẹt thẻ quá nhanh UID: {request.uid}", "B3_ACCESS_GATE", request.dict())
+        add_log("WARNING", f"Quẹt thẻ quá nhanh UID: {request.uid}", "B3_ACCESS_GATE", request.dict(), status_code=429)
         await outbound_client.call_b7_notify(
             type="rate_limit_exceeded", 
             severity="medium", 
@@ -133,7 +133,7 @@ async def handle_gate_scan(request: Union[AccessCheckRequest, List[AccessCheckRe
     hour = datetime.now().hour
     if hour >= 22 or hour < 6:
         print(">> Quẹt thẻ ngoài giờ cho phép! Đánh dấu xâm nhập trái phép.")
-        add_log("WARNING", f"Quẹt thẻ ngoài giờ UID: {request.uid}", "B3_ACCESS_GATE", request.dict())
+        add_log("WARNING", f"Quẹt thẻ ngoài giờ UID: {request.uid}", "B3_ACCESS_GATE", request.dict(), status_code=403)
         await outbound_client.call_b7_notify(
             type="unauthorized_access", 
             severity="high", 
@@ -146,11 +146,11 @@ async def handle_gate_scan(request: Union[AccessCheckRequest, List[AccessCheckRe
     
     if is_valid_card:
         print(">> Thẻ Hợp Lệ! Đã xác thực thành công (Tính năng gọi API mở cửa vật lý tạm đóng theo yêu cầu B3).")
-        add_log("SUCCESS", f"Mở cổng cho Sinh viên quẹt thẻ (UID: {request.uid})", "B3_ACCESS_GATE", request.dict())
+        add_log("SUCCESS", f"Mở cổng cho Sinh viên quẹt thẻ (UID: {request.uid})", "B3_ACCESS_GATE", request.dict(), status_code=200)
         return {"allowed": True, "reason": "Access granted", "studentId": "SV001"}
     else:
         print(">> Thẻ LẠ! Ra lệnh KHÔNG MỞ và gọi còi báo động B7.")
-        add_log("WARNING", f"Từ chối mở cổng cho thẻ lạ UID: {request.uid}", "B3_ACCESS_GATE", request.dict())
+        add_log("WARNING", f"Từ chối mở cổng cho thẻ lạ UID: {request.uid}", "B3_ACCESS_GATE", request.dict(), status_code=403)
         # Gọi sang B7 hú còi báo động vì phát hiện thẻ lạ xâm nhập
         await outbound_client.call_b7_notify(
             type="invalid_card", 
