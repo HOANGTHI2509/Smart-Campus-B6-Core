@@ -26,12 +26,15 @@ class OutboundClient:
             print(f"❌ [LỖI OUTBOUND B4] Không thể gọi nhóm AI: {e}")
             return {"faceMatched": False, "error": str(e)}
 
-    async def call_b7_notify(self, title: str, level: str, message: str) -> bool:
+    async def call_b7_notify(self, type: str, severity: str, message: str) -> bool:
         """Gọi API phát thông báo báo động của nhóm Notification (B7)"""
+        import uuid
         url = f"{settings.B7_NOTIFICATION_URL}/notify/send"
+        alert_id = f"ALT-{str(uuid.uuid4())[:8].upper()}"
         payload = {
-            "title": title,
-            "level": level,
+            "alert_id": alert_id,
+            "type": type,
+            "severity": severity,
             "message": message
         }
         

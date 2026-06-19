@@ -17,7 +17,7 @@ Tài liệu liệt kê các API Inbound (do B6 cung cấp) và Outbound (B6 gọ
 ```
 
 ### 1.2 Webhook nhận báo động từ AI Vision (B4)
-- **Endpoint:** `POST /ai/events`
+- **Endpoint:** `POST /api/v1/webhook/vision`
 - **Mô tả:** Nhận phân tích nguy hiểm (cháy, bạo lực) từ B4.
 - **Request Body (JSON):**
 ```json
@@ -32,8 +32,8 @@ Tài liệu liệt kê các API Inbound (do B6 cung cấp) và Outbound (B6 gọ
 - **Response (200 OK):** `{"message": "Alert received and processed successfully by Core B6"}`
 
 ### 1.3 Webhook nhận quẹt thẻ từ Access Gate (B3)
-- **Endpoint:** `POST /access/check`
-- **Mô tả:** Khi có sinh viên quẹt thẻ, B3 bắn mã thẻ (UID) sang đây để xin phép mở cửa.
+- **Endpoint:** `POST /api/v1/events/access`
+- **Mô tả:** B3 bắn mã thẻ (UID) sang đây để xin phép mở cửa. Tích hợp luật Anti-passback (Chống spam) và cấm quẹt đêm.
 - **Request Body:**
 ```json
 {
@@ -42,13 +42,26 @@ Tài liệu liệt kê các API Inbound (do B6 cung cấp) và Outbound (B6 gọ
   "timestamp": "ISO-8601"
 }
 ```
-- **Response (200 OK):** `{"allowed": true, "reason": "Access granted", "studentId": "SV001"}`
+- **Response:**
+  - **Hợp lệ (200 OK):** `{"allowed": true, "reason": "Access granted", "studentId": "SV001"}`
+  - **Spam liên tục (200 OK):** `{"allowed": false, "reason": "Rate limit exceeded. Please wait."}`
+  - **Ngoài giờ (200 OK):** `{"allowed": false, "reason": "Access denied. Outside allowed hours."}`
+  - **Thẻ lạ (200 OK):** `{"allowed": false, "reason": "Invalid UID"}`
 
 ## 2. Outbound APIs (B6 gọi sang nhóm khác)
 
-### 2.1 Kích hoạt chuông báo cháy (B7)
+### 2.1 Kích hoạt chuông báo cháy/cảnh báo (B7)
 - **Endpoint:** `POST {B7_URL}/notify/send`
-- **Trường hợp gọi:** Khi B1 (IoT) hoặc B4 (AI) gửi tín hiệu cháy nổ.
+- **Trường hợp gọi:** Khi B1/B4 gửi tín hiệu cháy nổ, hoặc B3 quẹt thẻ lạ/ngoài giờ.
+- **Body gửi đi (Đã chuẩn hóa theo đề bài):**
+```json
+{
+  "alert_id": "ALT-1A2B3C",
+  "type": "unauthorized_access",
+  "severity": "high",
+  "message": "Access attempt outside allowed time"
+}
+```
 
 ### 2.2 Ra lệnh mở cổng khẩn cấp (B3)
 - **Endpoint:** `POST {B3_URL}/gate/command`

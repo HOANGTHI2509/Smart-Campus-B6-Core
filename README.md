@@ -1,9 +1,9 @@
 # 🎓 Smart Campus - Phân hệ B6 (Core Business)
 
 <div align="center">
-  <img src="https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Python-3.11+-blue?style=for-the-badge&logo=python&logoColor=white" alt="Python">
   <img src="https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi" alt="FastAPI">
-  <img src="https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL">
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
   <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
 </div>
 
@@ -18,11 +18,13 @@ Thuộc **Nhóm B6 - Core Business**, phân hệ này đóng vai trò là "Nhạ
 
 ## 👥 Đội ngũ phát triển (Nhóm 13 - Lớp CNTT 17-07)
 
-| Thành viên | Vai trò | Nhiệm vụ chính |
+*Lưu ý: Theo hướng dẫn của môn học, nhóm 3 thành viên đã phân chia và bao quát đầy đủ 4 vai trò bắt buộc (Team Lead kiêm 2 vai).*
+
+| Thành viên | Vai trò chuẩn | Nhiệm vụ chi tiết (Làm minh chứng đánh giá) |
 | :--- | :--- | :--- |
-| 👑 **Hoàng Văn Thi** | **System Architect & Team Lead** | Thiết kế Database (ERD), viết logic Thuật toán cấp phép ra/vào cốt lõi, tích hợp API ngoại vi (B3, B7). Review code và merge nhánh `dev` sang `main`. |
-| 👨‍💻 **Đoàn Duy Mạnh** | **API Developer & QA/Tester** | Xây dựng CRUD API, cung cấp Data API cho B5 (Analytics), xây dựng kịch bản kiểm thử Postman. |
-| 👨‍💻 **Lương Quang Huy** | **Integration, Security & DevOps** | Viết Inbound Webhooks (hứng data từ B1, B4), mã hóa bảo mật JWT, cấu hình Docker và CI/CD Pipelines. |
+| 👑 **Hoàng Văn Thi** | **Service Lead** & **Backend Developer** | - **(Service Lead):** Nắm vững yêu cầu hệ thống, phân công task. Đại diện nhóm đàm phán hợp đồng API với các nhóm B3, B4, B7.<br>- **(Backend Dev):** Trực tiếp code logic nghiệp vụ trung tâm (`app/main.py`), xây dựng Rule Engine (Xử lý chống Spam, cấm quẹt đêm, gọi webhook). |
+| 👨‍💻 **Đoàn Duy Mạnh** | **API/Contract Owner** | - Chịu trách nhiệm thiết kế toàn bộ hợp đồng giao tiếp.<br>- Trực tiếp viết file `openapi.yaml` chuẩn OpenAPI 3.1.0 (Có schema, example, error model).<br>- Cập nhật và quản lý tài liệu `endpoint_catalog.md` để cung cấp cho nhóm khác. |
+| 👨‍💻 **Lương Quang Huy** | **Test & DevOps Owner** | - **(DevOps):** Viết `Dockerfile`, thiết lập `docker-compose.yml`, cấu hình file `.env` và `healthcheck` chạy repo sạch.<br>- **(Test):** Tạo bộ Collection trên Postman phủ các case (Happy, Negative, Boundary). Quay video minh chứng End-to-End và xuất Report kiểm thử. |
 
 ---
 
@@ -56,30 +58,30 @@ Thuộc **Nhóm B6 - Core Business**, phân hệ này đóng vai trò là "Nhạ
 
 ---
 
-## 💻 Hướng dẫn Cài đặt & Chạy dự án (Local)
+## 💻 Hướng dẫn Cài đặt & Chạy dự án (Bằng Docker)
 
-**1. Clone dự án và tạo môi trường:**
+Đây là cách khởi chạy chuẩn nhất để đảm bảo service hoạt động ổn định và có sẵn cấu hình mạng nội bộ.
+
+**1. Clone dự án và thiết lập môi trường:**
 ```bash
 git clone https://github.com/HOANGTHI2509/Smart-Campus-B6-Core.git
 cd Smart-Campus-B6-Core
-python -m venv .venv
-source .venv/Scripts/activate  # (Với Windows: .venv\Scripts\activate)
+# Tạo file .env từ file mẫu
+cp .env.example .env
+```
+*(Lưu ý: Mở file `.env` lên để kiểm tra/sửa lại chuỗi kết nối **PostgreSQL** và IP của các nhóm khác).*
+
+**2. Khởi chạy toàn bộ hệ thống bằng Docker:**
+Chỉ cần chạy 1 lệnh duy nhất, Docker sẽ tự động build image và khởi động B6 API Gateway:
+```bash
+docker-compose up --build -d
 ```
 
-**2. Cài đặt thư viện:**
+**3. Kiểm tra trạng thái:**
 ```bash
-pip install -r requirements.txt
-```
-
-**3. Khởi tạo Database & Chạy server:**
-- Cấu hình file `.env` chứa chuỗi kết nối MySQL (`DATABASE_URL`).
-- Chạy tự động tạo bảng trong CSDL:
-```bash
-python app/core/database.py
-```
-- Khởi chạy ứng dụng FastAPI:
-```bash
-python -m uvicorn app.main:app --reload
+# Xem log để đảm bảo hệ thống kết nối thành công với MQTT và không có lỗi
+docker-compose logs -f
 ```
 
 📚 Hệ thống tài liệu API tự động (Swagger UI) sẽ mở tại: 👉 **[http://localhost:8000/docs](http://localhost:8000/docs)**
+*(Để chạy bằng Python thuần mà không qua Docker, vui lòng đọc chi tiết hướng dẫn tại file `RUN_LOCAL.md`)*

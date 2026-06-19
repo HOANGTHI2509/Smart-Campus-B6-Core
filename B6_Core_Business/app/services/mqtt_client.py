@@ -34,7 +34,7 @@ def on_message(client, userdata, msg):
         payload = json.loads(msg.payload.decode("utf-8"))
         topic = msg.topic
         
-        # Phục hồi nguyên bản câu lệnh in log ra màn hình Terminal như cũ của bạn!
+       
         logger.info(f"📥 NHẬN DATA TỪ TOPIC: {topic}")
         logger.debug(f"Nội dung JSON:\n{json.dumps(payload, indent=2)}")
 

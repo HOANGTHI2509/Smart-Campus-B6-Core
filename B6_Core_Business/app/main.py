@@ -8,12 +8,17 @@ from app.schemas.integration import DetectionResult, AccessCheckRequest, CameraE
 from app.services.outbound import outbound_client
 from app.services.mqtt_client import start_mqtt, stop_mqtt
 from app.services.logger_store import add_log, get_dashboard_payload
+import time
+from datetime import datetime
 
 app = FastAPI(
     title="Smart Campus - Core Business B6",
     description="API Gateway (FastAPI) cho nhóm B6",
     version="1.0.0"
 )
+
+# In-memory store for rate limiting (anti-passback)
+recent_swipes = {}
 
 @app.on_event("startup")
 def on_startup():
@@ -73,7 +78,7 @@ async def receive_vision_alert(payload: DetectionResult):
         message = f"Hệ thống phát hiện rủi ro {payload.riskLevel} tại Camera {payload.cameraId}!"
         add_log("CRITICAL", f"AI VISION BÁO ĐỘNG: {message}", "B4_AI_VISION", payload.dict())
         # Thực hiện gọi API ra ngoài (Outbound) tới nhóm B7 Notification
-        await outbound_client.call_b7_notify(title="Cảnh báo AI Vision", level=payload.riskLevel, message=message)
+        await outbound_client.call_b7_notify(type="ai_vision_alert", severity=payload.riskLevel.lower(), message=message)
     else:
         add_log("INFO", f"Nhận dạng AI bình thường tại {payload.cameraId}", "B4_AI_VISION", payload.dict())
 
@@ -87,7 +92,7 @@ async def receive_camera_event(payload: CameraEvent):
     if payload.abnormal:
         log_level = "CRITICAL"
         add_log(log_level, f"CAMERA CẢNH BÁO: Phát hiện vật thể bất thường tại {payload.cameraId}", "B2_CAMERA", payload.dict())
-        await outbound_client.call_b7_notify(title="Cảnh báo B2 Camera", level="CRITICAL", message=f"B2 Cảnh báo: Camera {payload.cameraId} có vật thể bất thường!")
+        await outbound_client.call_b7_notify(type="camera_anomaly", severity="critical", message=f"B2 Cảnh báo: Camera {payload.cameraId} có vật thể bất thường!")
     else:
         add_log(log_level, f"Nhận event Camera tại {payload.cameraId}", "B2_CAMERA", payload.dict())
 
@@ -107,22 +112,49 @@ async def handle_gate_scan(request: Union[AccessCheckRequest, List[AccessCheckRe
     # Nếu B3 gửi 1 event đơn lẻ
     print(f"\n[CỔNG {request.gateId}] Có người quẹt thẻ mã UID: {request.uid}")
     
-    # Task 3.3 (Của Thành viên 3): Kiểm tra DB xem thẻ có hợp lệ không
+    # Task 3.3: Xử lý luật nghiệp vụ (Rule Engine)
+    current_time = time.time()
+    last_swipe = recent_swipes.get(request.uid, 0)
+    
+    # Rule 1: Một thẻ quẹt quá nhiều lần trong 5 giây (Anti-passback / Rate Limiting)
+    if current_time - last_swipe < 5:
+        print(">> Thẻ bị quẹt liên tục! Đánh dấu bất thường.")
+        add_log("WARNING", f"Quẹt thẻ quá nhanh UID: {request.uid}", "B3_ACCESS_GATE", request.dict())
+        await outbound_client.call_b7_notify(
+            type="rate_limit_exceeded", 
+            severity="medium", 
+            message=f"Thẻ {request.uid} quẹt quá nhiều lần trong thời gian ngắn"
+        )
+        return {"allowed": False, "reason": "Rate limit exceeded. Please wait."}
+    
+    recent_swipes[request.uid] = current_time
+
+    # Rule 2: Quẹt thẻ ngoài giờ cho phép (22:00 - 06:00)
+    hour = datetime.now().hour
+    if hour >= 22 or hour < 6:
+        print(">> Quẹt thẻ ngoài giờ cho phép! Đánh dấu xâm nhập trái phép.")
+        add_log("WARNING", f"Quẹt thẻ ngoài giờ UID: {request.uid}", "B3_ACCESS_GATE", request.dict())
+        await outbound_client.call_b7_notify(
+            type="unauthorized_access", 
+            severity="high", 
+            message="Access attempt outside allowed time"
+        )
+        return {"allowed": False, "reason": "Access denied. Outside allowed hours."}
+    
+    # Kiểm tra thẻ trong Whitelist DB (giả lập)
     is_valid_card = True if request.uid.startswith("04:A1") else False
     
     if is_valid_card:
         print(">> Thẻ Hợp Lệ! Đã xác thực thành công (Tính năng gọi API mở cửa vật lý tạm đóng theo yêu cầu B3).")
         add_log("SUCCESS", f"Mở cổng cho Sinh viên quẹt thẻ (UID: {request.uid})", "B3_ACCESS_GATE", request.dict())
-        # Tạm thời ĐÓNG lệnh gọi API mở cửa theo yêu cầu của B3 (Out of Scope)
-        # await outbound_client.call_b3_gate_command(command="OPEN", uid=request.uid)
         return {"allowed": True, "reason": "Access granted", "studentId": "SV001"}
     else:
         print(">> Thẻ LẠ! Ra lệnh KHÔNG MỞ và gọi còi báo động B7.")
         add_log("WARNING", f"Từ chối mở cổng cho thẻ lạ UID: {request.uid}", "B3_ACCESS_GATE", request.dict())
         # Gọi sang B7 hú còi báo động vì phát hiện thẻ lạ xâm nhập
         await outbound_client.call_b7_notify(
-            title="CẢNH BÁO XÂM NHẬP", 
-            level="WARNING", 
+            type="invalid_card", 
+            severity="high", 
             message=f"Phát hiện có người dùng thẻ lạ chưa đăng ký (UID: {request.uid}) cố tình mở cổng!"
         )
         return {"allowed": False, "reason": "Invalid UID"}
