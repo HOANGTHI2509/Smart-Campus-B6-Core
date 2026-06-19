@@ -1,5 +1,6 @@
 import httpx
 from app.core.config import settings
+from app.services.logger_store import add_log
 
 class OutboundClient:
     def __init__(self):
@@ -44,9 +45,11 @@ class OutboundClient:
                 response = await client.post(url, json=payload, timeout=self.timeout)
                 response.raise_for_status()
                 print("✅ [THÀNH CÔNG] Nhóm B7 đã nhận lệnh và đang phát chuông!")
+                add_log("SUCCESS", "Đã gửi lệnh Hú Còi Báo Động sang B7 thành công!", "SYSTEM", payload, 200)
                 return True
         except Exception as e:
             print(f"❌ [LỖI OUTBOUND B7] B7 đang sập hoặc lỗi mạng LAN: {e}")
+            add_log("WARNING", f"B7 mất kết nối, không thể kích hoạt còi báo động: {e}", "SYSTEM", payload, 500)
             return False
 
     async def call_b3_gate_command(self, command: str, uid: str) -> bool:
@@ -63,9 +66,11 @@ class OutboundClient:
                 response = await client.post(url, json=payload, timeout=self.timeout)
                 response.raise_for_status()
                 print("✅ [THÀNH CÔNG] Nhóm B3 đã thực thi lệnh cổng!")
+                add_log("SUCCESS", f"Đã gửi lệnh ép {command} toàn bộ Cổng B3 thành công!", "SYSTEM", payload, 200)
                 return True
         except Exception as e:
             print(f"❌ [LỖI OUTBOUND B3] Không gọi được cổng B3: {e}")
+            add_log("WARNING", f"Cổng B3 mất kết nối, không thể ép mở cổng: {e}", "SYSTEM", payload, 500)
             return False
 
     async def call_b5_analytics_export(self, from_date: str, to_date: str, data: list) -> bool:
