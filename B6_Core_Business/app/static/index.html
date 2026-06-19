@@ -117,7 +117,7 @@
         /* Stats Grid */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 24px;
         }
 
@@ -153,6 +153,7 @@
 
         .stat-card.blue .stat-value { color: var(--accent-blue); }
         .stat-card.purple .stat-value { color: #6366f1; }
+        .stat-card.orange .stat-value { color: var(--warning); }
         .stat-card.pink .stat-value { color: var(--critical); }
 
         /* Terminal Window */
@@ -510,15 +511,19 @@
             <!-- Stats -->
             <div class="stats-grid">
                 <div class="glass stat-card blue">
-                    <div class="stat-label">TỔNG SỐ LƯỢT XỬ LÝ</div>
+                    <div class="stat-label">TỔNG XỬ LÝ</div>
                     <div class="stat-value" id="stat-events">0</div>
                 </div>
                 <div class="glass stat-card purple">
-                    <div class="stat-label">SỐ DỊCH VỤ ĐANG CHẠY</div>
+                    <div class="stat-label">DỊCH VỤ CHẠY</div>
                     <div class="stat-value">6/6</div>
                 </div>
+                <div class="glass stat-card orange">
+                    <div class="stat-label">ĐÃ CHẶN (SPAM/LẠ)</div>
+                    <div class="stat-value" id="stat-blocked">0</div>
+                </div>
                 <div class="glass stat-card pink">
-                    <div class="stat-label">CẢNH BÁO KHẨN CẤP</div>
+                    <div class="stat-label">KHẨN CẤP (CHÁY)</div>
                     <div class="stat-value" id="stat-alerts">0</div>
                 </div>
             </div>
@@ -573,6 +578,7 @@
         const logContainer = document.getElementById('log-container');
         const statEvents = document.getElementById('stat-events');
         const statAlerts = document.getElementById('stat-alerts');
+        const statBlocked = document.getElementById('stat-blocked');
 
         const jsonModal = document.getElementById('json-modal');
         const modalContent = document.getElementById('modal-json-content');
@@ -664,6 +670,7 @@
 
                 statEvents.innerText = data.metrics.total_events;
                 statAlerts.innerText = data.metrics.critical_alerts;
+                if (statBlocked) statBlocked.innerText = data.metrics.blocked_requests || 0;
 
                 // Cập nhật trạng thái các service LAN
                 const formatStatus = (st) => {

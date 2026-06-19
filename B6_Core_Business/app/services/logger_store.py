@@ -7,7 +7,8 @@ from app.core.config import settings
 system_logs = []
 metrics = {
     "total_events": 0,
-    "critical_alerts": 0
+    "critical_alerts": 0,
+    "blocked_requests": 0
 }
 
 service_status = {
@@ -62,8 +63,10 @@ def add_log(level: str, message: str, source: str = "SYSTEM", payload: dict = No
     
     # Cập nhật số liệu thật
     metrics["total_events"] += 1
-    if level in ["CRITICAL", "WARNING"]:
+    if level == "CRITICAL":
         metrics["critical_alerts"] += 1
+    if status_code in [403, 429]:
+        metrics["blocked_requests"] += 1
         
     # Giữ lại 50 log mới nhất để không đầy bộ nhớ
     if len(system_logs) > 50:
