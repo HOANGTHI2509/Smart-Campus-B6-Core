@@ -28,13 +28,13 @@ class OutboundClient:
 
     async def call_b7_notify(self, type: str, severity: str, message: str) -> bool:
         """Gọi API phát thông báo báo động của nhóm Notification (B7)"""
-        import uuid
         url = f"{settings.B7_NOTIFICATION_URL}/notify/send"
-        alert_id = f"ALT-{str(uuid.uuid4())[:8].upper()}"
+        
+        # CHÚ Ý: B7 đang dùng schema NotifyRequest gồm title, level, message.
+        # Chúng ta phải map lại type -> title và severity -> level cho đúng hợp đồng của B7
         payload = {
-            "alert_id": alert_id,
-            "type": type,
-            "severity": severity,
+            "title": f"CẢNH BÁO: {type.upper()}",
+            "level": severity.upper(),
             "message": message
         }
         
