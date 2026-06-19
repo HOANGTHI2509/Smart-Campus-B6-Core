@@ -80,8 +80,8 @@ def handle_sensor_data(topic: str, payload: dict):
     import httpx
     if is_emergency:
         reason = payload.get("reason", "không rõ nguyên nhân")
-        logger.critical(f"🔥 KHẨN CẤP! B1 báo cháy tại {device_id}! (Lý do: {reason})")
-        add_log("CRITICAL", f"B1 kích hoạt HỎA HOẠN tại {device_id} (Lý do của B1: {reason})", "B1_IOT_SENSOR", payload)
+        logger.critical(f"🔥 KHẨN CẤP! B6 ban bố lệnh HỎA HOẠN tại {device_id}! (Nguyên nhân: {reason})")
+        add_log("CRITICAL", f"B6 ban bố lệnh HỎA HOẠN tại {device_id} (Nguyên nhân: {reason})", "B1_IOT_SENSOR", payload)
         
         # Hành động 1: Gọi nhóm B7 (Notification) rú còi (Chạy Sync vì MQTT thread là Sync)
         url_b7 = f"{settings.B7_NOTIFICATION_URL}/notify/send"
