@@ -86,8 +86,13 @@ def handle_sensor_data(topic: str, payload: dict):
     has_heat = (alert_level == "high" or temperature > 40.0)
     has_smoke_or_co2 = (smoke > 0.05 or co2 > 800.0)
     
-    if status == "danger" and has_heat and has_smoke_or_co2:
-        is_emergency = True
+    if status == "danger":
+        if has_heat and has_smoke_or_co2:
+            # Đủ điều kiện KHÓI + NHIỆT -> Cháy thật!
+            is_emergency = True
+        elif has_heat and not has_smoke_or_co2:
+            # Nhiệt độ cao nhưng không khói -> Bật lửa/Máy sấy -> Cảnh báo phá hoại (WARNING)
+            add_log("WARNING", f"[{device_id}] Nhiệt độ > 40°C nhưng KHÔNG CÓ KHÓI. Nghi ngờ dùng bật lửa phá hoại cảm biến!", "B1_IOT_SENSOR", payload, 400)
     elif status == "invalid_device":
         is_security_alert = True
     elif status in ["normal", "sensor_error"]:
