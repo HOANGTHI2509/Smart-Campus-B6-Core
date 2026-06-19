@@ -4,11 +4,20 @@ import logging
 from app.core.config import settings
 from app.services.logger_store import add_log
 
-# Cấu hình logging để in ra Terminal đẹp như cũ
+import os
+
+# Tạo thư mục logs nếu chưa tồn tại
+os.makedirs("logs", exist_ok=True)
+
+# Cấu hình logging để in ra Terminal đẹp như cũ VÀ ghi ra file
 logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s | %(levelname)-7s | %(name)s:%(funcName)s:%(lineno)d - %(message)s",
-    datefmt="%Y-%m-%d %H:%M:%S"
+    datefmt="%d-%m-%Y %H:%M:%S",
+    handlers=[
+        logging.StreamHandler(),
+        logging.FileHandler("logs/mqtt_events.log", encoding="utf-8")
+    ]
 )
 # Tắt log rác của thư viện gọi API
 logging.getLogger("httpx").setLevel(logging.WARNING)
