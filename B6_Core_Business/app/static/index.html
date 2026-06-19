@@ -685,7 +685,16 @@
             renderLogs();
         }
 
+        let isUserScrolling = false;
+        logContainer.addEventListener('mouseenter', () => isUserScrolling = true);
+        logContainer.addEventListener('mouseleave', () => {
+            isUserScrolling = false;
+            renderLogs(); // Cập nhật lại ngay khi chuột rời đi
+        });
+
         function renderLogs() {
+            if (isUserScrolling) return; // Không vẽ lại màn hình nếu user đang đọc/lướt
+            
             logContainer.innerHTML = '';
             latestLogs.forEach(log => {
                 let matchStatus = false;

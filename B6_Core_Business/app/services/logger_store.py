@@ -1,4 +1,5 @@
 import datetime
+import uuid
 import threading
 import httpx
 import time
@@ -52,6 +53,7 @@ threading.Thread(target=ping_services, daemon=True).start()
 
 def add_log(level: str, message: str, source: str = "SYSTEM", payload: dict = None, status_code: int = 200):
     log_entry = {
+        "id": str(uuid.uuid4()),
         "timestamp": datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
         "level": level,
         "source": source,
