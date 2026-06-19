@@ -757,7 +757,7 @@
             for (let i = 1; i <= totalPages; i++) {
                 const btn = document.createElement('button');
                 btn.innerText = i;
-                btn.className = \`page-btn \${i === currentPage ? 'active' : ''}\`;
+                btn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
                 btn.onclick = () => changePage(i);
                 paginationContainer.appendChild(btn);
             }
