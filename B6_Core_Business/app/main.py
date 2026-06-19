@@ -159,5 +159,32 @@ async def handle_gate_scan(request: Union[AccessCheckRequest, List[AccessCheckRe
         )
         return {"allowed": False, "reason": "Invalid UID"}
 
+# --- EMERGENCY OVERRIDE ---
+@app.post("/api/v1/system/emergency-override")
+async def manual_emergency_override(background_tasks: BackgroundTasks):
+    """
+    API Kích hoạt Sơ tán Thủ công (Manual Override).
+    Dành cho System Admin sử dụng khi hệ thống tự động (B1, B4) bị sập.
+    """
+    # 1. Ghi log sự kiện
+    add_log("CRITICAL", "TÀI KHOẢN ADMIN KÍCH HOẠT SƠ TÁN KHẨN CẤP THỦ CÔNG!", "SYSTEM", {"action": "manual_override"}, status_code=201)
+    
+    # 2. Phát lệnh báo động sang B7
+    background_tasks.add_task(
+        outbound_client.call_b7_notify, 
+        type="manual_override", 
+        severity="critical", 
+        message="Hệ thống B6 phát lệnh sơ tán khẩn cấp toàn trường (Thủ công)!"
+    )
+    
+    # 3. Mở toang cổng từ B3
+    background_tasks.add_task(
+        outbound_client.call_b3_gate_command,
+        command="OPEN",
+        uid="ALL_GATES_EMERGENCY"
+    )
+    
+    return {"status": "success", "message": "Đã kích hoạt sơ tán khẩn cấp thủ công!"}
+
 if __name__ == "__main__":
     uvicorn.run("app.main:app", host="0.0.0.0", port=settings.API_PORT, reload=True)

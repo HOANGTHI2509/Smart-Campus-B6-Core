@@ -34,7 +34,26 @@
             background-image: 
                 radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.08), transparent 25%),
                 radial-gradient(circle at 85% 30%, rgba(96, 165, 250, 0.08), transparent 25%);
+            transition: background-color 0.3s, color 0.3s;
         }
+
+        /* Dark Mode Theme */
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --panel-bg: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            background-image: none;
+        }
+        body.dark-mode .terminal-header { background: rgba(15, 23, 42, 0.8); }
+        body.dark-mode .terminal { background: #1e293b; }
+        body.dark-mode .log-entry { background: #0f172a; border-color: #334155; }
+        body.dark-mode .log-entry:hover { background: #1e293b; }
+        body.dark-mode .status-filter { background: #1e293b; color: #f8fafc; border-color: #334155; }
+        body.dark-mode .page-btn { background: #1e293b; color: #f8fafc; border-color: #334155; }
+        body.dark-mode .pagination-container { background: rgba(15, 23, 42, 0.8) !important; }
+        body.dark-mode .conn-item { background: rgba(30, 41, 59, 0.5); border-color: rgba(255,255,255,0.1); }
 
         /* Glassmorphism utilities */
         .glass {
@@ -489,6 +508,72 @@
         .conn-status.offline {
             color: var(--critical);
         }
+
+        /* Toast Notification */
+        #toast-container {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .toast {
+            background: #ffffff;
+            border-left: 4px solid var(--critical);
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1), fadeOut 0.5s ease 4.5s forwards;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: #1e293b;
+            min-width: 300px;
+        }
+        body.dark-mode .toast { background: #1e293b; color: #f8fafc; }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        /* Utilities Buttons */
+        .admin-controls {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .theme-btn {
+            background: rgba(255,255,255,0.5);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            flex: 1;
+        }
+        body.dark-mode .theme-btn { background: rgba(255,255,255,0.1); color: white; }
+        
+        .emergency-btn {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            flex: 1;
+            box-shadow: 0 4px 6px rgba(239, 68, 68, 0.3);
+            animation: pulse-red 2s infinite;
+        }
+        .emergency-btn:hover { background: #dc2626; }
     </style>
 </head>
 <body>
@@ -508,6 +593,11 @@
                     <div style="font-weight: 600; color: var(--success);">HỆ THỐNG HOẠT ĐỘNG</div>
                     <div style="font-size: 12px; color: var(--text-muted);">Lõi Nghiệp Vụ Sẵn Sàng</div>
                 </div>
+            </div>
+
+            <div class="admin-controls">
+                <button class="theme-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Dark Mode</button>
+                <button class="emergency-btn" onclick="triggerEmergency()">🚨 SƠ TÁN</button>
             </div>
 
             <div class="connection-lines">
@@ -600,6 +690,9 @@
         </main>
 
     </div>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
 
     <!-- Modal cho JSON -->
     <div class="modal-overlay" id="json-modal">
@@ -763,11 +856,67 @@
             }
         }
 
+        // --- AUDIO ALARM ---
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playSiren() {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(800, audioCtx.currentTime); // Beep high
+            osc.frequency.setValueAtTime(600, audioCtx.currentTime + 0.2); // Beep low
+            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.4);
+            osc.start(audioCtx.currentTime);
+            osc.stop(audioCtx.currentTime + 0.4);
+        }
+
+        // --- TOAST NOTIFICATION ---
+        function showToast(message) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerHTML = `⚠️ <b>CẢNH BÁO:</b><br/>${message}`;
+            container.appendChild(toast);
+            playSiren();
+            setTimeout(() => {
+                if (toast.parentNode) toast.parentNode.removeChild(toast);
+            }, 5000);
+        }
+
+        // --- KÍCH HOẠT SƠ TÁN THỦ CÔNG ---
+        async function triggerEmergency() {
+            if (confirm("⚠️ BẠN CÓ CHẮC CHẮN MUỐN KÍCH HOẠT LỆNH SƠ TÁN KHẨN CẤP?\nHành động này sẽ hú còi toàn trường và mở khóa toàn bộ cổng từ!")) {
+                try {
+                    await fetch('/api/v1/system/emergency-override', { method: 'POST' });
+                    showToast("ĐÃ KÍCH HOẠT SƠ TÁN THỦ CÔNG!");
+                } catch(e) {
+                    alert("Lỗi kết nối Server!");
+                }
+            }
+        }
+
+        // Theo dõi log cũ để biết log nào mới
+        let lastLogId = null;
+
         evtSource.onmessage = function(event) {
             try {
                 const data = JSON.parse(event.data);
                 latestLogs = data.logs;
                 renderLogs();
+
+                // Kiểm tra xem có log CRITICAL mới không để hú còi + văng Toast
+                if (latestLogs.length > 0) {
+                    const topLog = latestLogs[0];
+                    if (topLog.id !== lastLogId) {
+                        lastLogId = topLog.id;
+                        if (topLog.level === "CRITICAL") {
+                            showToast(topLog.message);
+                        }
+                    }
+                }
 
                 statEvents.innerText = data.metrics.total_events;
                 statAlerts.innerText = data.metrics.critical_alerts;
