@@ -291,6 +291,26 @@
             border-color: var(--accent-blue);
         }
 
+        .quick-tag {
+            background: #fee2e2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.2s;
+        }
+        .quick-tag:hover {
+            background: #fca5a5;
+        }
+        .quick-tag.active {
+            background: #dc2626;
+            color: white;
+        }
+
         .log-message {
             color: var(--text-main);
             line-height: 1.5;
@@ -535,7 +555,8 @@
                         LUỒNG SỰ KIỆN TRỰC TIẾP
                         <span class="live-badge">TRỰC TIẾP</span>
                     </div>
-                    <div class="filter-container" style="display: flex; gap: 10px;">
+                    <div class="filter-container" style="display: flex; gap: 10px; align-items: center;">
+                        <button id="btn-fire" class="quick-tag" onclick="toggleFireFilter()">🔥 Lịch sử Báo Cháy</button>
                         <select id="source-filter" class="status-filter" onchange="applyFilter()">
                             <option value="ALL">Tất cả Nguồn</option>
                             <option value="B1_IOT_SENSOR">B1 - Cảm biến IoT</option>
@@ -635,8 +656,31 @@
         let currentStatusFilter = "ALL";
         let currentSourceFilter = "ALL";
 
-        function applyFilter() {
-            currentStatusFilter = document.getElementById('status-filter').value;
+        function toggleFireFilter() {
+            const btn = document.getElementById('btn-fire');
+            if (currentStatusFilter === "FIRE") {
+                // Tắt bộ lọc
+                currentStatusFilter = "ALL";
+                document.getElementById('status-filter').value = "ALL";
+                btn.classList.remove('active');
+            } else {
+                // Bật bộ lọc
+                currentStatusFilter = "FIRE";
+                document.getElementById('status-filter').value = "FIRE";
+                btn.classList.add('active');
+            }
+            applyFilter(true); // pass true to avoid overwriting from dropdown
+        }
+
+        function applyFilter(fromBtn = false) {
+            if (!fromBtn) {
+                currentStatusFilter = document.getElementById('status-filter').value;
+                if (currentStatusFilter === "FIRE") {
+                    document.getElementById('btn-fire').classList.add('active');
+                } else {
+                    document.getElementById('btn-fire').classList.remove('active');
+                }
+            }
             currentSourceFilter = document.getElementById('source-filter').value;
             renderLogs();
         }
