@@ -274,6 +274,22 @@
         .status-403 { background: #fee2e2; color: #dc2626; border-color: #fecaca; }
         .status-429 { background: #fef3c7; color: #d97706; border-color: #fde68a; }
 
+        .status-filter {
+            padding: 6px 12px;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
+            background: #ffffff;
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            outline: none;
+            cursor: pointer;
+        }
+        .status-filter:focus {
+            border-color: var(--accent-blue);
+        }
+
         .log-message {
             color: var(--text-main);
             line-height: 1.5;
@@ -466,7 +482,7 @@
                     <span class="conn-status">MQTT OK</span>
                 </div>
                 <div class="conn-item">
-                    <span>B2 Camera</span>
+                    <span>B2 Camera</span>i
                     <span class="conn-status">MQTT OK</span>
                 </div>
                 <div class="conn-item">
@@ -513,6 +529,14 @@
                     <div class="terminal-title">
                         LUỒNG SỰ KIỆN TRỰC TIẾP
                         <span class="live-badge">TRỰC TIẾP</span>
+                    </div>
+                    <div class="filter-container">
+                        <select id="status-filter" class="status-filter" onchange="applyFilter()">
+                            <option value="ALL">Tất cả Log</option>
+                            <option value="200">Thành công (200, 201)</option>
+                            <option value="403">Cấm truy cập (403)</option>
+                            <option value="429">Spam/Rate Limit (429)</option>
+                        </select>
                     </div>
                 </div>
                 <div class="log-container" id="log-container">
@@ -592,14 +616,31 @@
 
         const evtSource = new EventSource("/api/dashboard-stream");
         
+        let latestLogs = [];
+        let currentFilter = "ALL";
+
+        function applyFilter() {
+            currentFilter = document.getElementById('status-filter').value;
+            renderLogs();
+        }
+
+        function renderLogs() {
+            logContainer.innerHTML = '';
+            latestLogs.forEach(log => {
+                if (currentFilter === "ALL" || 
+                    (currentFilter === "200" && (log.status_code === 200 || log.status_code === 201)) ||
+                    (currentFilter === "403" && log.status_code === 403) ||
+                    (currentFilter === "429" && log.status_code === 429)) {
+                    logContainer.appendChild(createLogElement(log));
+                }
+            });
+        }
+
         evtSource.onmessage = function(event) {
             try {
                 const data = JSON.parse(event.data);
-                logContainer.innerHTML = ''; 
-                
-                data.logs.forEach(log => {
-                    logContainer.appendChild(createLogElement(log));
-                });
+                latestLogs = data.logs;
+                renderLogs();
 
                 statEvents.innerText = data.metrics.total_events;
                 statAlerts.innerText = data.metrics.critical_alerts;
