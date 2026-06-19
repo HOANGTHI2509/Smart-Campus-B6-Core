@@ -17,6 +17,42 @@ app = FastAPI(
     version="1.0.0"
 )
 
+from starlette.middleware.base import BaseHTTPMiddleware
+import logging
+
+class PrettyLogMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        start_time = time.time()
+        
+        # Determine the source based on URL
+        client_ip = request.client.host
+        route = request.url.path
+        
+        source = "UNKNOWN"
+        if "events/access" in route:
+            source = "B3_ACCESS_GATE"
+        elif "webhook/vision" in route:
+            source = "B4_AI_VISION"
+        elif "events/camera" in route:
+            source = "B2_CAMERA"
+            
+        print(f"\n[HTTP IN] 📥 Nhận Request từ [{source}] ({client_ip}): {request.method} {route}")
+        
+        try:
+            response = await call_next(request)
+            process_time = (time.time() - start_time) * 1000
+            
+            status_code = response.status_code
+            status_icon = "✅" if status_code < 400 else ("⚠️" if status_code < 500 else "❌")
+            
+            print(f"[HTTP OUT] {status_icon} Trả về [{source}]: Status {status_code} ({process_time:.2f}ms)\n")
+            return response
+        except Exception as e:
+            print(f"[HTTP ERROR] ❌ LỖI KHI XỬ LÝ [{source}]: {str(e)}\n")
+            raise e
+
+app.add_middleware(PrettyLogMiddleware)
+
 # In-memory store for rate limiting (anti-passback)
 recent_swipes = {}
 
