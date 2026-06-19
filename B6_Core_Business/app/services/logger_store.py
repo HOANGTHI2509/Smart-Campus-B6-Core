@@ -52,7 +52,7 @@ threading.Thread(target=ping_services, daemon=True).start()
 
 def add_log(level: str, message: str, source: str = "SYSTEM", payload: dict = None, status_code: int = 200):
     log_entry = {
-        "timestamp": datetime.datetime.now().strftime("%H:%M:%S"),
+        "timestamp": datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
         "level": level,
         "source": source,
         "message": message,

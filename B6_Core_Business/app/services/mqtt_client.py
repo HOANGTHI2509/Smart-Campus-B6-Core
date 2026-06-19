@@ -58,18 +58,18 @@ def handle_sensor_data(topic: str, payload: dict):
     status = payload.get("status", "normal")
     
     # Đọc dữ liệu từ JSON phẳng theo đúng Hợp đồng của B1
-    temperature = payload.get("temperature_c")
-    smoke = payload.get("smoke_ppm")
+    temperature = payload.get("temperature_c", 0.0)
+    alert_level = payload.get("alert_level", "none")
+    smoke = payload.get("smoke_ppm", 0.0)
 
     # LOGIC NGHIỆP VỤ B6 (CORE BUSINESS POLICY ENGINE)
     is_emergency = False
     is_security_alert = False
     
-    # Phân loại rõ ràng: "danger" là cháy, còn "invalid_device" là thiết bị lạ
-    if status == "danger":
-        # CHUẨN MICROSERVICES (SINGLE RESPONSIBILITY)
-        # B6 hoàn toàn tin tưởng vào "quyết định" của nhóm B1. 
-        # B6 không check lại nhiệt độ, B1 hô cháy là B6 chạy điều phối sơ tán!
+    # B6 Phân tích & Quyết định dựa trên tổ hợp 3 yếu tố:
+    # 1. status phải là "danger"
+    # 2. alert_level phải là "high" HOẶC nhiệt độ vượt quá 40 độ
+    if status == "danger" and (alert_level == "high" or temperature > 40.0):
         is_emergency = True
     elif status == "invalid_device":
         is_security_alert = True
@@ -88,8 +88,10 @@ def handle_sensor_data(topic: str, payload: dict):
         logger.info(f"Đang gửi API kích hoạt còi báo động tới B7: {url_b7}")
         try:
             httpx.post(url_b7, json={"title": "CẢNH BÁO HỎA HOẠN", "level": "CRITICAL", "message": f"B1 báo cháy tại {device_id}"}, timeout=5.0)
+            add_log("SUCCESS", "B6 ĐÃ GỬI LỆNH báo động khẩn cấp sang Hệ thống B7 thành công!", "SYSTEM", {"target": "B7", "action": "trigger_alarm"}, status_code=200)
         except Exception as e:
             logger.error(f"Lỗi gọi B7: {e}")
+            add_log("WARNING", f"B6 gửi lệnh báo động sang B7 thất bại do mất mạng: {e}", "SYSTEM", {"error": str(e)}, status_code=500)
             
     elif is_security_alert:
         logger.warning(f"🚨 CẢNH BÁO AN NINH! Thiết bị lạ không xác định ({device_id}) đang gửi dữ liệu.")
