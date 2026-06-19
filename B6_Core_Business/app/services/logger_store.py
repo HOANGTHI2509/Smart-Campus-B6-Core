@@ -70,8 +70,8 @@ def add_log(level: str, message: str, source: str = "SYSTEM", payload: dict = No
     if status_code in [403, 429]:
         metrics["blocked_requests"] += 1
         
-    # Giữ lại 50 log mới nhất để không đầy bộ nhớ
-    if len(system_logs) > 50:
+    # Giữ lại 300 log mới nhất để không đầy bộ nhớ
+    if len(system_logs) > 300:
         system_logs.pop()
 
 def get_dashboard_payload():
