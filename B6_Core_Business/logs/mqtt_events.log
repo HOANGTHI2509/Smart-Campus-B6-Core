@@ -18,3 +18,4401 @@
 2026-06-16 18:39:09.381 | INFO     | app.services.mqtt_client:on_connect:16 - 📡 [MQTT] Đã subscribe topic: smart-campus/events/sensor (B1 IoT)
 2026-06-16 18:39:09.381 | INFO     | app.services.mqtt_client:on_connect:20 - 📡 [MQTT] Đã subscribe topic: smart-campus/events/camera (B2 Camera)
 2026-06-16 18:43:41.058 | INFO     | app.services.mqtt_client:stop_mqtt:123 - 🛑 Đang ngắt kết nối MQTT...
+19-06-2026 10:03:56 | INFO    | app.services.mqtt_client:start_mqtt:146 - Bắt đầu kết nối MQTT tới f6f78e87db4a4c189dd3d706745a5e93.s1.eu.hivemq.cloud:8883...
+19-06-2026 10:03:57 | INFO    | app.services.mqtt_client:on_connect:31 - Đã kết nối thành công tới HiveMQ Cloud: f6f78e87db4a4c189dd3d706745a5e93.s1.eu.hivemq.cloud
+19-06-2026 10:04:01 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:01 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-95820f5a-4b9a-4599-a08f-dbe4471db2ed",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:04:01+07:00",
+  "raw_event_id": "raw-iot-a75b947b0a",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 27.7,
+  "humidity_percent": 66.1,
+  "motion_detected": false,
+  "light_lux": 523.0,
+  "co2_ppm": 904.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 45.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:01 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:01 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-8b4d7939-1088-48ed-a2bd-5e2e19e91f8c",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:04:00+00:00",
+  "raw_event_id": "raw-iot-a75b947b0a",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 27.7,
+  "humidity_percent": 66.1,
+  "motion_detected": false,
+  "light_lux": 523.0,
+  "co2_ppm": 904.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 45.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:01 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:01 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-7bbc9256",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:04:02.690975+00:00",
+  "raw_event_id": "raw-iot-a75b947b0a",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 27.7,
+  "humidity_percent": 66.1,
+  "motion_detected": false,
+  "light_lux": 523,
+  "co2_ppm": 904.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 45.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:06 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:06 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-e07e9edf-5308-41e8-ba73-88174e4eaf47",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:04:06+07:00",
+  "raw_event_id": "raw-iot-8ae3692bab",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 29.6,
+  "humidity_percent": 74.4,
+  "motion_detected": true,
+  "light_lux": 528.0,
+  "co2_ppm": 423.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 42.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:07 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:07 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-ffceea33-6dac-4254-858d-b58c18f78931",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:04:06+00:00",
+  "raw_event_id": "raw-iot-8ae3692bab",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 29.6,
+  "humidity_percent": 74.4,
+  "motion_detected": true,
+  "light_lux": 528.0,
+  "co2_ppm": 423.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 42.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:07 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:07 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-cd5ba753",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:04:08.000246+00:00",
+  "raw_event_id": "raw-iot-8ae3692bab",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 29.6,
+  "humidity_percent": 74.4,
+  "motion_detected": true,
+  "light_lux": 528,
+  "co2_ppm": 423.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 42.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:12 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:12 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-d4fc0558-80f8-458f-a9b0-573fde6a524d",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:04:11+07:00",
+  "raw_event_id": "raw-iot-98521ef7d6",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 32.9,
+  "humidity_percent": 68.4,
+  "motion_detected": false,
+  "light_lux": 205.0,
+  "co2_ppm": 720.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 91.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:13 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:13 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-b488b96b-d559-44c3-816a-63fb73ff3754",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:04:11+00:00",
+  "raw_event_id": "raw-iot-98521ef7d6",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 32.9,
+  "humidity_percent": 68.4,
+  "motion_detected": false,
+  "light_lux": 205.0,
+  "co2_ppm": 720.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 91.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:13 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:13 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-0625aa8a",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:04:13.274151+00:00",
+  "raw_event_id": "raw-iot-98521ef7d6",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 32.9,
+  "humidity_percent": 68.4,
+  "motion_detected": false,
+  "light_lux": 205,
+  "co2_ppm": 720.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 91.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:17 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:17 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-9444b347-3c6a-4072-951c-4a039de5887e",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:04:16+07:00",
+  "raw_event_id": "raw-iot-9e7fe9682d",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 32.2,
+  "humidity_percent": 76.5,
+  "motion_detected": false,
+  "light_lux": 517.0,
+  "co2_ppm": 894.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 55.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:17 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:17 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-6f5e285a-299c-476a-93d4-55b02237ffde",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:04:17+00:00",
+  "raw_event_id": "raw-iot-9e7fe9682d",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 32.2,
+  "humidity_percent": 76.5,
+  "motion_detected": false,
+  "light_lux": 517.0,
+  "co2_ppm": 894.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 55.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:17 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:17 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-d29ac546",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:04:18.924160+00:00",
+  "raw_event_id": "raw-iot-9e7fe9682d",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 32.2,
+  "humidity_percent": 76.5,
+  "motion_detected": false,
+  "light_lux": 517,
+  "co2_ppm": 894.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 55.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:22 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:22 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-2481ad78-d48e-40c6-835a-f7f105fe8b7f",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:04:22+07:00",
+  "raw_event_id": "raw-iot-16525152bd",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 31.1,
+  "humidity_percent": 60.5,
+  "motion_detected": false,
+  "light_lux": 754.0,
+  "co2_ppm": 627.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 68.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:22 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:22 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-dfc8b3cf-57fe-4bd3-b375-97dc41e96177",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:04:21+00:00",
+  "raw_event_id": "raw-iot-16525152bd",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 31.1,
+  "humidity_percent": 60.5,
+  "motion_detected": false,
+  "light_lux": 754.0,
+  "co2_ppm": 627.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 68.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:22 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:22 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-6e820328",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:04:23.597105+00:00",
+  "raw_event_id": "raw-iot-16525152bd",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 31.1,
+  "humidity_percent": 60.5,
+  "motion_detected": false,
+  "light_lux": 754,
+  "co2_ppm": 627.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 68.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:28 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:28 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-a392c755-c131-44f2-b7f4-82e3612cb281",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:04:27+07:00",
+  "raw_event_id": "raw-iot-1632e63ada",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 29.6,
+  "humidity_percent": null,
+  "motion_detected": false,
+  "light_lux": 419.0,
+  "co2_ppm": 624.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 78.0,
+  "status": "sensor_error",
+  "alert_level": "medium",
+  "reason": "missing_sensor_value"
+}
+19-06-2026 10:04:28 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:28 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-ed3cdb1c-52f5-44f2-8851-4ce7fb795ae8",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:04:27+00:00",
+  "raw_event_id": "raw-iot-1632e63ada",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 29.6,
+  "humidity_percent": null,
+  "motion_detected": false,
+  "light_lux": 419.0,
+  "co2_ppm": 624.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 78.0,
+  "status": "sensor_error",
+  "alert_level": "medium",
+  "reason": "missing_sensor_value"
+}
+19-06-2026 10:04:28 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:28 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-9bfb3762",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:04:28.789531+00:00",
+  "raw_event_id": "raw-iot-1632e63ada",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 29.6,
+  "humidity_percent": null,
+  "motion_detected": false,
+  "light_lux": 419,
+  "co2_ppm": 624.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 78.0,
+  "status": "sensor_error",
+  "alert_level": "medium",
+  "reason": "missing_sensor_value"
+}
+19-06-2026 10:04:33 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:33 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-ae673a35-b6ea-4735-abd8-d3ca742c8099",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:04:32+07:00",
+  "raw_event_id": "raw-iot-66faeec7a6",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 29.6,
+  "humidity_percent": 62.5,
+  "motion_detected": false,
+  "light_lux": 728.0,
+  "co2_ppm": 944.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 79.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:33 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:33 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-010a841b-5490-42cf-8c22-b331277e1732",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:04:32+00:00",
+  "raw_event_id": "raw-iot-66faeec7a6",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 29.6,
+  "humidity_percent": 62.5,
+  "motion_detected": false,
+  "light_lux": 728.0,
+  "co2_ppm": 944.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 79.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:33 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:33 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-560c82df",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:04:34.024425+00:00",
+  "raw_event_id": "raw-iot-66faeec7a6",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 29.6,
+  "humidity_percent": 62.5,
+  "motion_detected": false,
+  "light_lux": 728,
+  "co2_ppm": 944.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 79.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:38 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:38 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-c971c87a-31a6-4c39-b2e0-574cbca41878",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:04:37+07:00",
+  "raw_event_id": "raw-iot-d80758ceab",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 31.3,
+  "humidity_percent": 56.2,
+  "motion_detected": false,
+  "light_lux": 682.0,
+  "co2_ppm": 653.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 70.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:38 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:38 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-5fb858e0",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:04:39.233035+00:00",
+  "raw_event_id": "raw-iot-d80758ceab",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 31.3,
+  "humidity_percent": 56.2,
+  "motion_detected": false,
+  "light_lux": 682,
+  "co2_ppm": 653.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 70.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:38 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:38 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-c2b5c29d-a7ad-47df-8e23-15c9fbe8435d",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:04:37+00:00",
+  "raw_event_id": "raw-iot-d80758ceab",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 31.3,
+  "humidity_percent": 56.2,
+  "motion_detected": false,
+  "light_lux": 682.0,
+  "co2_ppm": 653.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 70.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:43 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:43 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-2e16236f-3c20-4350-b75a-4b24fb0caacd",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:04:42+07:00",
+  "raw_event_id": "raw-iot-f07de49601",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 27.0,
+  "humidity_percent": 78.0,
+  "motion_detected": false,
+  "light_lux": 216.0,
+  "co2_ppm": 567.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 94.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:43 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:43 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-30bf539b",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:04:44.463473+00:00",
+  "raw_event_id": "raw-iot-f07de49601",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 27.0,
+  "humidity_percent": 78.0,
+  "motion_detected": false,
+  "light_lux": 216,
+  "co2_ppm": 567.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 94.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:43 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:43 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-53fc03d2-d426-44de-abac-34b4535c9c59",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:04:42+00:00",
+  "raw_event_id": "raw-iot-f07de49601",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 27.0,
+  "humidity_percent": 78.0,
+  "motion_detected": false,
+  "light_lux": 216.0,
+  "co2_ppm": 567.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 94.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:48 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:48 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-10871f84-d22f-4434-9778-09f1d3222d28",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:04:48+07:00",
+  "raw_event_id": "raw-iot-bd4f177fb0",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 26.5,
+  "humidity_percent": 60.2,
+  "motion_detected": false,
+  "light_lux": 256.0,
+  "co2_ppm": 853.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 55.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:48 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:48 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-28b0ab46-b549-4deb-839a-cf352f5329ff",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:04:48+00:00",
+  "raw_event_id": "raw-iot-bd4f177fb0",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 26.5,
+  "humidity_percent": 60.2,
+  "motion_detected": false,
+  "light_lux": 256.0,
+  "co2_ppm": 853.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 55.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:48 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:48 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-0454b3c3",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:04:49.708480+00:00",
+  "raw_event_id": "raw-iot-bd4f177fb0",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 26.5,
+  "humidity_percent": 60.2,
+  "motion_detected": false,
+  "light_lux": 256,
+  "co2_ppm": 853.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 55.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:53 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:53 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-1d3d7bfe-c7a0-48f4-938d-2f0fb6e20b56",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:04:53+07:00",
+  "raw_event_id": "raw-iot-ab05956ee3",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 27.3,
+  "humidity_percent": 50.5,
+  "motion_detected": false,
+  "light_lux": 535.0,
+  "co2_ppm": 609.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 85.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:53 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:53 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-5c0d9c94",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:04:54.933866+00:00",
+  "raw_event_id": "raw-iot-ab05956ee3",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 27.3,
+  "humidity_percent": 50.5,
+  "motion_detected": false,
+  "light_lux": 535,
+  "co2_ppm": 609.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 85.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:54 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:54 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-a90d7883-284a-4163-b632-0872b6a5d01b",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:04:53+00:00",
+  "raw_event_id": "raw-iot-ab05956ee3",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 27.3,
+  "humidity_percent": 50.5,
+  "motion_detected": false,
+  "light_lux": 535.0,
+  "co2_ppm": 609.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 85.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:59 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:59 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-2d12b3a9-5cd4-4010-8b57-1c0d9aee7d9b",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:04:58+07:00",
+  "raw_event_id": "raw-iot-de0fcbf6f9",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 27.1,
+  "humidity_percent": 53.7,
+  "motion_detected": false,
+  "light_lux": 523.0,
+  "co2_ppm": 579.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 95.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:59 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:59 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-938d5cde",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:05:00.127166+00:00",
+  "raw_event_id": "raw-iot-de0fcbf6f9",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 27.1,
+  "humidity_percent": 53.7,
+  "motion_detected": false,
+  "light_lux": 523,
+  "co2_ppm": 579.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 95.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:04:59 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:04:59 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-d1f4bbfb-2daf-4da5-82c7-0a770ca69d89",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:04:58+00:00",
+  "raw_event_id": "raw-iot-de0fcbf6f9",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 27.1,
+  "humidity_percent": 53.7,
+  "motion_detected": false,
+  "light_lux": 523.0,
+  "co2_ppm": 579.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 95.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:04 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:04 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-729e3d63-71ce-47e1-b11c-57b939577389",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:05:03+07:00",
+  "raw_event_id": "raw-iot-11095d56be",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 33.1,
+  "humidity_percent": 58.1,
+  "motion_detected": false,
+  "light_lux": 392.0,
+  "co2_ppm": 934.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 48.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:04 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:04 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-4595ed85-fbf9-45f1-b0d2-23ed8427078b",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:05:03+00:00",
+  "raw_event_id": "raw-iot-11095d56be",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 33.1,
+  "humidity_percent": 58.1,
+  "motion_detected": false,
+  "light_lux": 392.0,
+  "co2_ppm": 934.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 48.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:05 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:05 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-6c13024a",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:05:06.148659+00:00",
+  "raw_event_id": "raw-iot-11095d56be",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 33.1,
+  "humidity_percent": 58.1,
+  "motion_detected": false,
+  "light_lux": 392,
+  "co2_ppm": 934.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 48.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:09 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:09 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-33fdc097-5288-4d62-88fe-6b56ac45b300",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:05:09+07:00",
+  "raw_event_id": "raw-iot-b6ad93930a",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 30.4,
+  "humidity_percent": 45.7,
+  "motion_detected": false,
+  "light_lux": 554.0,
+  "co2_ppm": 585.0,
+  "smoke_ppm": 0.0,
+  "battery_percent": 53.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:09 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:09 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-78893bc7",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:05:10.585792+00:00",
+  "raw_event_id": "raw-iot-b6ad93930a",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 30.4,
+  "humidity_percent": 45.7,
+  "motion_detected": false,
+  "light_lux": 554,
+  "co2_ppm": 585.0,
+  "smoke_ppm": 0.0,
+  "battery_percent": 53.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:09 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:09 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-85b3b13e-1a6d-4018-bb5a-c52ebb340366",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:05:08+00:00",
+  "raw_event_id": "raw-iot-b6ad93930a",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 30.4,
+  "humidity_percent": 45.7,
+  "motion_detected": false,
+  "light_lux": 554.0,
+  "co2_ppm": 585.0,
+  "smoke_ppm": 0.0,
+  "battery_percent": 53.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:15 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:15 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-9b624d41-53ed-4274-b097-43ff434f3cf0",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:05:14+07:00",
+  "raw_event_id": "raw-iot-4dcd80f62f",
+  "device_id": "esp32-unknown-01",
+  "location": "Unknown Area",
+  "temperature_c": 27.1,
+  "humidity_percent": 71.3,
+  "motion_detected": false,
+  "light_lux": 323.0,
+  "co2_ppm": 546.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 81.0,
+  "status": "invalid_device",
+  "alert_level": "high",
+  "reason": "device_not_registered"
+}
+19-06-2026 10:05:15 | WARNING | app.services.mqtt_client:handle_sensor_data:106 - 🚨 CẢNH BÁO AN NINH! Thiết bị lạ không xác định (esp32-unknown-01) đang gửi dữ liệu.
+19-06-2026 10:05:15 | INFO    | app.services.mqtt_client:handle_sensor_data:111 - Đang gửi API báo cáo an ninh tới B7: http://26.177.175.21:8000/notify/send
+19-06-2026 10:05:15 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:15 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-71663aa8-3156-4582-98e4-65154a17de91",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:05:14+00:00",
+  "raw_event_id": "raw-iot-4dcd80f62f",
+  "device_id": "esp32-unknown-01",
+  "location": "Unknown Area",
+  "temperature_c": 27.1,
+  "humidity_percent": 71.3,
+  "motion_detected": false,
+  "light_lux": 323.0,
+  "co2_ppm": 546.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 81.0,
+  "status": "invalid_device",
+  "alert_level": "high",
+  "reason": "device_not_registered"
+}
+19-06-2026 10:05:15 | WARNING | app.services.mqtt_client:handle_sensor_data:106 - 🚨 CẢNH BÁO AN NINH! Thiết bị lạ không xác định (esp32-unknown-01) đang gửi dữ liệu.
+19-06-2026 10:05:15 | INFO    | app.services.mqtt_client:handle_sensor_data:111 - Đang gửi API báo cáo an ninh tới B7: http://26.177.175.21:8000/notify/send
+19-06-2026 10:05:15 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:15 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-99f48bc4",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:05:15.806283+00:00",
+  "raw_event_id": "raw-iot-4dcd80f62f",
+  "device_id": "esp32-unknown-01",
+  "location": "Unknown Area",
+  "temperature_c": 27.1,
+  "humidity_percent": 71.3,
+  "motion_detected": false,
+  "light_lux": 323,
+  "co2_ppm": 546.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 81.0,
+  "status": "invalid_device",
+  "alert_level": "high",
+  "reason": "device_not_registered"
+}
+19-06-2026 10:05:15 | WARNING | app.services.mqtt_client:handle_sensor_data:106 - 🚨 CẢNH BÁO AN NINH! Thiết bị lạ không xác định (esp32-unknown-01) đang gửi dữ liệu.
+19-06-2026 10:05:15 | INFO    | app.services.mqtt_client:handle_sensor_data:111 - Đang gửi API báo cáo an ninh tới B7: http://26.177.175.21:8000/notify/send
+19-06-2026 10:05:20 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:20 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-5ccee99f-7752-44f2-9275-74f0511767ac",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:05:19+07:00",
+  "raw_event_id": "raw-iot-4df3b67757",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 26.4,
+  "humidity_percent": 66.3,
+  "motion_detected": false,
+  "light_lux": 561.0,
+  "co2_ppm": 760.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 9.0,
+  "status": "warning",
+  "alert_level": "medium",
+  "reason": "low_battery"
+}
+19-06-2026 10:05:20 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:20 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-2ac743cc",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:05:21.043407+00:00",
+  "raw_event_id": "raw-iot-4df3b67757",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 26.4,
+  "humidity_percent": 66.3,
+  "motion_detected": false,
+  "light_lux": 561,
+  "co2_ppm": 760.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 9.0,
+  "status": "warning",
+  "alert_level": "medium",
+  "reason": "low_battery"
+}
+19-06-2026 10:05:20 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:20 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-faf86326-7cce-4076-8aed-17e0e116cfca",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:05:19+00:00",
+  "raw_event_id": "raw-iot-4df3b67757",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 26.4,
+  "humidity_percent": 66.3,
+  "motion_detected": false,
+  "light_lux": 561.0,
+  "co2_ppm": 760.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 9.0,
+  "status": "warning",
+  "alert_level": "medium",
+  "reason": "low_battery"
+}
+19-06-2026 10:05:25 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:25 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-c2ad66a1-2802-4556-85a3-3e873ca90cb4",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:05:24+07:00",
+  "raw_event_id": "raw-iot-40f6e5cdfc",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 27.5,
+  "humidity_percent": 52.2,
+  "motion_detected": false,
+  "light_lux": 460.0,
+  "co2_ppm": 941.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 95.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:25 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:25 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-e9dadf50-6975-45fa-9692-d0e4ec54fb8d",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:05:24+00:00",
+  "raw_event_id": "raw-iot-40f6e5cdfc",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 27.5,
+  "humidity_percent": 52.2,
+  "motion_detected": false,
+  "light_lux": 460.0,
+  "co2_ppm": 941.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 95.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:26 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:26 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-ed7b953d",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:05:27.515720+00:00",
+  "raw_event_id": "raw-iot-40f6e5cdfc",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 27.5,
+  "humidity_percent": 52.2,
+  "motion_detected": false,
+  "light_lux": 460,
+  "co2_ppm": 941.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 95.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:30 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:30 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-1a172e33-165c-4cb8-95c1-0d2fb282d85b",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:05:29+07:00",
+  "raw_event_id": "raw-iot-1733cdc91b",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 30.7,
+  "humidity_percent": 57.3,
+  "motion_detected": false,
+  "light_lux": 580.0,
+  "co2_ppm": 815.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 38.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:30 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:30 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-85acb671",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:05:31.479009+00:00",
+  "raw_event_id": "raw-iot-1733cdc91b",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 30.7,
+  "humidity_percent": 57.3,
+  "motion_detected": false,
+  "light_lux": 580,
+  "co2_ppm": 815.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 38.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:30 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:30 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-9a571e0d-1a17-4f92-a04a-d51e99864d83",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:05:29+00:00",
+  "raw_event_id": "raw-iot-1733cdc91b",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 30.7,
+  "humidity_percent": 57.3,
+  "motion_detected": false,
+  "light_lux": 580.0,
+  "co2_ppm": 815.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 38.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:35 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:35 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-6ccdb308-b52d-4613-ace4-1a1db7d2e7d1",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:05:35+07:00",
+  "raw_event_id": "raw-iot-e5967b6946",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 29.6,
+  "humidity_percent": 71.0,
+  "motion_detected": false,
+  "light_lux": 569.0,
+  "co2_ppm": 729.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 60.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:35 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:35 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-e6809bd1-3330-4cc4-a343-f75c22c4f7b9",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:05:35+00:00",
+  "raw_event_id": "raw-iot-e5967b6946",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 29.6,
+  "humidity_percent": 71.0,
+  "motion_detected": false,
+  "light_lux": 569.0,
+  "co2_ppm": 729.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 60.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:35 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:35 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-48f19110",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:05:36.722789+00:00",
+  "raw_event_id": "raw-iot-e5967b6946",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 29.6,
+  "humidity_percent": 71.0,
+  "motion_detected": false,
+  "light_lux": 569,
+  "co2_ppm": 729.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 60.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:40 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:40 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-159fcb1c-52ad-4ecb-a979-8517c0e77ec7",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:05:40+07:00",
+  "raw_event_id": "raw-iot-89f7388f56",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 29.6,
+  "humidity_percent": 59.9,
+  "motion_detected": false,
+  "light_lux": 561.0,
+  "co2_ppm": 705.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 43.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:41 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:41 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-d6f71d18-d38b-4178-9a24-4c2a0e8ffc49",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:05:40+00:00",
+  "raw_event_id": "raw-iot-89f7388f56",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 29.6,
+  "humidity_percent": 59.9,
+  "motion_detected": false,
+  "light_lux": 561.0,
+  "co2_ppm": 705.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 43.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:41 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:41 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-025de53a",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:05:41.981542+00:00",
+  "raw_event_id": "raw-iot-89f7388f56",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 29.6,
+  "humidity_percent": 59.9,
+  "motion_detected": false,
+  "light_lux": 561,
+  "co2_ppm": 705.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 43.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:46 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:46 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-0895513c-4a6f-43ae-bb59-b6eee6e119e2",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:05:45+07:00",
+  "raw_event_id": "raw-iot-ba1d5728ac",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 33.7,
+  "humidity_percent": 60.3,
+  "motion_detected": false,
+  "light_lux": 352.0,
+  "co2_ppm": 921.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 67.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:46 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:46 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-6c0dd3cb",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:05:47.154951+00:00",
+  "raw_event_id": "raw-iot-ba1d5728ac",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 33.7,
+  "humidity_percent": 60.3,
+  "motion_detected": false,
+  "light_lux": 352,
+  "co2_ppm": 921.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 67.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:46 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:46 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-65a48ade-3956-455c-8ed1-3f52e03f53f2",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:05:45+00:00",
+  "raw_event_id": "raw-iot-ba1d5728ac",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 33.7,
+  "humidity_percent": 60.3,
+  "motion_detected": false,
+  "light_lux": 352.0,
+  "co2_ppm": 921.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 67.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:51 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:51 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-284962a9-17e8-41b1-8f66-20c9d79817e5",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:05:50+07:00",
+  "raw_event_id": "raw-iot-0ea8106558",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 31.9,
+  "humidity_percent": 62.5,
+  "motion_detected": false,
+  "light_lux": 121.0,
+  "co2_ppm": 620.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 76.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:51 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:51 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-dc8209ae",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:05:52.361588+00:00",
+  "raw_event_id": "raw-iot-0ea8106558",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 31.9,
+  "humidity_percent": 62.5,
+  "motion_detected": false,
+  "light_lux": 121,
+  "co2_ppm": 620.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 76.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:51 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:51 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-6c465691-4fef-47c2-9662-013fde415b01",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:05:50+00:00",
+  "raw_event_id": "raw-iot-0ea8106558",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 31.9,
+  "humidity_percent": 62.5,
+  "motion_detected": false,
+  "light_lux": 121.0,
+  "co2_ppm": 620.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 76.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:56 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:56 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-048c569c-87ad-4584-8977-1852b49ca9a6",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:05:56+07:00",
+  "raw_event_id": "raw-iot-d8e9835047",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 33.0,
+  "humidity_percent": 59.9,
+  "motion_detected": false,
+  "light_lux": 494.0,
+  "co2_ppm": 726.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 41.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:56 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:56 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-41190be1-82a3-492b-a6a5-3aa5917f2de9",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:05:55+00:00",
+  "raw_event_id": "raw-iot-d8e9835047",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 33.0,
+  "humidity_percent": 59.9,
+  "motion_detected": false,
+  "light_lux": 494.0,
+  "co2_ppm": 726.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 41.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:05:56 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:05:56 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-b8f71191",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:05:57.614378+00:00",
+  "raw_event_id": "raw-iot-d8e9835047",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 33.0,
+  "humidity_percent": 59.9,
+  "motion_detected": false,
+  "light_lux": 494,
+  "co2_ppm": 726.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 41.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:01 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:01 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-3fe6ba03-6d83-40eb-8634-1b1ccee4b220",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:06:01+07:00",
+  "raw_event_id": "raw-iot-d4fe50920a",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 28.5,
+  "humidity_percent": 69.0,
+  "motion_detected": false,
+  "light_lux": 617.0,
+  "co2_ppm": 906.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 54.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:01 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:01 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-9de0996a",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:06:02.807071+00:00",
+  "raw_event_id": "raw-iot-d4fe50920a",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 28.5,
+  "humidity_percent": 69.0,
+  "motion_detected": false,
+  "light_lux": 617,
+  "co2_ppm": 906.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 54.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:02 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:02 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-152c5c6f-5d17-487e-99d8-14811827f136",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:06:01+00:00",
+  "raw_event_id": "raw-iot-d4fe50920a",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 28.5,
+  "humidity_percent": 69.0,
+  "motion_detected": false,
+  "light_lux": 617.0,
+  "co2_ppm": 906.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 54.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:04 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:04 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-7bc4ca32-4ba9-45df-8a84-5617052e24b5",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:06:03+00:00",
+  "raw_event_id": "raw-iot-dashboard-1781838363903",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 60.0,
+  "humidity_percent": 72.0,
+  "motion_detected": true,
+  "light_lux": 420.0,
+  "co2_ppm": 650.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 87.0,
+  "status": "danger",
+  "alert_level": "high",
+  "reason": "temperature_too_high"
+}
+19-06-2026 10:06:04 | CRITICAL | app.services.mqtt_client:handle_sensor_data:92 - 🔥 KHẨN CẤP! B6 ban bố lệnh HỎA HOẠN tại esp32-lab-a101! (Nguyên nhân: temperature_too_high)
+19-06-2026 10:06:04 | INFO    | app.services.mqtt_client:handle_sensor_data:97 - Đang gửi API kích hoạt còi báo động tới B7: http://26.177.175.21:8000/notify/send
+19-06-2026 10:06:07 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:07 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-e8ca7d4c-1f34-418e-bcdc-b91f4834d130",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:06:06+07:00",
+  "raw_event_id": "raw-iot-7e7b5d0bd1",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 33.1,
+  "humidity_percent": 53.5,
+  "motion_detected": true,
+  "light_lux": 606.0,
+  "co2_ppm": 677.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 90.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:07 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:07 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-eb8cd053-c13d-4a49-a5d5-e2d8d4e3508b",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:06:06+00:00",
+  "raw_event_id": "raw-iot-7e7b5d0bd1",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 33.1,
+  "humidity_percent": 53.5,
+  "motion_detected": true,
+  "light_lux": 606.0,
+  "co2_ppm": 677.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 90.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:07 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:07 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-501b716d",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:06:08.043497+00:00",
+  "raw_event_id": "raw-iot-7e7b5d0bd1",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 33.1,
+  "humidity_percent": 53.5,
+  "motion_detected": true,
+  "light_lux": 606,
+  "co2_ppm": 677.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 90.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:12 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:12 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-2728a9fc-404b-4ee3-a2e8-b89efd39909c",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:06:11+07:00",
+  "raw_event_id": "raw-iot-814a872012",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 28.2,
+  "humidity_percent": 57.2,
+  "motion_detected": false,
+  "light_lux": 467.0,
+  "co2_ppm": 630.0,
+  "smoke_ppm": 0.0,
+  "battery_percent": 61.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:12 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:12 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-9e86cafe-33e8-48bc-b602-90be266b85a3",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:06:11+00:00",
+  "raw_event_id": "raw-iot-814a872012",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 28.2,
+  "humidity_percent": 57.2,
+  "motion_detected": false,
+  "light_lux": 467.0,
+  "co2_ppm": 630.0,
+  "smoke_ppm": 0.0,
+  "battery_percent": 61.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:12 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:12 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-b3c8f9e0",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:06:13.354649+00:00",
+  "raw_event_id": "raw-iot-814a872012",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 28.2,
+  "humidity_percent": 57.2,
+  "motion_detected": false,
+  "light_lux": 467,
+  "co2_ppm": 630.0,
+  "smoke_ppm": 0.0,
+  "battery_percent": 61.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:17 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:17 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-1dc53d04-4ba9-4466-8a60-ed415a87eac7",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:06:16+00:00",
+  "raw_event_id": "raw-iot-91ce135d8c",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 32.7,
+  "humidity_percent": 65.9,
+  "motion_detected": false,
+  "light_lux": 254.0,
+  "co2_ppm": 722.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 42.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:17 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:17 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-64e4dea1-99e2-4413-b286-36f717d3e38d",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:06:16+07:00",
+  "raw_event_id": "raw-iot-91ce135d8c",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 32.7,
+  "humidity_percent": 65.9,
+  "motion_detected": false,
+  "light_lux": 254.0,
+  "co2_ppm": 722.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 42.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:17 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:17 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-07fac5d2",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:06:18.489579+00:00",
+  "raw_event_id": "raw-iot-91ce135d8c",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 32.7,
+  "humidity_percent": 65.9,
+  "motion_detected": false,
+  "light_lux": 254,
+  "co2_ppm": 722.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 42.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:22 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:22 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-ecada3d5-9ff9-44f9-adbf-bf8c1b5d9cff",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:06:22+07:00",
+  "raw_event_id": "raw-iot-ce20043757",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 31.4,
+  "humidity_percent": 75.3,
+  "motion_detected": false,
+  "light_lux": 274.0,
+  "co2_ppm": 907.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 43.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:22 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:22 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-58a93891",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:06:23.701427+00:00",
+  "raw_event_id": "raw-iot-ce20043757",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 31.4,
+  "humidity_percent": 75.3,
+  "motion_detected": false,
+  "light_lux": 274,
+  "co2_ppm": 907.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 43.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:23 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:23 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-189f8d71-6baf-4661-8048-0aa178543ed0",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:06:22+00:00",
+  "raw_event_id": "raw-iot-ce20043757",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 31.4,
+  "humidity_percent": 75.3,
+  "motion_detected": false,
+  "light_lux": 274.0,
+  "co2_ppm": 907.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 43.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:28 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:28 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-1a779d6f-4a17-4c45-979f-f9fb9dc186a3",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:06:27+07:00",
+  "raw_event_id": "raw-iot-c7684a3a0f",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 30.5,
+  "humidity_percent": 68.3,
+  "motion_detected": false,
+  "light_lux": 750.0,
+  "co2_ppm": 682.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 37.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:28 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:28 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-116bca07",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:06:28.931355+00:00",
+  "raw_event_id": "raw-iot-c7684a3a0f",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 30.5,
+  "humidity_percent": 68.3,
+  "motion_detected": false,
+  "light_lux": 750,
+  "co2_ppm": 682.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 37.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:28 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:28 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-dca369c7-3125-4c7d-8437-0fef0407fd7d",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:06:27+00:00",
+  "raw_event_id": "raw-iot-c7684a3a0f",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 30.5,
+  "humidity_percent": 68.3,
+  "motion_detected": false,
+  "light_lux": 750.0,
+  "co2_ppm": 682.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 37.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:33 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:33 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-b9892a94-7897-4510-bc8d-ed05bda75ebb",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:06:32+07:00",
+  "raw_event_id": "raw-iot-24eca4c68b",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 27.5,
+  "humidity_percent": 66.7,
+  "motion_detected": false,
+  "light_lux": 760.0,
+  "co2_ppm": 486.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 62.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:33 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:33 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-f0a0c35a-0090-4e9e-a9b4-e95a875b3cfd",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:06:32+00:00",
+  "raw_event_id": "raw-iot-24eca4c68b",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 27.5,
+  "humidity_percent": 66.7,
+  "motion_detected": false,
+  "light_lux": 760.0,
+  "co2_ppm": 486.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 62.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:33 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:33 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-b6f1b465",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:06:34.637086+00:00",
+  "raw_event_id": "raw-iot-24eca4c68b",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 27.5,
+  "humidity_percent": 66.7,
+  "motion_detected": false,
+  "light_lux": 760,
+  "co2_ppm": 486.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 62.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:38 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:38 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-b401895a-1233-412d-9976-ea84b0528650",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:06:37+07:00",
+  "raw_event_id": "raw-iot-d293f7a96d",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 31.7,
+  "humidity_percent": 50.5,
+  "motion_detected": false,
+  "light_lux": 357.0,
+  "co2_ppm": 932.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 77.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:38 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:38 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-de1c12f5",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:06:39.345761+00:00",
+  "raw_event_id": "raw-iot-d293f7a96d",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 31.7,
+  "humidity_percent": 50.5,
+  "motion_detected": false,
+  "light_lux": 357,
+  "co2_ppm": 932.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 77.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:38 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:38 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-1e4d4316-471e-47cc-aeac-0cde16a4f96a",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:06:37+00:00",
+  "raw_event_id": "raw-iot-d293f7a96d",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 31.7,
+  "humidity_percent": 50.5,
+  "motion_detected": false,
+  "light_lux": 357.0,
+  "co2_ppm": 932.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 77.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:43 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:43 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-95f5779b-8294-43d8-bceb-74b78e622c75",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:06:43+07:00",
+  "raw_event_id": "raw-iot-6bbb7e8e18",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 29.4,
+  "humidity_percent": 68.8,
+  "motion_detected": false,
+  "light_lux": 250.0,
+  "co2_ppm": 429.0,
+  "smoke_ppm": 0.0,
+  "battery_percent": 98.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:43 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:43 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-64549919",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:06:44.573179+00:00",
+  "raw_event_id": "raw-iot-6bbb7e8e18",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 29.4,
+  "humidity_percent": 68.8,
+  "motion_detected": false,
+  "light_lux": 250,
+  "co2_ppm": 429.0,
+  "smoke_ppm": 0.0,
+  "battery_percent": 98.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:43 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:43 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-bd785a80-1b5c-42dd-9481-7373666a64aa",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:06:42+00:00",
+  "raw_event_id": "raw-iot-6bbb7e8e18",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 29.4,
+  "humidity_percent": 68.8,
+  "motion_detected": false,
+  "light_lux": 250.0,
+  "co2_ppm": 429.0,
+  "smoke_ppm": 0.0,
+  "battery_percent": 98.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:48 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:48 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-9b042987-61ea-4338-a1ed-410bc50f2a85",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:06:48+07:00",
+  "raw_event_id": "raw-iot-4ac79a0702",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 30.9,
+  "humidity_percent": 49.1,
+  "motion_detected": false,
+  "light_lux": 203.0,
+  "co2_ppm": 534.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 54.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:48 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:48 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-7647184d-bb24-4ec5-9fc0-fdecbaf82209",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:06:48+00:00",
+  "raw_event_id": "raw-iot-4ac79a0702",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 30.9,
+  "humidity_percent": 49.1,
+  "motion_detected": false,
+  "light_lux": 203.0,
+  "co2_ppm": 534.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 54.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:48 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:48 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-b0ae7104",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:06:49.799712+00:00",
+  "raw_event_id": "raw-iot-4ac79a0702",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 30.9,
+  "humidity_percent": 49.1,
+  "motion_detected": false,
+  "light_lux": 203,
+  "co2_ppm": 534.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 54.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:53 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:53 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-b7f82374-be89-4a84-a8ba-c965b71c6fe2",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:06:53+07:00",
+  "raw_event_id": "raw-iot-460d2e81e6",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 28.8,
+  "humidity_percent": 75.5,
+  "motion_detected": false,
+  "light_lux": 243.0,
+  "co2_ppm": 516.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 90.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:53 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:53 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-d166d7ea",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:06:54.981892+00:00",
+  "raw_event_id": "raw-iot-460d2e81e6",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 28.8,
+  "humidity_percent": 75.5,
+  "motion_detected": false,
+  "light_lux": 243,
+  "co2_ppm": 516.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 90.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:54 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:54 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-6ea1f895-5077-4f36-8d58-f3ea3068490a",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:06:53+00:00",
+  "raw_event_id": "raw-iot-460d2e81e6",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 28.8,
+  "humidity_percent": 75.5,
+  "motion_detected": false,
+  "light_lux": 243.0,
+  "co2_ppm": 516.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 90.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:59 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:59 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-27e5c20d-993e-4475-8f3e-c10810f4c674",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:06:58+07:00",
+  "raw_event_id": "raw-iot-257796ec21",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 29.7,
+  "humidity_percent": 72.7,
+  "motion_detected": false,
+  "light_lux": 273.0,
+  "co2_ppm": 814.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 51.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:59 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:59 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-58258112",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:07:00.249983+00:00",
+  "raw_event_id": "raw-iot-257796ec21",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 29.7,
+  "humidity_percent": 72.7,
+  "motion_detected": false,
+  "light_lux": 273,
+  "co2_ppm": 814.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 51.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:06:59 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:06:59 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-f740af93-2679-40be-851f-bff33b82ef46",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:06:59+00:00",
+  "raw_event_id": "raw-iot-257796ec21",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 29.7,
+  "humidity_percent": 72.7,
+  "motion_detected": false,
+  "light_lux": 273.0,
+  "co2_ppm": 814.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 51.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:04 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:04 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-a5247240-3ad3-48da-843d-bc2f115d1ba0",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:07:03+07:00",
+  "raw_event_id": "raw-iot-e20b436988",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 29.2,
+  "humidity_percent": 62.6,
+  "motion_detected": false,
+  "light_lux": 729.0,
+  "co2_ppm": 741.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 73.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:04 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:04 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-51cb1620-dd1e-4dce-8de2-234b9792e83a",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:07:03+00:00",
+  "raw_event_id": "raw-iot-e20b436988",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 29.2,
+  "humidity_percent": 62.6,
+  "motion_detected": false,
+  "light_lux": 729.0,
+  "co2_ppm": 741.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 73.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:04 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:04 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-4acf8f4a",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:07:05.448306+00:00",
+  "raw_event_id": "raw-iot-e20b436988",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 29.2,
+  "humidity_percent": 62.6,
+  "motion_detected": false,
+  "light_lux": 729,
+  "co2_ppm": 741.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 73.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:06 | INFO    | app.services.mqtt_client:start_mqtt:146 - Bắt đầu kết nối MQTT tới f6f78e87db4a4c189dd3d706745a5e93.s1.eu.hivemq.cloud:8883...
+19-06-2026 10:07:07 | INFO    | app.services.mqtt_client:on_connect:31 - Đã kết nối thành công tới HiveMQ Cloud: f6f78e87db4a4c189dd3d706745a5e93.s1.eu.hivemq.cloud
+19-06-2026 10:07:09 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:09 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-286951e9-b8cd-4032-93ba-caae6c99b612",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:07:09+07:00",
+  "raw_event_id": "raw-iot-6ba662d026",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 28.3,
+  "humidity_percent": 77.1,
+  "motion_detected": false,
+  "light_lux": 500.0,
+  "co2_ppm": 747.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 97.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:09 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:09 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-1216a52e-eed1-41b6-aa23-86c4a033edb3",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:07:08+00:00",
+  "raw_event_id": "raw-iot-6ba662d026",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 28.3,
+  "humidity_percent": 77.1,
+  "motion_detected": false,
+  "light_lux": 500.0,
+  "co2_ppm": 747.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 97.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:09 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:09 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-0eb84140",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:07:10.684663+00:00",
+  "raw_event_id": "raw-iot-6ba662d026",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 28.3,
+  "humidity_percent": 77.1,
+  "motion_detected": false,
+  "light_lux": 500,
+  "co2_ppm": 747.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 97.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:14 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:14 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-e73661c7",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:07:15.879730+00:00",
+  "raw_event_id": "raw-iot-204f589247",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 26.1,
+  "humidity_percent": 71.1,
+  "motion_detected": false,
+  "light_lux": 172,
+  "co2_ppm": 863.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 39.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:15 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:15 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-0cf024e0-05b2-4863-9b16-33a8d10f4b97",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:07:14+07:00",
+  "raw_event_id": "raw-iot-204f589247",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 26.1,
+  "humidity_percent": 71.1,
+  "motion_detected": false,
+  "light_lux": 172.0,
+  "co2_ppm": 863.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 39.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:15 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:15 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-c18e4acf-20fd-42e8-bd5b-6ea6ea9a60f9",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:07:14+00:00",
+  "raw_event_id": "raw-iot-204f589247",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 26.1,
+  "humidity_percent": 71.1,
+  "motion_detected": false,
+  "light_lux": 172.0,
+  "co2_ppm": 863.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 39.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:20 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:20 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-feb85ac9-70b6-471a-bc09-4aa5b4275637",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:07:19+07:00",
+  "raw_event_id": "raw-iot-56b685c1c9",
+  "device_id": "esp32-unknown-01",
+  "location": "Unknown Area",
+  "temperature_c": 28.8,
+  "humidity_percent": 73.0,
+  "motion_detected": false,
+  "light_lux": 746.0,
+  "co2_ppm": 625.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 82.0,
+  "status": "invalid_device",
+  "alert_level": "high",
+  "reason": "device_not_registered"
+}
+19-06-2026 10:07:20 | WARNING | app.services.mqtt_client:handle_sensor_data:106 - 🚨 CẢNH BÁO AN NINH! Thiết bị lạ không xác định (esp32-unknown-01) đang gửi dữ liệu.
+19-06-2026 10:07:20 | INFO    | app.services.mqtt_client:handle_sensor_data:111 - Đang gửi API báo cáo an ninh tới B7: http://26.177.175.21:8000/notify/send
+19-06-2026 10:07:20 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:20 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-3be87e06",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:07:21.146116+00:00",
+  "raw_event_id": "raw-iot-56b685c1c9",
+  "device_id": "esp32-unknown-01",
+  "location": "Unknown Area",
+  "temperature_c": 28.8,
+  "humidity_percent": 73.0,
+  "motion_detected": false,
+  "light_lux": 746,
+  "co2_ppm": 625.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 82.0,
+  "status": "invalid_device",
+  "alert_level": "high",
+  "reason": "device_not_registered"
+}
+19-06-2026 10:07:20 | WARNING | app.services.mqtt_client:handle_sensor_data:106 - 🚨 CẢNH BÁO AN NINH! Thiết bị lạ không xác định (esp32-unknown-01) đang gửi dữ liệu.
+19-06-2026 10:07:20 | INFO    | app.services.mqtt_client:handle_sensor_data:111 - Đang gửi API báo cáo an ninh tới B7: http://26.177.175.21:8000/notify/send
+19-06-2026 10:07:20 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:20 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-a85e9e59-fb4d-4c97-8f10-149c7ecb4c1e",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:07:19+00:00",
+  "raw_event_id": "raw-iot-56b685c1c9",
+  "device_id": "esp32-unknown-01",
+  "location": "Unknown Area",
+  "temperature_c": 28.8,
+  "humidity_percent": 73.0,
+  "motion_detected": false,
+  "light_lux": 746.0,
+  "co2_ppm": 625.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 82.0,
+  "status": "invalid_device",
+  "alert_level": "high",
+  "reason": "device_not_registered"
+}
+19-06-2026 10:07:20 | WARNING | app.services.mqtt_client:handle_sensor_data:106 - 🚨 CẢNH BÁO AN NINH! Thiết bị lạ không xác định (esp32-unknown-01) đang gửi dữ liệu.
+19-06-2026 10:07:20 | INFO    | app.services.mqtt_client:handle_sensor_data:111 - Đang gửi API báo cáo an ninh tới B7: http://26.177.175.21:8000/notify/send
+19-06-2026 10:07:25 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:25 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-f3d3dce4-d2e0-43a9-8488-d8befd04f412",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:07:24+07:00",
+  "raw_event_id": "raw-iot-87b4fa1019",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 29.9,
+  "humidity_percent": 66.4,
+  "motion_detected": true,
+  "light_lux": 513.0,
+  "co2_ppm": 841.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 35.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:25 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:25 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-9e9107d2",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:07:26.319472+00:00",
+  "raw_event_id": "raw-iot-87b4fa1019",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 29.9,
+  "humidity_percent": 66.4,
+  "motion_detected": true,
+  "light_lux": 513,
+  "co2_ppm": 841.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 35.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:25 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:25 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-db097783-2ee3-40e4-85af-70fecc6a7d30",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:07:24+00:00",
+  "raw_event_id": "raw-iot-87b4fa1019",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 29.9,
+  "humidity_percent": 66.4,
+  "motion_detected": true,
+  "light_lux": 513.0,
+  "co2_ppm": 841.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 35.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:30 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:30 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-1ca104c3-0ad4-4850-a295-447979f322fa",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:07:30+07:00",
+  "raw_event_id": "raw-iot-e525545fac",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 32.0,
+  "humidity_percent": 71.3,
+  "motion_detected": true,
+  "light_lux": 400.0,
+  "co2_ppm": 477.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 43.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:30 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:30 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-3aec21bd-6395-4611-b477-357e0898c98d",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:07:29+00:00",
+  "raw_event_id": "raw-iot-e525545fac",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 32.0,
+  "humidity_percent": 71.3,
+  "motion_detected": true,
+  "light_lux": 400.0,
+  "co2_ppm": 477.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 43.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:31 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:31 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-b2b52d8f",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:07:31.566796+00:00",
+  "raw_event_id": "raw-iot-e525545fac",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 32.0,
+  "humidity_percent": 71.3,
+  "motion_detected": true,
+  "light_lux": 400,
+  "co2_ppm": 477.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 43.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:35 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:35 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-fdaa3391-0446-44a1-a607-fde8ff035c02",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:07:35+07:00",
+  "raw_event_id": "raw-iot-8b1b6ba543",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 28.4,
+  "humidity_percent": 62.5,
+  "motion_detected": false,
+  "light_lux": 234.0,
+  "co2_ppm": 876.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 82.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:35 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:35 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-9f2bb749",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:07:36.767429+00:00",
+  "raw_event_id": "raw-iot-8b1b6ba543",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 28.4,
+  "humidity_percent": 62.5,
+  "motion_detected": false,
+  "light_lux": 234,
+  "co2_ppm": 876.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 82.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:35 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:35 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-6b981055-0892-4eff-b17f-3cbfbd4b5b8c",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:07:35+00:00",
+  "raw_event_id": "raw-iot-8b1b6ba543",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 28.4,
+  "humidity_percent": 62.5,
+  "motion_detected": false,
+  "light_lux": 234.0,
+  "co2_ppm": 876.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 82.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:41 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:41 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-890b87ea-acd6-4011-a2ba-de1408c9797c",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:07:40+07:00",
+  "raw_event_id": "raw-iot-750e6084e8",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 32.5,
+  "humidity_percent": 46.3,
+  "motion_detected": false,
+  "light_lux": 181.0,
+  "co2_ppm": 467.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 49.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:41 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:41 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-09fe0fe6",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:07:42.068900+00:00",
+  "raw_event_id": "raw-iot-750e6084e8",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 32.5,
+  "humidity_percent": 46.3,
+  "motion_detected": false,
+  "light_lux": 181,
+  "co2_ppm": 467.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 49.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:43 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:43 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-b1c25aee-492d-4f30-a7bb-2f17ea9357e3",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:07:40+00:00",
+  "raw_event_id": "raw-iot-750e6084e8",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 32.5,
+  "humidity_percent": 46.3,
+  "motion_detected": false,
+  "light_lux": 181.0,
+  "co2_ppm": 467.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 49.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:46 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:46 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-fe1a0f17-d5b7-49ac-b811-66a5db5a76d5",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:07:45+07:00",
+  "raw_event_id": "raw-iot-1817440e4e",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 31.8,
+  "humidity_percent": 95.4,
+  "motion_detected": false,
+  "light_lux": 593.0,
+  "co2_ppm": 604.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 60.0,
+  "status": "warning",
+  "alert_level": "medium",
+  "reason": "humidity_high"
+}
+19-06-2026 10:07:46 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:46 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-ec9bfc69",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:07:47.209157+00:00",
+  "raw_event_id": "raw-iot-1817440e4e",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 31.8,
+  "humidity_percent": 95.4,
+  "motion_detected": false,
+  "light_lux": 593,
+  "co2_ppm": 604.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 60.0,
+  "status": "warning",
+  "alert_level": "medium",
+  "reason": "high_humidity"
+}
+19-06-2026 10:07:46 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:46 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-c37d7cb4-1a00-411f-a531-ac5d73b1828d",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:07:45+00:00",
+  "raw_event_id": "raw-iot-1817440e4e",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 31.8,
+  "humidity_percent": 95.4,
+  "motion_detected": false,
+  "light_lux": 593.0,
+  "co2_ppm": 604.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 60.0,
+  "status": "warning",
+  "alert_level": "medium",
+  "reason": "humidity_high"
+}
+19-06-2026 10:07:51 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:51 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-dc2e2af3-201e-45d2-855b-bd61a9afbe61",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:07:50+07:00",
+  "raw_event_id": "raw-iot-19f0a41008",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 30.3,
+  "humidity_percent": 46.3,
+  "motion_detected": false,
+  "light_lux": 213.0,
+  "co2_ppm": 420.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 98.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:51 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:51 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-718e645c",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:07:52.469917+00:00",
+  "raw_event_id": "raw-iot-19f0a41008",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 30.3,
+  "humidity_percent": 46.3,
+  "motion_detected": false,
+  "light_lux": 213,
+  "co2_ppm": 420.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 98.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:51 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:51 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-a753fbd9-c5cf-429c-b6f3-6118b7b1f34e",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:07:50+00:00",
+  "raw_event_id": "raw-iot-19f0a41008",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 30.3,
+  "humidity_percent": 46.3,
+  "motion_detected": false,
+  "light_lux": 213.0,
+  "co2_ppm": 420.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 98.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:56 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:56 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-6befa2a0-5e0f-4461-8be7-9656f52f94a6",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:07:56+07:00",
+  "raw_event_id": "raw-iot-8c096e4556",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 29.6,
+  "humidity_percent": 57.0,
+  "motion_detected": true,
+  "light_lux": 336.0,
+  "co2_ppm": 912.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 74.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:56 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:56 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-c268c572",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:07:57.652355+00:00",
+  "raw_event_id": "raw-iot-8c096e4556",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 29.6,
+  "humidity_percent": 57.0,
+  "motion_detected": true,
+  "light_lux": 336,
+  "co2_ppm": 912.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 74.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:07:56 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:07:56 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-b3cdc75b-1ba8-4c26-a682-c51a3071c053",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:07:56+00:00",
+  "raw_event_id": "raw-iot-8c096e4556",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 29.6,
+  "humidity_percent": 57.0,
+  "motion_detected": true,
+  "light_lux": 336.0,
+  "co2_ppm": 912.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 74.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:01 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:01 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-c30afbbc-2311-4ae4-b821-540da6eea69b",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:08:01+07:00",
+  "raw_event_id": "raw-iot-33468c770e",
+  "device_id": "esp32-unknown-01",
+  "location": "Unknown Area",
+  "temperature_c": 33.0,
+  "humidity_percent": 70.7,
+  "motion_detected": false,
+  "light_lux": 587.0,
+  "co2_ppm": 505.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 43.0,
+  "status": "invalid_device",
+  "alert_level": "high",
+  "reason": "device_not_registered"
+}
+19-06-2026 10:08:01 | WARNING | app.services.mqtt_client:handle_sensor_data:106 - 🚨 CẢNH BÁO AN NINH! Thiết bị lạ không xác định (esp32-unknown-01) đang gửi dữ liệu.
+19-06-2026 10:08:01 | INFO    | app.services.mqtt_client:handle_sensor_data:111 - Đang gửi API báo cáo an ninh tới B7: http://26.177.175.21:8000/notify/send
+19-06-2026 10:08:01 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:01 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-9485393e-95ed-4107-afe9-97b2140b3192",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:08:01+00:00",
+  "raw_event_id": "raw-iot-33468c770e",
+  "device_id": "esp32-unknown-01",
+  "location": "Unknown Area",
+  "temperature_c": 33.0,
+  "humidity_percent": 70.7,
+  "motion_detected": false,
+  "light_lux": 587.0,
+  "co2_ppm": 505.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 43.0,
+  "status": "invalid_device",
+  "alert_level": "high",
+  "reason": "device_not_registered"
+}
+19-06-2026 10:08:01 | WARNING | app.services.mqtt_client:handle_sensor_data:106 - 🚨 CẢNH BÁO AN NINH! Thiết bị lạ không xác định (esp32-unknown-01) đang gửi dữ liệu.
+19-06-2026 10:08:01 | INFO    | app.services.mqtt_client:handle_sensor_data:111 - Đang gửi API báo cáo an ninh tới B7: http://26.177.175.21:8000/notify/send
+19-06-2026 10:08:01 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:01 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-685708f1",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:08:02.906190+00:00",
+  "raw_event_id": "raw-iot-33468c770e",
+  "device_id": "esp32-unknown-01",
+  "location": "Unknown Area",
+  "temperature_c": 33.0,
+  "humidity_percent": 70.7,
+  "motion_detected": false,
+  "light_lux": 587,
+  "co2_ppm": 505.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 43.0,
+  "status": "invalid_device",
+  "alert_level": "high",
+  "reason": "device_not_registered"
+}
+19-06-2026 10:08:01 | WARNING | app.services.mqtt_client:handle_sensor_data:106 - 🚨 CẢNH BÁO AN NINH! Thiết bị lạ không xác định (esp32-unknown-01) đang gửi dữ liệu.
+19-06-2026 10:08:01 | INFO    | app.services.mqtt_client:handle_sensor_data:111 - Đang gửi API báo cáo an ninh tới B7: http://26.177.175.21:8000/notify/send
+19-06-2026 10:08:06 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:06 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-1b0f8ec5-2d01-4d28-9ae7-0c216184503e",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:08:06+07:00",
+  "raw_event_id": "raw-iot-3945a9217d",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 30.5,
+  "humidity_percent": 50.5,
+  "motion_detected": true,
+  "light_lux": 399.0,
+  "co2_ppm": 601.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 89.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:06 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:06 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-199d7163",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:08:08.170923+00:00",
+  "raw_event_id": "raw-iot-3945a9217d",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 30.5,
+  "humidity_percent": 50.5,
+  "motion_detected": true,
+  "light_lux": 399,
+  "co2_ppm": 601.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 89.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:07 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:07 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-78f50089-ad3a-48f1-8e50-9db18adc08ef",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:08:06+00:00",
+  "raw_event_id": "raw-iot-3945a9217d",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 30.5,
+  "humidity_percent": 50.5,
+  "motion_detected": true,
+  "light_lux": 399.0,
+  "co2_ppm": 601.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 89.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:12 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:12 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-0241b97f-a98e-4ebb-837d-fcb16e68968e",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:08:11+07:00",
+  "raw_event_id": "raw-iot-9846ebb356",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 31.0,
+  "humidity_percent": 75.0,
+  "motion_detected": false,
+  "light_lux": 210.0,
+  "co2_ppm": 816.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 81.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:12 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:12 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-9a3a76c4",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:08:13.356130+00:00",
+  "raw_event_id": "raw-iot-9846ebb356",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 31.0,
+  "humidity_percent": 75.0,
+  "motion_detected": false,
+  "light_lux": 210,
+  "co2_ppm": 816.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 81.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:13 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:13 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-db2d7edd-b917-41ac-80ba-10eb5afe729e",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:08:12+00:00",
+  "raw_event_id": "raw-iot-9846ebb356",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 31.0,
+  "humidity_percent": 75.0,
+  "motion_detected": false,
+  "light_lux": 210.0,
+  "co2_ppm": 816.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 81.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:17 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:17 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-8f3818c5-ab4a-445b-90ea-5476cf158295",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:08:17+07:00",
+  "raw_event_id": "raw-iot-54244eb5c0",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 31.4,
+  "humidity_percent": 61.1,
+  "motion_detected": false,
+  "light_lux": 175.0,
+  "co2_ppm": 545.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 53.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:17 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:17 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-c859c097",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:08:18.594024+00:00",
+  "raw_event_id": "raw-iot-54244eb5c0",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 31.4,
+  "humidity_percent": 61.1,
+  "motion_detected": false,
+  "light_lux": 175,
+  "co2_ppm": 545.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 53.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:17 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:17 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-3e59013e-571d-44af-9cd8-39e7193e6d4e",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:08:16+00:00",
+  "raw_event_id": "raw-iot-54244eb5c0",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 31.4,
+  "humidity_percent": 61.1,
+  "motion_detected": false,
+  "light_lux": 175.0,
+  "co2_ppm": 545.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 53.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:22 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:22 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-c5bc406a-68af-4a61-8ab2-729e57d56dcc",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:08:22+07:00",
+  "raw_event_id": "raw-iot-99e4603486",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 30.3,
+  "humidity_percent": 51.9,
+  "motion_detected": false,
+  "light_lux": 709.0,
+  "co2_ppm": 737.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 37.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:22 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:22 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-a9876d05",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:08:23.804764+00:00",
+  "raw_event_id": "raw-iot-99e4603486",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 30.3,
+  "humidity_percent": 51.9,
+  "motion_detected": false,
+  "light_lux": 709,
+  "co2_ppm": 737.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 37.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:23 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:23 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-e30180e8-beef-4f7e-8aa6-08fd30e76804",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:08:22+00:00",
+  "raw_event_id": "raw-iot-99e4603486",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 30.3,
+  "humidity_percent": 51.9,
+  "motion_detected": false,
+  "light_lux": 709.0,
+  "co2_ppm": 737.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 37.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:28 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:28 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-021ce2dc-7e1a-4a32-b113-0be93f7af2f8",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:08:27+07:00",
+  "raw_event_id": "raw-iot-c6582947d5",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 27.0,
+  "humidity_percent": 89.4,
+  "motion_detected": false,
+  "light_lux": 321.0,
+  "co2_ppm": 684.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 87.0,
+  "status": "warning",
+  "alert_level": "medium",
+  "reason": "humidity_high"
+}
+19-06-2026 10:08:28 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:28 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-61d94986",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:08:29.009572+00:00",
+  "raw_event_id": "raw-iot-c6582947d5",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 27.0,
+  "humidity_percent": 89.4,
+  "motion_detected": false,
+  "light_lux": 321,
+  "co2_ppm": 684.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 87.0,
+  "status": "warning",
+  "alert_level": "medium",
+  "reason": "high_humidity"
+}
+19-06-2026 10:08:28 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:28 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-11841234-7d4a-4326-9a5d-9a13cb0bacf9",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:08:27+00:00",
+  "raw_event_id": "raw-iot-c6582947d5",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 27.0,
+  "humidity_percent": 89.4,
+  "motion_detected": false,
+  "light_lux": 321.0,
+  "co2_ppm": 684.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 87.0,
+  "status": "warning",
+  "alert_level": "medium",
+  "reason": "humidity_high"
+}
+19-06-2026 10:08:33 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:33 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-fd694209-cc69-4cb6-868e-0e655e177e3d",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:08:32+07:00",
+  "raw_event_id": "raw-iot-101c7c2df8",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 27.0,
+  "humidity_percent": 68.7,
+  "motion_detected": false,
+  "light_lux": 126.0,
+  "co2_ppm": 470.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 84.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:33 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:33 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-3f96409b-c3d3-49f7-955a-e51ed4603098",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:08:32+00:00",
+  "raw_event_id": "raw-iot-101c7c2df8",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 27.0,
+  "humidity_percent": 68.7,
+  "motion_detected": false,
+  "light_lux": 126.0,
+  "co2_ppm": 470.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 84.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:33 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:33 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-a3df332d",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:08:34.456669+00:00",
+  "raw_event_id": "raw-iot-101c7c2df8",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 27.0,
+  "humidity_percent": 68.7,
+  "motion_detected": false,
+  "light_lux": 126,
+  "co2_ppm": 470.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 84.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:38 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:38 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-d8e53e91-929a-494d-b350-e3e6230d18d7",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:08:37+07:00",
+  "raw_event_id": "raw-iot-62c314ff7f",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 32.8,
+  "humidity_percent": 60.7,
+  "motion_detected": false,
+  "light_lux": 759.0,
+  "co2_ppm": 842.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 38.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:38 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:38 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-7f2b4e33",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:08:39.454868+00:00",
+  "raw_event_id": "raw-iot-62c314ff7f",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 32.8,
+  "humidity_percent": 60.7,
+  "motion_detected": false,
+  "light_lux": 759,
+  "co2_ppm": 842.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 38.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:38 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:38 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-cce48f5e-1bcd-4913-bce8-509c3e6c4373",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:08:37+00:00",
+  "raw_event_id": "raw-iot-62c314ff7f",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 32.8,
+  "humidity_percent": 60.7,
+  "motion_detected": false,
+  "light_lux": 759.0,
+  "co2_ppm": 842.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 38.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:43 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:43 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-7f66c216-fefd-4cb7-a077-17bb70da3ff5",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:08:43+07:00",
+  "raw_event_id": "raw-iot-9ca2369dd5",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 32.7,
+  "humidity_percent": 76.1,
+  "motion_detected": false,
+  "light_lux": 395.0,
+  "co2_ppm": 899.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 67.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:43 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:43 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-3b81e7d2-ab71-4834-b0fd-d4ba46fff08f",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:08:42+00:00",
+  "raw_event_id": "raw-iot-9ca2369dd5",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 32.7,
+  "humidity_percent": 76.1,
+  "motion_detected": false,
+  "light_lux": 395.0,
+  "co2_ppm": 899.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 67.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:43 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:43 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-3afacc00",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:08:44.699298+00:00",
+  "raw_event_id": "raw-iot-9ca2369dd5",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 32.7,
+  "humidity_percent": 76.1,
+  "motion_detected": false,
+  "light_lux": 395,
+  "co2_ppm": 899.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 67.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:49 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:49 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-623bfc42-21ab-435f-839a-dfb246c2ea61",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:08:48+07:00",
+  "raw_event_id": "raw-iot-bdb9590942",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 27.9,
+  "humidity_percent": 68.7,
+  "motion_detected": false,
+  "light_lux": 363.0,
+  "co2_ppm": 510.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 90.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:49 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:49 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-ce356648-1793-4eef-bb1a-2688b00a9ddf",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:08:48+00:00",
+  "raw_event_id": "raw-iot-bdb9590942",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 27.9,
+  "humidity_percent": 68.7,
+  "motion_detected": false,
+  "light_lux": 363.0,
+  "co2_ppm": 510.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 90.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:49 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:49 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-2e4db51d",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:08:50.067214+00:00",
+  "raw_event_id": "raw-iot-bdb9590942",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 27.9,
+  "humidity_percent": 68.7,
+  "motion_detected": false,
+  "light_lux": 363,
+  "co2_ppm": 510.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 90.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:54 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:54 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-39ebc00e-9fb7-4e26-b0c8-7d16fddb15d4",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:08:53+07:00",
+  "raw_event_id": "raw-iot-302e26a688",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 28.9,
+  "humidity_percent": 60.9,
+  "motion_detected": false,
+  "light_lux": 634.0,
+  "co2_ppm": 694.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 77.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:54 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:54 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-477db4ec",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:08:55.144888+00:00",
+  "raw_event_id": "raw-iot-302e26a688",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 28.9,
+  "humidity_percent": 60.9,
+  "motion_detected": false,
+  "light_lux": 634,
+  "co2_ppm": 694.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 77.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:54 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:54 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-d918e6ba-d671-4316-a1d6-56cbdf6b5572",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:08:53+00:00",
+  "raw_event_id": "raw-iot-302e26a688",
+  "device_id": "esp32-gate-a",
+  "location": "Main Gate A",
+  "temperature_c": 28.9,
+  "humidity_percent": 60.9,
+  "motion_detected": false,
+  "light_lux": 634.0,
+  "co2_ppm": 694.0,
+  "smoke_ppm": 0.04,
+  "battery_percent": 77.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:08:59 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:59 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-c901daa5-74a0-484b-a415-caba77ed1d75",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:08:58+07:00",
+  "raw_event_id": "raw-iot-29c6038817",
+  "device_id": "esp32-unknown-01",
+  "location": "Unknown Area",
+  "temperature_c": 32.5,
+  "humidity_percent": 77.9,
+  "motion_detected": false,
+  "light_lux": 164.0,
+  "co2_ppm": 848.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 79.0,
+  "status": "invalid_device",
+  "alert_level": "high",
+  "reason": "device_not_registered"
+}
+19-06-2026 10:08:59 | WARNING | app.services.mqtt_client:handle_sensor_data:106 - 🚨 CẢNH BÁO AN NINH! Thiết bị lạ không xác định (esp32-unknown-01) đang gửi dữ liệu.
+19-06-2026 10:08:59 | INFO    | app.services.mqtt_client:handle_sensor_data:111 - Đang gửi API báo cáo an ninh tới B7: http://26.177.175.21:8000/notify/send
+19-06-2026 10:08:59 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:08:59 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-ab5ebfaf",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:09:00.355163+00:00",
+  "raw_event_id": "raw-iot-29c6038817",
+  "device_id": "esp32-unknown-01",
+  "location": "Unknown Area",
+  "temperature_c": 32.5,
+  "humidity_percent": 77.9,
+  "motion_detected": false,
+  "light_lux": 164,
+  "co2_ppm": 848.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 79.0,
+  "status": "invalid_device",
+  "alert_level": "high",
+  "reason": "device_not_registered"
+}
+19-06-2026 10:08:59 | WARNING | app.services.mqtt_client:handle_sensor_data:106 - 🚨 CẢNH BÁO AN NINH! Thiết bị lạ không xác định (esp32-unknown-01) đang gửi dữ liệu.
+19-06-2026 10:08:59 | INFO    | app.services.mqtt_client:handle_sensor_data:111 - Đang gửi API báo cáo an ninh tới B7: http://26.177.175.21:8000/notify/send
+19-06-2026 10:09:00 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:00 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-896f4023-391b-4eb6-8610-78fb2f250900",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:08:58+00:00",
+  "raw_event_id": "raw-iot-29c6038817",
+  "device_id": "esp32-unknown-01",
+  "location": "Unknown Area",
+  "temperature_c": 32.5,
+  "humidity_percent": 77.9,
+  "motion_detected": false,
+  "light_lux": 164.0,
+  "co2_ppm": 848.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 79.0,
+  "status": "invalid_device",
+  "alert_level": "high",
+  "reason": "device_not_registered"
+}
+19-06-2026 10:09:00 | WARNING | app.services.mqtt_client:handle_sensor_data:106 - 🚨 CẢNH BÁO AN NINH! Thiết bị lạ không xác định (esp32-unknown-01) đang gửi dữ liệu.
+19-06-2026 10:09:00 | INFO    | app.services.mqtt_client:handle_sensor_data:111 - Đang gửi API báo cáo an ninh tới B7: http://26.177.175.21:8000/notify/send
+19-06-2026 10:09:04 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:04 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-302181f8-d8ba-4c24-b911-90658bea49f4",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:09:04+07:00",
+  "raw_event_id": "raw-iot-ef38d6ff84",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 27.1,
+  "humidity_percent": 45.9,
+  "motion_detected": false,
+  "light_lux": 732.0,
+  "co2_ppm": 431.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 56.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:04 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:04 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-6bb1ac29-8ffe-430a-ab1b-060038e27692",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:09:03+00:00",
+  "raw_event_id": "raw-iot-ef38d6ff84",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 27.1,
+  "humidity_percent": 45.9,
+  "motion_detected": false,
+  "light_lux": 732.0,
+  "co2_ppm": 431.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 56.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:04 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:04 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-eff3d0c1",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:09:05.591028+00:00",
+  "raw_event_id": "raw-iot-ef38d6ff84",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 27.1,
+  "humidity_percent": 45.9,
+  "motion_detected": false,
+  "light_lux": 732,
+  "co2_ppm": 431.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 56.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:09 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:09 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-aac4533e-7684-48a1-a2df-26b7d8a3b44e",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:09:09+07:00",
+  "raw_event_id": "raw-iot-f4e08d0334",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 32.6,
+  "humidity_percent": 72.9,
+  "motion_detected": false,
+  "light_lux": 314.0,
+  "co2_ppm": 815.0,
+  "smoke_ppm": 0.0,
+  "battery_percent": 42.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:09 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:09 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-31e25947-8d32-4766-890b-ceb8d2bec97e",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:09:09+00:00",
+  "raw_event_id": "raw-iot-f4e08d0334",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 32.6,
+  "humidity_percent": 72.9,
+  "motion_detected": false,
+  "light_lux": 314.0,
+  "co2_ppm": 815.0,
+  "smoke_ppm": 0.0,
+  "battery_percent": 42.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:09 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:09 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-b0bc7047",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:09:10.813075+00:00",
+  "raw_event_id": "raw-iot-f4e08d0334",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 32.6,
+  "humidity_percent": 72.9,
+  "motion_detected": false,
+  "light_lux": 314,
+  "co2_ppm": 815.0,
+  "smoke_ppm": 0.0,
+  "battery_percent": 42.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:16 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:16 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-46354c08-ed01-4860-9960-f89ed05f147a",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:09:14+07:00",
+  "raw_event_id": "raw-iot-c76490f081",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 26.5,
+  "humidity_percent": 46.3,
+  "motion_detected": false,
+  "light_lux": 295.0,
+  "co2_ppm": 904.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 71.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:16 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:16 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-d0518bee",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:09:16.120267+00:00",
+  "raw_event_id": "raw-iot-c76490f081",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 26.5,
+  "humidity_percent": 46.3,
+  "motion_detected": false,
+  "light_lux": 295,
+  "co2_ppm": 904.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 71.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:16 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:16 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-6ca30d1e-8f62-42bb-b5ae-c8a7bb452e1c",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:09:14+00:00",
+  "raw_event_id": "raw-iot-c76490f081",
+  "device_id": "esp32-lab-a102",
+  "location": "Lab A102",
+  "temperature_c": 26.5,
+  "humidity_percent": 46.3,
+  "motion_detected": false,
+  "light_lux": 295.0,
+  "co2_ppm": 904.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 71.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:20 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:20 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-d35cf35c-27e7-4b82-b5bb-9fdd52249ceb",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:09:19+07:00",
+  "raw_event_id": "raw-iot-302beab1ff",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 26.6,
+  "humidity_percent": 61.9,
+  "motion_detected": false,
+  "light_lux": 722.0,
+  "co2_ppm": 820.0,
+  "smoke_ppm": 0.0,
+  "battery_percent": 41.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:20 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:20 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-638fbba8",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:09:21.440714+00:00",
+  "raw_event_id": "raw-iot-302beab1ff",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 26.6,
+  "humidity_percent": 61.9,
+  "motion_detected": false,
+  "light_lux": 722,
+  "co2_ppm": 820.0,
+  "smoke_ppm": 0.0,
+  "battery_percent": 41.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:20 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:20 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-84e79857-402a-4475-a377-69a94eea6ba3",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:09:19+00:00",
+  "raw_event_id": "raw-iot-302beab1ff",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 26.6,
+  "humidity_percent": 61.9,
+  "motion_detected": false,
+  "light_lux": 722.0,
+  "co2_ppm": 820.0,
+  "smoke_ppm": 0.0,
+  "battery_percent": 41.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:25 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:25 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-87027c91-efdc-43dd-8ef4-693eedd2af35",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:09:25+07:00",
+  "raw_event_id": "raw-iot-e30bec67c4",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 28.1,
+  "humidity_percent": 46.5,
+  "motion_detected": false,
+  "light_lux": 362.0,
+  "co2_ppm": 502.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 53.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:25 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:25 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-3f002eea-ef6f-4450-aafb-c9e28f98d9b1",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:09:25+00:00",
+  "raw_event_id": "raw-iot-e30bec67c4",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 28.1,
+  "humidity_percent": 46.5,
+  "motion_detected": false,
+  "light_lux": 362.0,
+  "co2_ppm": 502.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 53.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:26 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:26 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-bf75abb3",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:09:26.696681+00:00",
+  "raw_event_id": "raw-iot-e30bec67c4",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 28.1,
+  "humidity_percent": 46.5,
+  "motion_detected": false,
+  "light_lux": 362,
+  "co2_ppm": 502.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 53.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:32 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:32 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-4e73f85f-5d76-45d4-9564-cc7f54427a09",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:09:30+07:00",
+  "raw_event_id": "raw-iot-1015fe8443",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 26.8,
+  "humidity_percent": 50.2,
+  "motion_detected": false,
+  "light_lux": 576.0,
+  "co2_ppm": 708.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 70.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:32 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:32 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-a768ef56-8653-420c-9173-76123f9d61bc",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:09:30+00:00",
+  "raw_event_id": "raw-iot-1015fe8443",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 26.8,
+  "humidity_percent": 50.2,
+  "motion_detected": false,
+  "light_lux": 576.0,
+  "co2_ppm": 708.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 70.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:32 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:32 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-1d144905",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:09:32.322444+00:00",
+  "raw_event_id": "raw-iot-1015fe8443",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 26.8,
+  "humidity_percent": 50.2,
+  "motion_detected": false,
+  "light_lux": 576,
+  "co2_ppm": 708.0,
+  "smoke_ppm": 0.03,
+  "battery_percent": 70.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:35 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:35 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-29e991ef-edf3-4251-a577-482868b795d5",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:09:35+07:00",
+  "raw_event_id": "raw-iot-f999c4b20c",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 31.3,
+  "humidity_percent": 57.1,
+  "motion_detected": true,
+  "light_lux": 557.0,
+  "co2_ppm": 609.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 51.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:35 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:35 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-02451a27-f5c5-4b56-953e-b33930e0adc6",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:09:35+00:00",
+  "raw_event_id": "raw-iot-f999c4b20c",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 31.3,
+  "humidity_percent": 57.1,
+  "motion_detected": true,
+  "light_lux": 557.0,
+  "co2_ppm": 609.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 51.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:36 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:36 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-b517e8ab",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:09:37.308681+00:00",
+  "raw_event_id": "raw-iot-f999c4b20c",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 31.3,
+  "humidity_percent": 57.1,
+  "motion_detected": true,
+  "light_lux": 557,
+  "co2_ppm": 609.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 51.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:41 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:41 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-937db423-b81e-4642-bf9c-29dfe49f0be9",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:09:40+07:00",
+  "raw_event_id": "raw-iot-8a2a5b9376",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 27.5,
+  "humidity_percent": 62.0,
+  "motion_detected": false,
+  "light_lux": 484.0,
+  "co2_ppm": 746.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 58.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:41 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:41 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-b17d23ee-25a8-41da-9a14-aab7628388bf",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:09:40+00:00",
+  "raw_event_id": "raw-iot-8a2a5b9376",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 27.5,
+  "humidity_percent": 62.0,
+  "motion_detected": false,
+  "light_lux": 484.0,
+  "co2_ppm": 746.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 58.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:41 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:41 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-546af0ed",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:09:42.478541+00:00",
+  "raw_event_id": "raw-iot-8a2a5b9376",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 27.5,
+  "humidity_percent": 62.0,
+  "motion_detected": false,
+  "light_lux": 484,
+  "co2_ppm": 746.0,
+  "smoke_ppm": 0.01,
+  "battery_percent": 58.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:46 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:46 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-25261dcc-686f-4055-ad11-b027bbdb5c73",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:09:46+07:00",
+  "raw_event_id": "raw-iot-6c8ee835f1",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 31.3,
+  "humidity_percent": 95.5,
+  "motion_detected": false,
+  "light_lux": 231.0,
+  "co2_ppm": 644.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 78.0,
+  "status": "warning",
+  "alert_level": "medium",
+  "reason": "humidity_high"
+}
+19-06-2026 10:09:46 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:46 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-9a08288c",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:09:47.588782+00:00",
+  "raw_event_id": "raw-iot-6c8ee835f1",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 31.3,
+  "humidity_percent": 95.5,
+  "motion_detected": false,
+  "light_lux": 231,
+  "co2_ppm": 644.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 78.0,
+  "status": "warning",
+  "alert_level": "medium",
+  "reason": "high_humidity"
+}
+19-06-2026 10:09:46 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:46 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-4dbffe2e-f148-4076-b37e-9547dc531f5d",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:09:45+00:00",
+  "raw_event_id": "raw-iot-6c8ee835f1",
+  "device_id": "esp32-lab-a101",
+  "location": "Lab A101",
+  "temperature_c": 31.3,
+  "humidity_percent": 95.5,
+  "motion_detected": false,
+  "light_lux": 231.0,
+  "co2_ppm": 644.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 78.0,
+  "status": "warning",
+  "alert_level": "medium",
+  "reason": "humidity_high"
+}
+19-06-2026 10:09:51 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:51 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-4e3bef7e-6264-4688-95f6-f963e6410909",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:09:51+07:00",
+  "raw_event_id": "raw-iot-faeae562f4",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 30.9,
+  "humidity_percent": 48.9,
+  "motion_detected": false,
+  "light_lux": 561.0,
+  "co2_ppm": 773.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 71.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:52 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:52 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-f6ec4bdc-50a9-48b5-a8bd-69ad259393ba",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:09:51+00:00",
+  "raw_event_id": "raw-iot-faeae562f4",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 30.9,
+  "humidity_percent": 48.9,
+  "motion_detected": false,
+  "light_lux": 561.0,
+  "co2_ppm": 773.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 71.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:52 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:52 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-9c6d755e",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:09:52.925599+00:00",
+  "raw_event_id": "raw-iot-faeae562f4",
+  "device_id": "esp32-hall-b201",
+  "location": "Hall B201",
+  "temperature_c": 30.9,
+  "humidity_percent": 48.9,
+  "motion_detected": false,
+  "light_lux": 561,
+  "co2_ppm": 773.0,
+  "smoke_ppm": 0.05,
+  "battery_percent": 71.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:57 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:57 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-720ecb39-7b4f-4f5e-98eb-cad472c143e1",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T10:09:56+07:00",
+  "raw_event_id": "raw-iot-0b3c692107",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 29.5,
+  "humidity_percent": 51.9,
+  "motion_detected": false,
+  "light_lux": 130.0,
+  "co2_ppm": 924.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 45.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:57 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:57 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-546c4924-c4f2-46c4-9ac8-6edcd8fdf22d",
+  "event_type": "sensor.reading.processed",
+  "source_service": "b1-iot-ingestion",
+  "timestamp": "2026-06-19T03:09:56+00:00",
+  "raw_event_id": "raw-iot-0b3c692107",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 29.5,
+  "humidity_percent": 51.9,
+  "motion_detected": false,
+  "light_lux": 130.0,
+  "co2_ppm": 924.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 45.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
+19-06-2026 10:09:58 | INFO    | app.services.mqtt_client:on_message:47 - 📥 NHẬN DATA TỪ TOPIC: smart-campus/events/sensor
+19-06-2026 10:09:58 | DEBUG   | app.services.mqtt_client:on_message:48 - Nội dung JSON:
+{
+  "event_id": "sensor-event-b24a6970",
+  "event_type": "sensor.reading.processed",
+  "source_service": "team-iot",
+  "timestamp": "2026-06-19T03:09:58.469050+00:00",
+  "raw_event_id": "raw-iot-0b3c692107",
+  "device_id": "esp32-library-01",
+  "location": "Library 01",
+  "temperature_c": 29.5,
+  "humidity_percent": 51.9,
+  "motion_detected": false,
+  "light_lux": 130,
+  "co2_ppm": 924.0,
+  "smoke_ppm": 0.02,
+  "battery_percent": 45.0,
+  "status": "normal",
+  "alert_level": "none",
+  "reason": "environment_normal"
+}
