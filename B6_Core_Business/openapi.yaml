@@ -33,6 +33,24 @@ paths:
         '200':
           description: Hoạt động bình thường
 
+  /api/dashboard-stream:
+    get:
+      summary: Luồng sự kiện theo thời gian thực (SSE)
+      description: Endpoint Server-Sent Events (SSE) để đẩy dữ liệu log Real-time xuống Web Dashboard.
+      tags: [Health & UI]
+      responses:
+        '200':
+          description: Kết nối SSE mở thành công
+
+  /api/v1/system/emergency-override:
+    post:
+      summary: Kích hoạt sơ tán khẩn cấp thủ công (Manual Override)
+      description: API dành cho System Admin để kích hoạt luồng cứu hộ khẩn cấp bằng tay.
+      tags: [Health & UI]
+      responses:
+        '200':
+          description: Đã kích hoạt sơ tán khẩn cấp thủ công
+
   /api/v1/events/access:
     post:
       summary: Nhận sự kiện quẹt thẻ (B3 gọi B6)
@@ -227,3 +245,4 @@ components:
             status: 500
             detail: Lỗi xảy ra trong quá trình kết nối với PostgreSQL nội bộ.
             instance: /api/v1/events/access
+
