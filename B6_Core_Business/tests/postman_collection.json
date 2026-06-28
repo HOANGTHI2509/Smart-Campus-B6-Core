@@ -64,9 +64,9 @@
 					"raw": "{\r\n  \"detectionId\": \"string\",\r\n  \"cameraId\": \"string\",\r\n  \"detectionType\": \"OBJECT\",\r\n  \"riskLevel\": \"CRITICAL\",\r\n  \"timestamp\": \"2026-06-16T20:00:00Z\"\r\n}"
 				},
 				"url": {
-					"raw": "{{BASE_URL}}/ai/events",
+					"raw": "{{BASE_URL}}/api/v1/webhook/vision",
 					"host": ["{{BASE_URL}}"],
-					"path": ["ai", "events"]
+					"path": ["api", "v1", "webhook", "vision"]
 				}
 			}
 		},
@@ -97,9 +97,9 @@
 					"raw": "{\r\n  \"gateId\": \"GATE_A_01\",\r\n  \"uid\": \"04:A1:B2:C3\",\r\n  \"timestamp\": \"2026-06-16T20:00:00Z\"\r\n}"
 				},
 				"url": {
-					"raw": "{{BASE_URL}}/access/check",
+					"raw": "{{BASE_URL}}/api/v1/events/access",
 					"host": ["{{BASE_URL}}"],
-					"path": ["access", "check"]
+					"path": ["api", "v1", "events", "access"]
 				}
 			}
 		},
@@ -130,9 +130,9 @@
 					"raw": "{\r\n  \"gateId\": \"GATE_A_01\",\r\n  \"uid\": \"99:FF:XX:YY\",\r\n  \"timestamp\": \"2026-06-16T20:00:00Z\"\r\n}"
 				},
 				"url": {
-					"raw": "{{BASE_URL}}/access/check",
+					"raw": "{{BASE_URL}}/api/v1/events/access",
 					"host": ["{{BASE_URL}}"],
-					"path": ["access", "check"]
+					"path": ["api", "v1", "events", "access"]
 				}
 			}
 		},
@@ -159,9 +159,9 @@
 					"raw": "{\r\n  \"gateId\": \"GATE_A_01\"\r\n}"
 				},
 				"url": {
-					"raw": "{{BASE_URL}}/access/check",
+					"raw": "{{BASE_URL}}/api/v1/events/access",
 					"host": ["{{BASE_URL}}"],
-					"path": ["access", "check"]
+					"path": ["api", "v1", "events", "access"]
 				}
 			}
 		},

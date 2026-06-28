@@ -4,6 +4,8 @@ import threading
 import httpx
 import time
 from app.core.config import settings
+from app.core.database import SessionLocal
+from app.models.audit import AuditLog
 
 system_logs = []
 metrics = {
@@ -52,9 +54,12 @@ def ping_services():
 threading.Thread(target=ping_services, daemon=True).start()
 
 def add_log(level: str, message: str, source: str = "SYSTEM", payload: dict = None, status_code: int = 200):
+    log_id = str(uuid.uuid4())
+    timestamp_str = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    
     log_entry = {
-        "id": str(uuid.uuid4()),
-        "timestamp": datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+        "id": log_id,
+        "timestamp": timestamp_str,
         "level": level,
         "source": source,
         "message": message,
@@ -62,6 +67,24 @@ def add_log(level: str, message: str, source: str = "SYSTEM", payload: dict = No
         "status_code": status_code
     }
     system_logs.insert(0, log_entry)
+    
+    # LƯU VÀO POSTGRESQL CSDL
+    try:
+        db = SessionLocal()
+        db_log = AuditLog(
+            id=log_id,
+            timestamp=timestamp_str,
+            level=level,
+            source=source,
+            message=message,
+            payload=payload,
+            status_code=status_code
+        )
+        db.add(db_log)
+        db.commit()
+        db.close()
+    except Exception as e:
+        print(f"[DB ERROR] Lỗi ghi DB: {e}")
     
     # Cập nhật số liệu thật
     metrics["total_events"] += 1

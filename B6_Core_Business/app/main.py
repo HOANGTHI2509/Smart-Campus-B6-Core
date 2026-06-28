@@ -58,6 +58,13 @@ recent_swipes = {}
 
 @app.on_event("startup")
 def on_startup():
+    from app.core.database import Base, engine
+    # Tạo các bảng CSDL PostgreSQL tự động nếu chưa có
+    try:
+        Base.metadata.create_all(bind=engine)
+        print("[DATABASE] Đã kết nối và khởi tạo bảng PostgreSQL thành công.")
+    except Exception as e:
+        print(f"[DATABASE] LỖI không thể khởi tạo PostgreSQL: {e}")
     start_mqtt()
 
 @app.on_event("shutdown")
